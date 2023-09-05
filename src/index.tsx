@@ -9,6 +9,7 @@ import DeleteButton from './ui/delete-button/delete-button';
 import ProfileImg from './ui/profile-img/profile-img';
 import CustomButton from './ui/custom-button/custom-button';
 import Upload from './ui/upload/upload';
+import CopyInput from './ui/copy-input/copy-input';
 
 const Index = () => {
   return (
@@ -16,7 +17,7 @@ const Index = () => {
       source={require('./assets/img/welcome-bg.jpg')}
       style={styles.wrapper}>
       <ScrollView>
-        <Text style={styles.text}>Profile Image</Text>
+        {/* <Text style={styles.text}>Profile Image</Text>
         <ProfileImg />
         <ProfileImg size="medium" userImg="../../assets/img/user.png" />
         <ProfileImg size="small" />
@@ -49,6 +50,13 @@ const Index = () => {
         <View style={styles.container}>
           <Upload isEmpty={true} />
           <Upload isEmpty={false} />
+        </View> */}
+
+        <Text style={styles.text}>Copy Input</Text>
+        <View style={styles.container}>
+          <CopyInput textCopy="Hello" />
+          <CopyInput textCopy="Hello" status="loading" />
+          <CopyInput textCopy="Hello" status="disabled" />
         </View>
       </ScrollView>
     </ImageBackground>
