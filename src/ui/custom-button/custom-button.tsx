@@ -1,6 +1,6 @@
-import {Pressable, Text, StyleSheet} from 'react-native';
-import {ICustomButton} from './type';
-import {LARGE_BUTTON_COLORS, MEDIUM_BUTTON_COLORS} from './colors';
+import { Pressable, Text, StyleSheet } from 'react-native';
+import { ICustomButton } from './type';
+import { LARGE_BUTTON_COLORS, MEDIUM_BUTTON_COLORS } from './colors';
 import Spinner from '../spinner/spinner';
 
 const CustomButton = ({
@@ -21,24 +21,24 @@ const CustomButton = ({
   return (
     <Pressable
       disabled={status !== 'waiting'}
-      style={({pressed}) => [
+      style={({ pressed }) => [
         {
           backgroundColor: pressed ? pressedButtonColor : buttonColor,
         },
         styles.wrapper,
         styles[size],
-        status === 'disabled' ? {backgroundColor: disabledButtonColor} : {},
+        status === 'disabled' ? { backgroundColor: disabledButtonColor } : {},
       ]}>
       {status === 'loading' ? (
         <Spinner color={pressedButtonColor} />
       ) : (
-        ({pressed}) => (
+        ({ pressed }) => (
           <Text
             style={[
-              {color: pressed ? pressedTextColor : textColor},
+              { color: pressed ? pressedTextColor : textColor },
               styles.text,
-              status === 'disabled' ? {color: disabledTextColor} : {},
-              isRedText ? {color: '#C2534C'} : {},
+              status === 'disabled' ? { color: disabledTextColor } : {},
+              isRedText ? { color: '#C2534C' } : {},
             ]}>
             {title}
           </Text>

@@ -1,6 +1,6 @@
 import {DARK_THEME, LIGHT_THEME} from '../../assets/colors';
 
-export const LARGE_BUTTON_COLORS = false
+export const LARGE_BUTTON_COLORS = true
   ? {
       buttonColor: DARK_THEME.color5,
       pressedButtonColor: DARK_THEME.primaryDefault,
@@ -18,7 +18,7 @@ export const LARGE_BUTTON_COLORS = false
       disabledTextColor: LIGHT_THEME.color3,
     };
 
-export const MEDIUM_BUTTON_COLORS = false
+export const MEDIUM_BUTTON_COLORS = true
   ? {
       buttonColor: DARK_THEME.color7,
       pressedButtonColor: DARK_THEME.primaryDefault,

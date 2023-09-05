@@ -16,7 +16,7 @@ const Spinner = ({color}: {color: string}) => {
   };
   useEffect(() => {
     spin();
-  }, [color]);
+  });
 
   const rotate = spinValue.interpolate({
     inputRange: [0, 1],
