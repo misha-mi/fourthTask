@@ -1,12 +1,6 @@
-
-import Svg, { SvgProps, G, Path, Defs, ClipPath } from "react-native-svg"
+import Svg, {SvgProps, G, Path, Defs, ClipPath} from 'react-native-svg';
 const CheckCircleSVG = (props: SvgProps) => (
-  <Svg
-    width={18}
-    height={18}
-    fill="none"
-    {...props}
-  >
+  <Svg width={18} height={18} fill="none" {...props}>
     <G clipPath="url(#a)">
       <Path
         stroke="#B8DE64"
@@ -22,5 +16,5 @@ const CheckCircleSVG = (props: SvgProps) => (
       </ClipPath>
     </Defs>
   </Svg>
-)
-export default CheckCircleSVG
+);
+export default CheckCircleSVG;

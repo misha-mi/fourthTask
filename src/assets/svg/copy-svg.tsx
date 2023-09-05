@@ -1,12 +1,6 @@
-
-import Svg, { SvgProps, G, Path, Defs, ClipPath } from "react-native-svg"
+import Svg, {SvgProps, G, Path, Defs, ClipPath} from 'react-native-svg';
 const CopySVG = (props: SvgProps) => (
-  <Svg
-    width={24}
-    height={24}
-    fill="none"
-    {...props}
-  >
+  <Svg width={24} height={24} fill="none" {...props}>
     <G clipPath="url(#a)">
       <Path
         fill="#fff"
@@ -19,5 +13,5 @@ const CopySVG = (props: SvgProps) => (
       </ClipPath>
     </Defs>
   </Svg>
-)
-export default CopySVG
+);
+export default CopySVG;

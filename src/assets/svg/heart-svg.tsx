@@ -1,12 +1,6 @@
-
-import Svg, { SvgProps, G, Path, Defs, ClipPath } from "react-native-svg"
+import Svg, {SvgProps, G, Path, Defs, ClipPath} from 'react-native-svg';
 const HeartSVG = (props: SvgProps) => (
-  <Svg
-    width={20}
-    height={20}
-    fill="none"
-    {...props}
-  >
+  <Svg width={20} height={20} fill="none" {...props}>
     <G clipPath="url(#a)">
       <Path
         fill="#B8DE64"
@@ -23,5 +17,5 @@ const HeartSVG = (props: SvgProps) => (
       </ClipPath>
     </Defs>
   </Svg>
-)
-export default HeartSVG
+);
+export default HeartSVG;

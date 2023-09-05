@@ -1,11 +1,6 @@
-import Svg, { SvgProps, G, Path, Defs, ClipPath } from "react-native-svg"
+import Svg, {SvgProps, G, Path, Defs, ClipPath} from 'react-native-svg';
 const PhotoSVG = (props: SvgProps) => (
-  <Svg
-    width={24}
-    height={24}
-    fill="none"
-    {...props}
-  >
+  <Svg width={24} height={24} fill="none" {...props}>
     <G clipPath="url(#a)">
       <Path
         fill="#B8DE64"
@@ -20,5 +15,5 @@ const PhotoSVG = (props: SvgProps) => (
       </ClipPath>
     </Defs>
   </Svg>
-)
-export default PhotoSVG
+);
+export default PhotoSVG;

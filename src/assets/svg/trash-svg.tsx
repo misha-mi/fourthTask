@@ -1,11 +1,6 @@
-import Svg, { SvgProps, G, Path, Defs, ClipPath } from "react-native-svg"
+import Svg, {SvgProps, G, Path, Defs, ClipPath} from 'react-native-svg';
 const TrashSVG = (props: SvgProps) => (
-  <Svg
-    width={33}
-    height={32}
-    fill="none"
-    {...props}
-  >
+  <Svg width={33} height={32} fill="none" {...props}>
     <G clipPath="url(#a)">
       <Path
         fill="#fff"
@@ -20,5 +15,5 @@ const TrashSVG = (props: SvgProps) => (
       </ClipPath>
     </Defs>
   </Svg>
-)
-export default TrashSVG
+);
+export default TrashSVG;

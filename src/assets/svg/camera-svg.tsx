@@ -1,11 +1,6 @@
-import Svg, { SvgProps, G, Path, Defs, ClipPath } from "react-native-svg"
+import Svg, {SvgProps, G, Path, Defs, ClipPath} from 'react-native-svg';
 const CameraSVG = (props: SvgProps) => (
-  <Svg
-    width={22}
-    height={22}
-    fill="none"
-    {...props}
-  >
+  <Svg width={22} height={22} fill="none" {...props}>
     <G fill="#131313" clipPath="url(#a)">
       <Path d="M11 8.25a3.437 3.437 0 1 0 0 6.875 3.437 3.437 0 0 0 0-6.875Z" />
       <Path
@@ -20,5 +15,5 @@ const CameraSVG = (props: SvgProps) => (
       </ClipPath>
     </Defs>
   </Svg>
-)
-export default CameraSVG
+);
+export default CameraSVG;

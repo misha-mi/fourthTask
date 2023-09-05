@@ -1,11 +1,6 @@
-import Svg, { SvgProps, G, Path, Defs, ClipPath } from "react-native-svg"
+import Svg, {SvgProps, G, Path, Defs, ClipPath} from 'react-native-svg';
 const NoShowSVG = (props: SvgProps) => (
-  <Svg
-    width={20}
-    height={20}
-    fill="none"
-    {...props}
-  >
+  <Svg width={20} height={20} fill="none" {...props}>
     <G clipPath="url(#a)">
       <G fill="#fff" clipPath="url(#b)">
         <Path
@@ -25,5 +20,5 @@ const NoShowSVG = (props: SvgProps) => (
       </ClipPath>
     </Defs>
   </Svg>
-)
-export default NoShowSVG
+);
+export default NoShowSVG;

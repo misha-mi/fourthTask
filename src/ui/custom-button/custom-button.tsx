@@ -1,54 +1,70 @@
-import { ActivityIndicator, View, Pressable, Text, StyleSheet } from "react-native";
-import { DARK_THEME, LIGHT_THEME } from "../../assets/colors";
+import {Pressable, Text, StyleSheet} from 'react-native';
+import {ICustomButton} from './type';
+import {LARGE_BUTTON_COLORS, MEDIUM_BUTTON_COLORS} from './colors';
+import Spinner from '../spinner/spinner';
 
-const { primaryDefault, primaryPressed, color7 } = LIGHT_THEME;
-
-const CustomButton = ({ title, onClick, size = "large" }: ICustomButton) => {
-
-
+const CustomButton = ({
+  title,
+  onClick,
+  size = 'large',
+  status = 'waiting',
+  isRedText = false,
+}: ICustomButton) => {
+  const {
+    buttonColor,
+    pressedButtonColor,
+    disabledButtonColor,
+    textColor,
+    pressedTextColor,
+    disabledTextColor,
+  } = size === 'large' ? LARGE_BUTTON_COLORS : MEDIUM_BUTTON_COLORS;
   return (
     <Pressable
-      style={({ pressed }) => [
+      disabled={status !== 'waiting'}
+      style={({pressed}) => [
         {
-          backgroundColor: pressed ? primaryPressed : primaryDefault,
+          backgroundColor: pressed ? pressedButtonColor : buttonColor,
         },
         styles.wrapper,
-      ]}
-    >
-      {/* <Text style={styles.text}>{title}</Text> */}
-      <View style={[styles.container, styles.horizontal]}>
-        <ActivityIndicator size="large" color="#00ff00" />
-      </View>
+        styles[size],
+        status === 'disabled' ? {backgroundColor: disabledButtonColor} : {},
+      ]}>
+      {status === 'loading' ? (
+        <Spinner color={pressedButtonColor} />
+      ) : (
+        ({pressed}) => (
+          <Text
+            style={[
+              {color: pressed ? pressedTextColor : textColor},
+              styles.text,
+              status === 'disabled' ? {color: disabledTextColor} : {},
+              isRedText ? {color: '#C2534C'} : {},
+            ]}>
+            {title}
+          </Text>
+        )
+      )}
     </Pressable>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   wrapper: {
-    width: 343,
-    height: 56,
-    borderRadius: 21,
-    justifyContent: "center",
-    alignItems: "center"
+    width: 'auto',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   large: {
-    width: 343,
     height: 56,
-    backgroundColor: primaryDefault,
+    borderRadius: 21,
+  },
+  medium: {
+    height: 44,
   },
   text: {
-    color: color7,
-    fontSize: 16
+    fontSize: 16,
+    fontFamily: 'Outfit-SemiBold',
   },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  horizontal: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 10,
-  },
-})
+});
 
 export default CustomButton;
