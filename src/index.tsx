@@ -16,6 +16,7 @@ import LogOutSVG from './assets/svg/log-out-svg';
 import UserSVG from './assets/svg/user-svg';
 import MoonSVG from './assets/svg/moon-svg';
 import Tapbar from './ui/tapbar/tapbar';
+import Tabs from './ui/tabs/tabs';
 
 const Index = () => {
   return (
@@ -129,6 +130,11 @@ const Index = () => {
         <Text style={styles.text}>Tapbar</Text>
         <View style={styles.container}>
           <Tapbar />
+        </View>
+
+        <Text style={styles.text}>Tabs</Text>
+        <View style={styles.container}>
+          <Tabs />
         </View>
       </ScrollView>
     </ImageBackground>

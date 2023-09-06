@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
 import { DARK_THEME, LIGHT_THEME } from '../../assets/colors';
 
-const { color1, color4, primaryPressed } = false ? LIGHT_THEME : DARK_THEME;
+const { color1, color4, primaryPressed } = true ? LIGHT_THEME : DARK_THEME;
 
 const TextWithIconButton = ({
   onRenderSVG,
