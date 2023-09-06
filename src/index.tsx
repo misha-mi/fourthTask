@@ -15,6 +15,7 @@ import TextWithIconButton from './ui/text-with-icon-button/text-with-icon-button
 import LogOutSVG from './assets/svg/log-out-svg';
 import UserSVG from './assets/svg/user-svg';
 import MoonSVG from './assets/svg/moon-svg';
+import Tapbar from './ui/tapbar/tapbar';
 
 const Index = () => {
   return (
@@ -123,6 +124,11 @@ const Index = () => {
               </>
             )}
           />
+        </View>
+
+        <Text style={styles.text}>Tapbar</Text>
+        <View style={styles.container}>
+          <Tapbar />
         </View>
       </ScrollView>
     </ImageBackground>
