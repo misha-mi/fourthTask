@@ -11,6 +11,10 @@ import CustomButton from './ui/custom-button/custom-button';
 import Upload from './ui/upload/upload';
 import CopyInput from './ui/copy-input/copy-input';
 import TextButton from './ui/text-button/text-button';
+import TextWithIconButton from './ui/text-with-icon-button/text-with-icon-button';
+import LogOutSVG from './assets/svg/log-out-svg';
+import UserSVG from './assets/svg/user-svg';
+import MoonSVG from './assets/svg/moon-svg';
 
 const Index = () => {
   return (
@@ -65,6 +69,61 @@ const Index = () => {
           <TextButton text="Done" />
           <TextButton text="Done" isDisabled />
         </View>
+
+        <Text style={styles.text}>Text with icon button</Text>
+        <View style={styles.bgBlack}>
+          <TextWithIconButton
+            text="Exit"
+            onRenderSVG={(color: string) => (
+              <>
+                <LogOutSVG color={color} />
+              </>
+            )}
+          />
+          <TextWithIconButton
+            text="Exit"
+            isDisabled
+            onRenderSVG={(color: string) => (
+              <>
+                <LogOutSVG color={color} />
+              </>
+            )}
+          />
+          <TextWithIconButton
+            text="Profile"
+            onRenderSVG={(color: string) => (
+              <>
+                <UserSVG size="small" color={color} />
+              </>
+            )}
+          />
+          <TextWithIconButton
+            text="Profile"
+            isDisabled
+            onRenderSVG={(color: string) => (
+              <>
+                <UserSVG size="small" color={color} />
+              </>
+            )}
+          />
+          <TextWithIconButton
+            text="Night theme"
+            onRenderSVG={(color: string) => (
+              <>
+                <MoonSVG color={color} />
+              </>
+            )}
+          />
+          <TextWithIconButton
+            text="Night theme"
+            isDisabled
+            onRenderSVG={(color: string) => (
+              <>
+                <MoonSVG color={color} />
+              </>
+            )}
+          />
+        </View>
       </ScrollView>
     </ImageBackground>
   );
@@ -96,8 +155,15 @@ const styles = StyleSheet.create({
   bgWhite: {
     padding: 10,
     borderRadius: 10,
+    gap: 6,
     backgroundColor: 'white',
     alignSelf: 'flex-start',
+  },
+  bgBlack: {
+    padding: 10,
+    borderRadius: 10,
+    gap: 6,
+    backgroundColor: '#424244',
   },
 });
 

@@ -1,10 +1,10 @@
-import Svg, {SvgProps, G, Path, Defs, ClipPath} from 'react-native-svg';
-const MoonSVG = (props: SvgProps) => (
-  <Svg width={24} height={24} fill="none" {...props}>
+import Svg, { G, Path, Defs, ClipPath } from 'react-native-svg';
+const MoonSVG = ({ color }: { color: string }) => (
+  <Svg width={24} height={24} fill="none">
     <G clipPath="url(#a)">
       <Path
-        fill="#fff"
-        stroke="#fff"
+        fill={color}
+        stroke={color}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={1.5}
