@@ -1,9 +1,9 @@
-import Svg, {SvgProps, G, Path, Defs, ClipPath} from 'react-native-svg';
-const CloseSVG = (props: SvgProps) => (
-  <Svg width={24} height={24} fill="none" {...props}>
+import Svg, { SvgProps, G, Path, Defs, ClipPath } from 'react-native-svg';
+const CloseSVG = ({ color }: { color: string }) => (
+  <Svg width={24} height={24} fill="none">
     <G clipPath="url(#a)">
       <Path
-        stroke="#C2534C"
+        stroke={color}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={1.5}

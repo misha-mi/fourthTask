@@ -18,13 +18,19 @@ import MoonSVG from './assets/svg/moon-svg';
 import Tapbar from './ui/tapbar/tapbar';
 import Tabs from './ui/tabs/tabs';
 import CheckInput from './ui/check-input/check-input';
+import IconButton from './ui/icon-button/icon-button';
+import CloseSVG from './assets/svg/close-svg';
+import ArrowSVG from './assets/svg/arrow-svg';
+import HeartSVG from './assets/svg/heart-svg';
+import ShareSVG from './assets/svg/share-svg';
+import PhotoSVG from './assets/svg/photo-svg';
 
 const Index = () => {
   return (
     <ImageBackground
       source={require('./assets/img/welcome-bg.jpg')}
       style={styles.wrapper}>
-      <ScrollView>
+      {/* <ScrollView>
         <Text style={styles.text}>Profile Image</Text>
         <ProfileImg />
         <ProfileImg size="medium" userImg="../../assets/img/user.png" />
@@ -143,7 +149,45 @@ const Index = () => {
           <CheckInput />
           <CheckInput type="round" />
         </View>
-      </ScrollView>
+      </ScrollView> */}
+
+      <View style={[styles.bgBlack, styles.flexRow]}>
+        <View style={styles.gap8}>
+          <IconButton onRenderSVG={color => <CloseSVG color={color} />} />
+          <IconButton
+            onRenderSVG={color => <CloseSVG color={color} />}
+            status="disabled"
+          />
+        </View>
+        <View style={styles.gap8}>
+          <IconButton onRenderSVG={color => <ArrowSVG color={color} />} />
+          <IconButton
+            onRenderSVG={color => <ArrowSVG color={color} />}
+            status="disabled"
+          />
+        </View>
+        <View style={styles.gap8}>
+          <IconButton onRenderSVG={color => <HeartSVG color={color} />} />
+          <IconButton
+            onRenderSVG={color => <HeartSVG color={color} />}
+            status="disabled"
+          />
+        </View>
+        <View style={styles.gap8}>
+          <IconButton onRenderSVG={color => <ShareSVG color={color} />} />
+          <IconButton
+            onRenderSVG={color => <ShareSVG color={color} />}
+            status="disabled"
+          />
+        </View>
+        <View style={styles.gap8}>
+          <IconButton onRenderSVG={color => <PhotoSVG color={color} />} />
+          <IconButton
+            onRenderSVG={color => <PhotoSVG color={color} />}
+            status="disabled"
+          />
+        </View>
+      </View>
     </ImageBackground>
   );
 };
@@ -183,6 +227,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     gap: 6,
     backgroundColor: '#424244',
+  },
+  flexRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  gap8: {
+    gap: 8,
   },
 });
 

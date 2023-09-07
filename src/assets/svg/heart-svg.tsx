@@ -1,10 +1,10 @@
-import Svg, {SvgProps, G, Path, Defs, ClipPath} from 'react-native-svg';
-const HeartSVG = (props: SvgProps) => (
-  <Svg width={20} height={20} fill="none" {...props}>
+import Svg, { SvgProps, G, Path, Defs, ClipPath } from 'react-native-svg';
+const HeartSVG = ({ color }: { color: string }) => (
+  <Svg width={20} height={20} fill="none">
     <G clipPath="url(#a)">
       <Path
-        fill="#B8DE64"
-        stroke="#B8DE64"
+        fill={color}
+        stroke={color}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={1.5}
