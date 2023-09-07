@@ -17,6 +17,7 @@ const Tabs = () => {
         const textColor = id === activeTab ? activeTextColor : defaultTextColor;
         return (
           <Pressable
+            key={id}
             style={[styles.item, { backgroundColor: tabColor }]}
             onTouchEnd={() => setActiveTab(id)}>
             <Text style={[styles.text, { color: textColor }]}>{item}</Text>

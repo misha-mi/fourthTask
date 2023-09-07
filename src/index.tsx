@@ -17,6 +17,7 @@ import UserSVG from './assets/svg/user-svg';
 import MoonSVG from './assets/svg/moon-svg';
 import Tapbar from './ui/tapbar/tapbar';
 import Tabs from './ui/tabs/tabs';
+import CheckInput from './ui/check-input/check-input';
 
 const Index = () => {
   return (
@@ -135,6 +136,12 @@ const Index = () => {
         <Text style={styles.text}>Tabs</Text>
         <View style={styles.container}>
           <Tabs />
+        </View>
+
+        <Text style={styles.text}>Check Input</Text>
+        <View style={styles.bgWhite}>
+          <CheckInput />
+          <CheckInput type="round" />
         </View>
       </ScrollView>
     </ImageBackground>

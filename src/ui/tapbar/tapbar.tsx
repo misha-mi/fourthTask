@@ -31,6 +31,7 @@ const Tapbar = () => {
         const color = id === activeButton ? primaryDefault : color4;
         return (
           <Pressable
+            key={id}
             style={styles.pressabel}
             onTouchEnd={() => setActiveButton(id)}>
             <>

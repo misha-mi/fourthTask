@@ -1,9 +1,9 @@
-import Svg, {SvgProps, G, Path, Defs, ClipPath} from 'react-native-svg';
-const CheckSVG = (props: SvgProps) => (
-  <Svg width={24} height={24} fill="none" {...props}>
+import Svg, { SvgProps, G, Path, Defs, ClipPath } from 'react-native-svg';
+const CheckSVG = ({ color }: { color: string }) => (
+  <Svg width={16} height={16} fill="none" viewBox="0 0 24 24">
     <G clipPath="url(#a)">
       <Path
-        stroke="#B8DE64"
+        stroke={color}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={1.5}
