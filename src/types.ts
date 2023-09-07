@@ -1,3 +1,3 @@
-export type TSize = 'small' | 'medium' | 'large' | 'verySmall';
+export type TSize = 'small' | 'medium' | 'large';
 
 export type TStatus = 'waiting' | 'loading' | 'disabled';

@@ -1,6 +1,10 @@
+import { StyleSheet } from 'react-native';
 import Svg, { SvgProps, G, Path, Defs, ClipPath } from 'react-native-svg';
-const CloseSVG = ({ color }: { color: string }) => (
-  <Svg width={24} height={24} fill="none">
+const CloseSVG = ({ color, isSmall }: { color: string; isSmall?: boolean }) => (
+  <Svg
+    style={isSmall ? styles.small : styles.default}
+    fill="none"
+    viewBox="0 0 24 24">
     <G clipPath="url(#a)">
       <Path
         stroke={color}
@@ -17,4 +21,15 @@ const CloseSVG = ({ color }: { color: string }) => (
     </Defs>
   </Svg>
 );
+
+const styles = StyleSheet.create({
+  default: {
+    width: 24,
+    height: 24,
+  },
+  small: {
+    width: 13,
+    height: 13,
+  },
+});
 export default CloseSVG;

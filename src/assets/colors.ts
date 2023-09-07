@@ -7,7 +7,7 @@ export const LIGHT_THEME = {
   color6: '#F4F5F4',
   color7: '#FFFFFF',
   primaryDefault: '#87B71F',
-  primaryPressed: '#75C537',
+  primaryPressed: '#618909',
   errorColor: '#C2534C',
 };
 

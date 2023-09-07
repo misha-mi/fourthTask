@@ -1,6 +1,6 @@
 import { TSize } from '../../types';
 
 export interface IProfileImg {
-  size?: TSize;
+  size?: TSize | 'verySmall';
   userImg?: string;
 }

@@ -6,7 +6,7 @@ const UserSVG = ({
   size,
   color = '#1B1B1B',
 }: {
-  size: TSize;
+  size: TSize | 'verySmall';
   color?: string;
 }) => (
   <Svg style={styles[size]} fill="none" viewBox="0 0 92 92">

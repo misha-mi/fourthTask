@@ -25,6 +25,9 @@ import HeartSVG from './assets/svg/heart-svg';
 import ShareSVG from './assets/svg/share-svg';
 import PhotoSVG from './assets/svg/photo-svg';
 import PostCard from './components/post-card/post-card';
+import RoundButton from './ui/round-button/round-button';
+import CameraSVG from './assets/svg/camera-svg';
+import PlusSVG from './assets/svg/plus-svg';
 
 const Index = () => {
   return (
@@ -36,6 +39,7 @@ const Index = () => {
         <ProfileImg />
         <ProfileImg size="medium" userImg="../../assets/img/user.png" />
         <ProfileImg size="small" />
+        <ProfileImg size="verySmall" userImg="../../assets/img/user.png" />
 
         <Text style={styles.text}>Delete Button</Text>
         <DeleteButton />
@@ -194,6 +198,45 @@ const Index = () => {
         <View style={[styles.container, styles.bgBlack]}>
           <PostCard />
           <PostCard isOpen />
+        </View>
+
+        <Text style={styles.text}>Round Button</Text>
+        <View style={[styles.bgBlack, styles.flexRow]}>
+          <View style={styles.gap8}>
+            <RoundButton
+              onRenderSVG={color => <CloseSVG color={color} isSmall />}
+              size="small"
+              isCloseButton
+            />
+            <RoundButton
+              onRenderSVG={color => <CloseSVG color={color} isSmall />}
+              size="small"
+              isCloseButton
+              isDisabled
+            />
+          </View>
+          <View style={styles.gap8}>
+            <RoundButton
+              onRenderSVG={color => <CameraSVG color={color} />}
+              size="medium"
+            />
+            <RoundButton
+              onRenderSVG={color => <CameraSVG color={color} />}
+              size="medium"
+              isDisabled
+            />
+          </View>
+          <View style={styles.gap8}>
+            <RoundButton
+              onRenderSVG={color => <PlusSVG color={color} />}
+              size="large"
+            />
+            <RoundButton
+              onRenderSVG={color => <PlusSVG color={color} />}
+              size="large"
+              isDisabled
+            />
+          </View>
         </View>
       </ScrollView>
     </ImageBackground>
