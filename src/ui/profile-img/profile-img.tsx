@@ -2,6 +2,9 @@ import { Image, View, StyleSheet } from 'react-native';
 import { DARK_THEME } from '../../assets/colors';
 import UserSVG from '../../assets/svg/user-svg';
 import { IProfileImg } from './type';
+import { PROFILE_COLORS } from './colors';
+
+const { backgroundColor, SVGColor } = PROFILE_COLORS;
 
 const ProfileImg = ({ userImg, size = 'large' }: IProfileImg) => {
   return (
@@ -13,7 +16,7 @@ const ProfileImg = ({ userImg, size = 'large' }: IProfileImg) => {
           style={style[size]}
         />
       ) : (
-        <UserSVG size={size} />
+        <UserSVG size={size} color={SVGColor} />
       )}
     </View>
   );
@@ -22,7 +25,7 @@ const ProfileImg = ({ userImg, size = 'large' }: IProfileImg) => {
 const style = StyleSheet.create({
   wrapper: {
     borderRadius: 100,
-    backgroundColor: DARK_THEME.color5,
+    backgroundColor: backgroundColor,
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
