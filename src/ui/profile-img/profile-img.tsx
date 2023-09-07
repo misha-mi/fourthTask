@@ -42,6 +42,10 @@ const style = StyleSheet.create({
     width: 40,
     height: 40,
   },
+  verySmall: {
+    width: 24,
+    height: 24,
+  },
 });
 
 export default ProfileImg;

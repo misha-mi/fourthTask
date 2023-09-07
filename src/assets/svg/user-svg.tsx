@@ -22,6 +22,10 @@ const UserSVG = ({
 );
 
 const styles = StyleSheet.create({
+  verySmall: {
+    width: 15,
+    height: 15,
+  },
   small: {
     width: 23,
     height: 23,

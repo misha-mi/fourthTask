@@ -24,13 +24,14 @@ import ArrowSVG from './assets/svg/arrow-svg';
 import HeartSVG from './assets/svg/heart-svg';
 import ShareSVG from './assets/svg/share-svg';
 import PhotoSVG from './assets/svg/photo-svg';
+import PostCard from './components/post-card/post-card';
 
 const Index = () => {
   return (
     <ImageBackground
       source={require('./assets/img/welcome-bg.jpg')}
       style={styles.wrapper}>
-      {/* <ScrollView>
+      <ScrollView>
         <Text style={styles.text}>Profile Image</Text>
         <ProfileImg />
         <ProfileImg size="medium" userImg="../../assets/img/user.png" />
@@ -149,45 +150,52 @@ const Index = () => {
           <CheckInput />
           <CheckInput type="round" />
         </View>
-      </ScrollView> */}
 
-      <View style={[styles.bgBlack, styles.flexRow]}>
-        <View style={styles.gap8}>
-          <IconButton onRenderSVG={color => <CloseSVG color={color} />} />
-          <IconButton
-            onRenderSVG={color => <CloseSVG color={color} />}
-            status="disabled"
-          />
+        <Text style={styles.text}>Icon Button</Text>
+        <View style={[styles.bgBlack, styles.flexRow]}>
+          <View style={styles.gap8}>
+            <IconButton onRenderSVG={color => <CloseSVG color={color} />} />
+            <IconButton
+              onRenderSVG={color => <CloseSVG color={color} />}
+              status="disabled"
+            />
+          </View>
+          <View style={styles.gap8}>
+            <IconButton onRenderSVG={color => <ArrowSVG color={color} />} />
+            <IconButton
+              onRenderSVG={color => <ArrowSVG color={color} />}
+              status="disabled"
+            />
+          </View>
+          <View style={styles.gap8}>
+            <IconButton onRenderSVG={color => <HeartSVG color={color} />} />
+            <IconButton
+              onRenderSVG={color => <HeartSVG color={color} />}
+              status="disabled"
+            />
+          </View>
+          <View style={styles.gap8}>
+            <IconButton onRenderSVG={color => <ShareSVG color={color} />} />
+            <IconButton
+              onRenderSVG={color => <ShareSVG color={color} />}
+              status="disabled"
+            />
+          </View>
+          <View style={styles.gap8}>
+            <IconButton onRenderSVG={color => <PhotoSVG color={color} />} />
+            <IconButton
+              onRenderSVG={color => <PhotoSVG color={color} />}
+              status="disabled"
+            />
+          </View>
         </View>
-        <View style={styles.gap8}>
-          <IconButton onRenderSVG={color => <ArrowSVG color={color} />} />
-          <IconButton
-            onRenderSVG={color => <ArrowSVG color={color} />}
-            status="disabled"
-          />
+
+        <Text style={styles.text}>Post Card</Text>
+        <View style={[styles.container, styles.bgBlack]}>
+          <PostCard />
+          <PostCard isOpen />
         </View>
-        <View style={styles.gap8}>
-          <IconButton onRenderSVG={color => <HeartSVG color={color} />} />
-          <IconButton
-            onRenderSVG={color => <HeartSVG color={color} />}
-            status="disabled"
-          />
-        </View>
-        <View style={styles.gap8}>
-          <IconButton onRenderSVG={color => <ShareSVG color={color} />} />
-          <IconButton
-            onRenderSVG={color => <ShareSVG color={color} />}
-            status="disabled"
-          />
-        </View>
-        <View style={styles.gap8}>
-          <IconButton onRenderSVG={color => <PhotoSVG color={color} />} />
-          <IconButton
-            onRenderSVG={color => <PhotoSVG color={color} />}
-            status="disabled"
-          />
-        </View>
-      </View>
+      </ScrollView>
     </ImageBackground>
   );
 };

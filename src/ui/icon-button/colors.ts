@@ -1,6 +1,6 @@
 import { DARK_THEME, LIGHT_THEME } from '../../assets/colors';
 
-export const ICON_BUTTON_COLORS = false
+export const ICON_BUTTON_COLORS = true
   ? {
       defaultColor: DARK_THEME.color1,
       pressedColor: DARK_THEME.primaryDefault,
