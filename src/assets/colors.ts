@@ -19,7 +19,7 @@ export const DARK_THEME = {
   color5: '#303030',
   color6: '#1b1b1b',
   color7: '#131313',
-  primaryDefault: '#B8DE64',
-  primaryPressed: '#02FF3A',
+  primaryDefault: '#87B71F',
+  primaryPressed: '#B8DE64',
   errorColor: '#C2534C',
 };

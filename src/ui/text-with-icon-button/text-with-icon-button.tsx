@@ -12,8 +12,7 @@ const TextWithIconButton = ({
   isDisabled?: boolean;
 }) => {
   const { defaultColor, pressedColor, disabledColor } =
-    useTheme().colors.textButtonColors;
-
+    useTheme().colors.textWithIconButtonColors;
   return (
     <Pressable style={styles.wrapper} disabled={isDisabled}>
       {({ pressed }) => {
