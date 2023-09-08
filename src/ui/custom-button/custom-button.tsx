@@ -1,6 +1,6 @@
 import { Pressable, Text, StyleSheet } from 'react-native';
 import { ICustomButton } from './type';
-import { LARGE_BUTTON_COLORS, MEDIUM_BUTTON_COLORS } from './colors';
+import { useTheme } from '@react-navigation/native';
 import Spinner from '../spinner/spinner';
 
 const CustomButton = ({
@@ -10,6 +10,8 @@ const CustomButton = ({
   status = 'waiting',
   isRedText = false,
 }: ICustomButton) => {
+  const theme = useTheme().colors;
+
   const {
     buttonColor,
     pressedButtonColor,
@@ -18,7 +20,8 @@ const CustomButton = ({
     pressedTextColor,
     disabledTextColor,
     cancelColor,
-  } = size === 'large' ? LARGE_BUTTON_COLORS : MEDIUM_BUTTON_COLORS;
+  } = size === 'large' ? theme.largeButtonColors : theme.mediumButtonColors;
+
   return (
     <Pressable
       disabled={status !== 'waiting'}

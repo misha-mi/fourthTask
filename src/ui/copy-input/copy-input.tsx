@@ -1,19 +1,19 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import CopySVG from '../../assets/svg/copy-svg';
-import { COPY_COLORS } from './colors';
+import { useTheme } from '@react-navigation/native';
 import { ICopyInput } from './type';
 import Spinner from '../spinner/spinner';
 
-const {
-  defaultBackgroundColor,
-  pressedBackgroundColor,
-  disabledBackgroundColor,
-  defaultTextColor,
-  pressedTextColor,
-  disabledTextColor,
-} = COPY_COLORS;
-
 const CopyInput = ({ textCopy, status }: ICopyInput) => {
+  const {
+    defaultBackgroundColor,
+    pressedBackgroundColor,
+    disabledBackgroundColor,
+    defaultTextColor,
+    pressedTextColor,
+    disabledTextColor,
+  } = useTheme().colors.copyInputColors;
+
   return (
     <Pressable
       disabled={status === 'loading' || status === 'disabled'}

@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { TABS_COLORS } from './colors';
+import { useTheme } from '@react-navigation/native';
 
 const tabs = ['New', 'Top'];
 
-const { defaultTabColor, activeTabColor, defaultTextColor, activeTextColor } =
-  TABS_COLORS;
-
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState(0);
+
+  const { defaultTabColor, activeTabColor, defaultTextColor, activeTextColor } =
+    useTheme().colors.tabsColors;
 
   return (
     <View style={styles.wrapper}>

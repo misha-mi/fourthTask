@@ -4,31 +4,34 @@ import ProfileImg from '../../ui/profile-img/profile-img';
 import IconButton from '../../ui/icon-button/icon-button';
 import HeartSVG from '../../assets/svg/heart-svg';
 import ShareSVG from '../../assets/svg/share-svg';
-import { DARK_THEME, LIGHT_THEME } from '../../assets/colors';
-
-const { color3, color7, color1 } = true ? DARK_THEME : LIGHT_THEME;
+import { useTheme } from '@react-navigation/native';
 
 const PostCard = ({ isOpen }: IPostCard) => {
-  const backgroundColor = isOpen ? 'transparent' : color7;
+  const { backgroundColor, titleColor, textColor } =
+    useTheme().colors.postCardColors;
+
+  const postColor = isOpen ? 'transparent' : backgroundColor;
 
   const headerJustifyContent = isOpen
     ? styles.justifyContentC
     : styles.justifyContentSB;
 
-  const title = !isOpen ? <Text style={styles.title}>Apple love</Text> : null;
+  const title = !isOpen ? (
+    <Text style={{ ...styles.title, color: titleColor }}>Apple love</Text>
+  ) : null;
 
   return (
-    <View style={[{ backgroundColor: backgroundColor }, styles.post]}>
+    <View style={[{ backgroundColor: postColor }, styles.post]}>
       <View style={[headerJustifyContent, styles.flexRow]}>
         {title}
-        <Text style={styles.text}>11.09.22</Text>
+        <Text style={{ ...styles.text, color: textColor }}>11.09.22</Text>
       </View>
       <Image
         source={require('../../assets/img/upload.jpg')}
         style={styles.image}
       />
       {isOpen ? (
-        <Text style={[styles.text, styles.mt20]}>
+        <Text style={[{ ...styles.text, color: textColor }, styles.mt20]}>
           The Queen of the Carnival in Rio de Janeiro and up to two princesses
           having the duty to woo the revelry, along with the King Momo. Unlike
           some cities, in the city of Rio de Janeiro, Queens of Carnival do not
@@ -46,12 +49,12 @@ const PostCard = ({ isOpen }: IPostCard) => {
       <View style={[styles.justifyContentSB, styles.flexRow, styles.mt20]}>
         <View style={[styles.gap8, styles.flexRow]}>
           <ProfileImg userImg="../../assets/img/user.png" size="verySmall" />
-          <Text style={styles.text}>Hannah K.</Text>
+          <Text style={{ ...styles.text, color: textColor }}>Hannah K.</Text>
         </View>
         <View style={[styles.gap12, styles.flexRow]}>
           <View style={[styles.gap8, styles.flexRow]}>
             <IconButton onRenderSVG={color => <HeartSVG color={color} />} />
-            <Text style={[styles.text, styles.colorWhite]}>137</Text>
+            <Text style={{ ...styles.text, color: titleColor }}>137</Text>
           </View>
           <IconButton onRenderSVG={color => <ShareSVG color={color} />} />
         </View>
@@ -75,12 +78,10 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: 'Outfit-Medium',
     fontSize: 16,
-    color: color1,
   },
   text: {
     fontFamily: 'Outfit-Regular',
     fontSize: 14,
-    color: color3,
   },
   image: {
     width: 'auto',
@@ -100,9 +101,6 @@ const styles = StyleSheet.create({
   flexRow: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  colorWhite: {
-    color: color1,
   },
 });
 

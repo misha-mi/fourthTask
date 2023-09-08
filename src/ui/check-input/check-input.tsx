@@ -1,22 +1,32 @@
 import { Pressable, StyleSheet, View } from 'react-native';
-import { DARK_THEME, LIGHT_THEME } from '../../assets/colors';
 import { ReactElement, useState } from 'react';
 import CheckSVG from '../../assets/svg/check-svg';
-
-const { color5, primaryDefault } = false ? DARK_THEME : LIGHT_THEME;
-const borderColor = false ? DARK_THEME.color4 : LIGHT_THEME.color2;
+import { useTheme } from '@react-navigation/native';
 
 const CheckInput = ({ type = 'square' }: { type?: 'round' | 'square' }) => {
+  const theme = useTheme();
+  const { backgroundColor, checkedColor, borderColor } =
+    theme.colors.checkInputColors;
+
   const [isChecked, setIsChecked] = useState(false);
 
   let iconChecked: ReactElement;
 
   switch (type) {
     case 'round':
-      iconChecked = <View style={styles.view} />;
+      iconChecked = (
+        <View
+          style={[
+            styles.view,
+            {
+              backgroundColor: checkedColor,
+            },
+          ]}
+        />
+      );
       break;
     case 'square':
-      iconChecked = <CheckSVG color={primaryDefault} />;
+      iconChecked = <CheckSVG color={checkedColor} />;
       break;
   }
 
@@ -29,7 +39,7 @@ const CheckInput = ({ type = 'square' }: { type?: 'round' | 'square' }) => {
       style={[
         styles.wrapper,
         {
-          backgroundColor: isChecked ? color5 : 'transparent',
+          backgroundColor: isChecked ? backgroundColor : 'transparent',
           borderColor: !isChecked ? borderColor : 'transparent',
           borderRadius: type === 'round' ? 20 : 4,
         },
@@ -53,7 +63,6 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 8,
-    backgroundColor: primaryDefault,
   },
 });
 

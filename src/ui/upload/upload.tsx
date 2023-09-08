@@ -1,16 +1,26 @@
-import {Image, Pressable, Text, View, StyleSheet} from 'react-native';
+import { Image, Pressable, Text, View, StyleSheet } from 'react-native';
 import CloudSVG from '../../assets/svg/cloud-svg';
-import {UPLOAD_COLORS} from './colors';
+import { useTheme } from '@react-navigation/native';
 
-const {backgroundColor, borderColor, textColor, cloudColor} = UPLOAD_COLORS;
+const Upload = ({ isEmpty }: { isEmpty: boolean }) => {
+  const { backgroundColor, borderColor, textColor, cloudColor } =
+    useTheme().colors.uploadColors;
 
-const Upload = ({isEmpty}: {isEmpty: boolean}) => {
   return (
-    <View style={[styles.wrapper, , isEmpty ? styles.border : {}]}>
+    <View
+      style={[
+        styles.wrapper,
+        isEmpty ? { ...styles.border, borderColor: borderColor } : {},
+        {
+          backgroundColor: backgroundColor,
+        },
+      ]}>
       {isEmpty ? (
         <Pressable style={styles.pressable}>
           <CloudSVG color={cloudColor} />
-          <Text style={styles.text}>Upload your photo here</Text>
+          <Text style={{ ...styles.text, color: textColor }}>
+            Upload your photo here
+          </Text>
         </Pressable>
       ) : (
         <Image source={require('../../assets/img/upload.jpg')} />
@@ -23,7 +33,6 @@ const styles = StyleSheet.create({
   wrapper: {
     height: 166,
     width: 'auto',
-    backgroundColor: backgroundColor,
     justifyContent: 'center',
     alignItems: 'stretch',
     gap: 8,
@@ -33,7 +42,6 @@ const styles = StyleSheet.create({
   border: {
     borderStyle: 'dashed',
     borderWidth: 2,
-    borderColor: borderColor,
   },
   pressable: {
     width: 'auto',
@@ -43,7 +51,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    color: textColor,
     fontSize: 14,
     fontFamily: 'Outfit-Medium',
   },

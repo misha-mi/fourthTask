@@ -4,6 +4,8 @@ import {
   StyleSheet,
   View,
   Text,
+  Button,
+  Appearance,
 } from 'react-native';
 import DeleteButton from './ui/delete-button/delete-button';
 import ProfileImg from './ui/profile-img/profile-img';
@@ -29,267 +31,280 @@ import RoundButton from './ui/round-button/round-button';
 import CameraSVG from './assets/svg/camera-svg';
 import PlusSVG from './assets/svg/plus-svg';
 import Input from './ui/input/input';
+import Navigation from './HOC/navigation/navigation';
 
 const Index = () => {
+  const handlerChangeColorTheme = () => {
+    const theme = Appearance.getColorScheme();
+    if (theme === 'dark') {
+      Appearance.setColorScheme('light');
+    } else {
+      Appearance.setColorScheme('dark');
+    }
+  };
+
   return (
-    <ImageBackground
-      source={require('./assets/img/welcome-bg.jpg')}
-      style={styles.wrapper}>
-      <ScrollView>
-        <Text style={styles.text}>Profile Image</Text>
-        <ProfileImg />
-        <ProfileImg size="medium" userImg="../../assets/img/user.png" />
-        <ProfileImg size="small" />
-        <ProfileImg size="verySmall" userImg="../../assets/img/user.png" />
+    <Navigation>
+      <ImageBackground
+        source={require('./assets/img/welcome-bg.jpg')}
+        style={styles.wrapper}>
+        <Button title="Change Theme" onPress={handlerChangeColorTheme} />
+        <ScrollView>
+          <Text style={styles.text}>Profile Image</Text>
+          <ProfileImg />
+          <ProfileImg size="medium" userImg="../../assets/img/user.png" />
+          <ProfileImg size="small" />
+          <ProfileImg size="verySmall" userImg="../../assets/img/user.png" />
 
-        <Text style={styles.text}>Delete Button</Text>
-        <DeleteButton />
+          <Text style={styles.text}>Delete Button</Text>
+          <DeleteButton />
 
-        <Text style={styles.text}>Custom Button</Text>
-        <View style={styles.container}>
-          <CustomButton title="Create an account" />
-          <CustomButton title="Create an account" status="loading" />
-          <CustomButton title="Create an account" status="disabled" />
-          <View style={styles.wrapperMedium}>
-            <CustomButton title="Create an account" size="medium" />
-            <CustomButton
-              title="Create an account"
-              status="loading"
-              size="medium"
-            />
-            <CustomButton
-              title="Create an account"
-              status="disabled"
-              size="medium"
-            />
-            <CustomButton title="Error" size="medium" isRedText />
+          <Text style={styles.text}>Custom Button</Text>
+          <View style={styles.container}>
+            <CustomButton title="Create an account" />
+            <CustomButton title="Create an account" status="loading" />
+            <CustomButton title="Create an account" status="disabled" />
+            <View style={styles.wrapperMedium}>
+              <CustomButton title="Create an account" size="medium" />
+              <CustomButton
+                title="Create an account"
+                status="loading"
+                size="medium"
+              />
+              <CustomButton
+                title="Create an account"
+                status="disabled"
+                size="medium"
+              />
+              <CustomButton title="Error" size="medium" isRedText />
+            </View>
           </View>
-        </View>
 
-        <Text style={styles.text}>Upload</Text>
-        <View style={styles.container}>
-          <Upload isEmpty={true} />
-          <Upload isEmpty={false} />
-        </View>
-
-        <Text style={styles.text}>Copy Input</Text>
-        <View style={styles.container}>
-          <CopyInput textCopy="Hello" />
-          <CopyInput textCopy="Hello" status="loading" />
-          <CopyInput textCopy="Hello" status="disabled" />
-        </View>
-
-        <Text style={styles.text}>Text button</Text>
-        <View style={styles.bgWhite}>
-          <TextButton text="Done" />
-          <TextButton text="Done" isDisabled />
-        </View>
-
-        <Text style={styles.text}>Text with icon button</Text>
-        <View style={styles.bgBlack}>
-          <TextWithIconButton
-            text="Exit"
-            onRenderSVG={(color: string) => (
-              <>
-                <LogOutSVG color={color} />
-              </>
-            )}
-          />
-          <TextWithIconButton
-            text="Exit"
-            isDisabled
-            onRenderSVG={(color: string) => (
-              <>
-                <LogOutSVG color={color} />
-              </>
-            )}
-          />
-          <TextWithIconButton
-            text="Profile"
-            onRenderSVG={(color: string) => (
-              <>
-                <UserSVG size="small" color={color} />
-              </>
-            )}
-          />
-          <TextWithIconButton
-            text="Profile"
-            isDisabled
-            onRenderSVG={(color: string) => (
-              <>
-                <UserSVG size="small" color={color} />
-              </>
-            )}
-          />
-          <TextWithIconButton
-            text="Night theme"
-            onRenderSVG={(color: string) => (
-              <>
-                <MoonSVG color={color} />
-              </>
-            )}
-          />
-          <TextWithIconButton
-            text="Night theme"
-            isDisabled
-            onRenderSVG={(color: string) => (
-              <>
-                <MoonSVG color={color} />
-              </>
-            )}
-          />
-        </View>
-
-        <Text style={styles.text}>Tapbar</Text>
-        <View style={styles.container}>
-          <Tapbar />
-        </View>
-
-        <Text style={styles.text}>Tabs</Text>
-        <View style={styles.container}>
-          <Tabs />
-        </View>
-
-        <Text style={styles.text}>Check Input</Text>
-        <View style={styles.bgWhite}>
-          <CheckInput />
-          <CheckInput type="round" />
-        </View>
-
-        <Text style={styles.text}>Icon Button</Text>
-        <View style={[styles.bgBlack, styles.flexRow]}>
-          <View style={styles.gap8}>
-            <IconButton onRenderSVG={color => <CloseSVG color={color} />} />
-            <IconButton
-              onRenderSVG={color => <CloseSVG color={color} />}
-              status="disabled"
-            />
+          <Text style={styles.text}>Upload</Text>
+          <View style={styles.container}>
+            <Upload isEmpty={true} />
+            <Upload isEmpty={false} />
           </View>
-          <View style={styles.gap8}>
-            <IconButton onRenderSVG={color => <ArrowSVG color={color} />} />
-            <IconButton
-              onRenderSVG={color => <ArrowSVG color={color} />}
-              status="disabled"
-            />
-          </View>
-          <View style={styles.gap8}>
-            <IconButton onRenderSVG={color => <HeartSVG color={color} />} />
-            <IconButton
-              onRenderSVG={color => <HeartSVG color={color} />}
-              status="disabled"
-            />
-          </View>
-          <View style={styles.gap8}>
-            <IconButton onRenderSVG={color => <ShareSVG color={color} />} />
-            <IconButton
-              onRenderSVG={color => <ShareSVG color={color} />}
-              status="disabled"
-            />
-          </View>
-          <View style={styles.gap8}>
-            <IconButton onRenderSVG={color => <PhotoSVG color={color} />} />
-            <IconButton
-              onRenderSVG={color => <PhotoSVG color={color} />}
-              status="disabled"
-            />
-          </View>
-        </View>
 
-        <Text style={styles.text}>Post Card</Text>
-        <View style={[styles.container, styles.bgBlack]}>
-          <PostCard />
-          <PostCard isOpen />
-        </View>
+          <Text style={styles.text}>Copy Input</Text>
+          <View style={styles.container}>
+            <CopyInput textCopy="Hello" />
+            <CopyInput textCopy="Hello" status="loading" />
+            <CopyInput textCopy="Hello" status="disabled" />
+          </View>
 
-        <Text style={styles.text}>Round Button</Text>
-        <View style={[styles.bgBlack, styles.flexRow]}>
-          <View style={styles.gap8}>
-            <RoundButton
-              onRenderSVG={color => <CloseSVG color={color} isSmall />}
-              size="small"
-              isCloseButton
+          <Text style={styles.text}>Text button</Text>
+          <View style={styles.bgWhite}>
+            <TextButton text="Done" />
+            <TextButton text="Done" isDisabled />
+          </View>
+
+          <Text style={styles.text}>Text with icon button</Text>
+          <View style={styles.bgBlack}>
+            <TextWithIconButton
+              text="Exit"
+              onRenderSVG={(color: string) => (
+                <>
+                  <LogOutSVG color={color} />
+                </>
+              )}
             />
-            <RoundButton
-              onRenderSVG={color => <CloseSVG color={color} isSmall />}
-              size="small"
-              isCloseButton
+            <TextWithIconButton
+              text="Exit"
               isDisabled
+              onRenderSVG={(color: string) => (
+                <>
+                  <LogOutSVG color={color} />
+                </>
+              )}
             />
-          </View>
-          <View style={styles.gap8}>
-            <RoundButton
-              onRenderSVG={color => <CameraSVG color={color} />}
-              size="medium"
+            <TextWithIconButton
+              text="Profile"
+              onRenderSVG={(color: string) => (
+                <>
+                  <UserSVG size="small" color={color} />
+                </>
+              )}
             />
-            <RoundButton
-              onRenderSVG={color => <CameraSVG color={color} />}
-              size="medium"
+            <TextWithIconButton
+              text="Profile"
               isDisabled
+              onRenderSVG={(color: string) => (
+                <>
+                  <UserSVG size="small" color={color} />
+                </>
+              )}
             />
-          </View>
-          <View style={styles.gap8}>
-            <RoundButton
-              onRenderSVG={color => <PlusSVG color={color} />}
-              size="large"
+            <TextWithIconButton
+              text="Night theme"
+              onRenderSVG={(color: string) => (
+                <>
+                  <MoonSVG color={color} />
+                </>
+              )}
             />
-            <RoundButton
-              onRenderSVG={color => <PlusSVG color={color} />}
-              size="large"
+            <TextWithIconButton
+              text="Night theme"
               isDisabled
+              onRenderSVG={(color: string) => (
+                <>
+                  <MoonSVG color={color} />
+                </>
+              )}
             />
           </View>
-        </View>
 
-        <Text style={styles.text}>Input</Text>
-        <View style={[styles.container, styles.bgBlack]}>
-          <Input
-            label="E-mail"
-            placeholder="Enter your e-mail"
-            status="waiting"
-          />
-          <Input
-            label="E-mail"
-            placeholder="Enter your e-mail"
-            status="disabled"
-          />
-          <Input
-            label="E-mail"
-            placeholder="Enter your e-mail"
-            status="success"
-          />
-          <Input
-            label="E-mail"
-            placeholder="Enter your e-mail"
-            status="error"
-          />
+          <Text style={styles.text}>Tapbar</Text>
+          <View style={styles.container}>
+            <Tapbar />
+          </View>
 
-          <Input
-            label="Password"
-            isPasswordInput
-            placeholder="Enter your password"
-            status="waiting"
-          />
-          <Input
-            label="Password"
-            isPasswordInput
-            placeholder="Enter your password"
-            status="disabled"
-          />
-          <Input
-            label="Password"
-            isPasswordInput
-            placeholder="Enter your password"
-            status="success"
-          />
-          <Input
-            label="Password"
-            isPasswordInput
-            placeholder="Enter your password"
-            status="error"
-          />
-        </View>
-      </ScrollView>
-    </ImageBackground>
+          <Text style={styles.text}>Tabs</Text>
+          <View style={styles.container}>
+            <Tabs />
+          </View>
+
+          <Text style={styles.text}>Check Input</Text>
+          <View style={styles.bgWhite}>
+            <CheckInput />
+            <CheckInput type="round" />
+          </View>
+
+          <Text style={styles.text}>Icon Button</Text>
+          <View style={[styles.bgBlack, styles.flexRow]}>
+            <View style={styles.gap8}>
+              <IconButton onRenderSVG={color => <CloseSVG color={color} />} />
+              <IconButton
+                onRenderSVG={color => <CloseSVG color={color} />}
+                status="disabled"
+              />
+            </View>
+            <View style={styles.gap8}>
+              <IconButton onRenderSVG={color => <ArrowSVG color={color} />} />
+              <IconButton
+                onRenderSVG={color => <ArrowSVG color={color} />}
+                status="disabled"
+              />
+            </View>
+            <View style={styles.gap8}>
+              <IconButton onRenderSVG={color => <HeartSVG color={color} />} />
+              <IconButton
+                onRenderSVG={color => <HeartSVG color={color} />}
+                status="disabled"
+              />
+            </View>
+            <View style={styles.gap8}>
+              <IconButton onRenderSVG={color => <ShareSVG color={color} />} />
+              <IconButton
+                onRenderSVG={color => <ShareSVG color={color} />}
+                status="disabled"
+              />
+            </View>
+            <View style={styles.gap8}>
+              <IconButton onRenderSVG={color => <PhotoSVG color={color} />} />
+              <IconButton
+                onRenderSVG={color => <PhotoSVG color={color} />}
+                status="disabled"
+              />
+            </View>
+          </View>
+
+          <Text style={styles.text}>Post Card</Text>
+          <View style={[styles.container, styles.bgBlack]}>
+            <PostCard />
+            <PostCard isOpen />
+          </View>
+
+          <Text style={styles.text}>Round Button</Text>
+          <View style={[styles.bgBlack, styles.flexRow]}>
+            <View style={styles.gap8}>
+              <RoundButton
+                onRenderSVG={color => <CloseSVG color={color} isSmall />}
+                size="small"
+                isCloseButton
+              />
+              <RoundButton
+                onRenderSVG={color => <CloseSVG color={color} isSmall />}
+                size="small"
+                isCloseButton
+                isDisabled
+              />
+            </View>
+            <View style={styles.gap8}>
+              <RoundButton
+                onRenderSVG={color => <CameraSVG color={color} />}
+                size="medium"
+              />
+              <RoundButton
+                onRenderSVG={color => <CameraSVG color={color} />}
+                size="medium"
+                isDisabled
+              />
+            </View>
+            <View style={styles.gap8}>
+              <RoundButton
+                onRenderSVG={color => <PlusSVG color={color} />}
+                size="large"
+              />
+              <RoundButton
+                onRenderSVG={color => <PlusSVG color={color} />}
+                size="large"
+                isDisabled
+              />
+            </View>
+          </View>
+
+          <Text style={styles.text}>Input</Text>
+          <View style={[styles.container, styles.bgBlack]}>
+            <Input
+              label="E-mail"
+              placeholder="Enter your e-mail"
+              status="waiting"
+            />
+            <Input
+              label="E-mail"
+              placeholder="Enter your e-mail"
+              status="disabled"
+            />
+            <Input
+              label="E-mail"
+              placeholder="Enter your e-mail"
+              status="success"
+            />
+            <Input
+              label="E-mail"
+              placeholder="Enter your e-mail"
+              status="error"
+            />
+
+            <Input
+              label="Password"
+              isPasswordInput
+              placeholder="Enter your password"
+              status="waiting"
+            />
+            <Input
+              label="Password"
+              isPasswordInput
+              placeholder="Enter your password"
+              status="disabled"
+            />
+            <Input
+              label="Password"
+              isPasswordInput
+              placeholder="Enter your password"
+              status="success"
+            />
+            <Input
+              label="Password"
+              isPasswordInput
+              placeholder="Enter your password"
+              status="error"
+            />
+          </View>
+        </ScrollView>
+      </ImageBackground>
+    </Navigation>
   );
 };
 

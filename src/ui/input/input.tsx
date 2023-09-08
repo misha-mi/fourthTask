@@ -1,22 +1,22 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { IInput } from './type';
-import { INPUT_COLORS } from './colors';
 import { useState } from 'react';
 import CheckSVG from '../../assets/svg/check-svg';
 import ShowSVG from '../../assets/svg/show-svg';
 import NoShowSVG from '../../assets/svg/no-show-svg';
-
-const {
-  labelColor,
-  initialColor,
-  typingColor,
-  disabledColor,
-  successColor,
-  errorColor,
-  caretColor,
-} = INPUT_COLORS;
+import { useTheme } from '@react-navigation/native';
 
 const Input = ({ placeholder, label, status, isPasswordInput }: IInput) => {
+  const {
+    labelColor,
+    initialColor,
+    typingColor,
+    disabledColor,
+    successColor,
+    errorColor,
+    caretColor,
+  } = useTheme().colors.inputColors;
+
   const [value, setValue] = useState('');
   const [isFocus, setIsFocus] = useState(false);
   const [isShow, setIsShow] = useState(false);
@@ -49,7 +49,15 @@ const Input = ({ placeholder, label, status, isPasswordInput }: IInput) => {
 
   return (
     <View>
-      <Text style={styles.label}>{label}</Text>
+      <Text
+        style={[
+          styles.label,
+          {
+            color: labelColor,
+          },
+        ]}>
+        {label}
+      </Text>
       <View style={styles.wrapper}>
         <TextInput
           secureTextEntry={isPasswordInput && !isShow}
@@ -84,7 +92,6 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   label: {
-    color: labelColor,
     fontSize: 14,
     fontFamily: 'Outfit-SemiBold',
   },

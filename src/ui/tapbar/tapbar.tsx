@@ -2,10 +2,8 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import HomeSVG from '../../assets/svg/home-svg';
 import BookmarkSVG from '../../assets/svg/bookmark-svg';
 import PhotoSVG from '../../assets/svg/photo-svg';
-import { DARK_THEME, LIGHT_THEME } from '../../assets/colors';
 import { useState } from 'react';
-
-const { color1, color4, primaryDefault } = true ? LIGHT_THEME : DARK_THEME;
+import { useTheme } from '@react-navigation/native';
 
 const BUTTONS = [
   {
@@ -25,10 +23,19 @@ const BUTTONS = [
 const Tapbar = () => {
   const [activeButton, setActiveButton] = useState(0);
 
+  const { backgroundColor, defaultColor, activeColor } =
+    useTheme().colors.tapbarColors;
+
   return (
-    <View style={styles.wrapper}>
+    <View
+      style={[
+        styles.wrapper,
+        {
+          backgroundColor: backgroundColor,
+        },
+      ]}>
       {BUTTONS.map(({ text, onRenderSVG }, id) => {
-        const color = id === activeButton ? primaryDefault : color4;
+        const color = id === activeButton ? activeColor : defaultColor;
         return (
           <Pressable
             key={id}
@@ -49,7 +56,6 @@ const styles = StyleSheet.create({
   wrapper: {
     width: 'auto',
     height: 100,
-    backgroundColor: color1,
     flexDirection: 'row',
     padding: 40,
     paddingTop: 20,

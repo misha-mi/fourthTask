@@ -4,6 +4,7 @@ import {
   CLOSE_ROUND_BUTTON_COLORS,
   DEFAULT_ROUND_BUTTON_COLORS,
 } from './colors';
+import { useTheme } from '@react-navigation/native';
 
 const RoundButton = ({
   onRenderSVG,
@@ -11,6 +12,8 @@ const RoundButton = ({
   isDisabled,
   size,
 }: IRoundButton) => {
+  const theme = useTheme().colors;
+
   const {
     defaultColor,
     defaultIconColor,
@@ -18,7 +21,9 @@ const RoundButton = ({
     pressIconColor,
     disabledColor,
     disabledIconColor,
-  } = isCloseButton ? CLOSE_ROUND_BUTTON_COLORS : DEFAULT_ROUND_BUTTON_COLORS;
+  } = isCloseButton
+    ? theme.closeRoundButtonColors
+    : theme.defaultRoundButtonColors;
 
   return (
     <Pressable

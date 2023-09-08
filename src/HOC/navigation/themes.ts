@@ -1,0 +1,218 @@
+import { DARK_THEME, LIGHT_THEME } from '../../assets/colors';
+import { DefaultTheme, DarkTheme } from '@react-navigation/native';
+
+export const CustomDarkTheme = {
+  dark: true,
+  colors: {
+    ...DarkTheme.colors,
+    profileImgColors: {
+      backgroundColor: DARK_THEME.color4,
+      SVGColor: DARK_THEME.color6,
+    },
+    checkInputColors: {
+      backgroundColor: DARK_THEME.color5,
+      checkedColor: DARK_THEME.primaryDefault,
+      borderColor: DARK_THEME.color4,
+    },
+    copyInputColors: {
+      defaultBackgroundColor: DARK_THEME.color5,
+      pressedBackgroundColor: DARK_THEME.primaryDefault,
+      disabledBackgroundColor: DARK_THEME.color4,
+      defaultTextColor: DARK_THEME.color1,
+      pressedTextColor: DARK_THEME.color5,
+      disabledTextColor: DARK_THEME.color2,
+    },
+    largeButtonColors: {
+      buttonColor: DARK_THEME.color5,
+      pressedButtonColor: DARK_THEME.primaryDefault,
+      disabledButtonColor: DARK_THEME.color5,
+      textColor: DARK_THEME.primaryDefault,
+      pressedTextColor: DARK_THEME.color7,
+      disabledTextColor: DARK_THEME.color4,
+      cancelColor: DARK_THEME.errorColor,
+    },
+    mediumButtonColors: {
+      buttonColor: DARK_THEME.color7,
+      pressedButtonColor: DARK_THEME.primaryDefault,
+      disabledButtonColor: DARK_THEME.color5,
+      textColor: DARK_THEME.primaryDefault,
+      pressedTextColor: DARK_THEME.color7,
+      disabledTextColor: DARK_THEME.color4,
+      cancelColor: DARK_THEME.errorColor,
+    },
+    deleteButtonColors: {
+      backgroundColor: DARK_THEME.errorColor,
+      textColor: DARK_THEME.color1,
+    },
+    iconButtonColors: {
+      defaultColor: DARK_THEME.color1,
+      pressedColor: DARK_THEME.primaryDefault,
+      disabledColor: DARK_THEME.color4,
+    },
+    inputColors: {
+      labelColor: DARK_THEME.color3,
+      initialColor: DARK_THEME.color4,
+      typingColor: DARK_THEME.color1,
+      disabledColor: DARK_THEME.color5,
+      successColor: DARK_THEME.primaryDefault,
+      errorColor: DARK_THEME.errorColor,
+      caretColor: DARK_THEME.primaryPressed,
+    },
+    defaultRoundButtonColors: {
+      defaultColor: DARK_THEME.primaryDefault,
+      defaultIconColor: DARK_THEME.color7,
+      pressColor: DARK_THEME.color7,
+      pressIconColor: DARK_THEME.primaryDefault,
+      disabledColor: DARK_THEME.color4,
+      disabledIconColor: DARK_THEME.color2,
+    },
+    closeRoundButtonColors: {
+      defaultColor: DARK_THEME.color5,
+      defaultIconColor: DARK_THEME.color7,
+      pressColor: DARK_THEME.primaryDefault,
+      pressIconColor: DARK_THEME.color7,
+      disabledColor: DARK_THEME.color4,
+      disabledIconColor: DARK_THEME.color7,
+    },
+    tabsColors: {
+      defaultTabColor: DARK_THEME.color5,
+      activeTabColor: DARK_THEME.primaryDefault,
+      defaultTextColor: DARK_THEME.color1,
+      activeTextColor: DARK_THEME.color7,
+    },
+    tapbarColors: {
+      backgroundColor: DARK_THEME.color1,
+      defaultColor: DARK_THEME.color4,
+      activeColor: DARK_THEME.primaryDefault,
+    },
+    textButtonColors: {
+      defaultColor: DARK_THEME.primaryDefault,
+      pressedColor: DARK_THEME.primaryPressed,
+      disabledColor: DARK_THEME.color4,
+    },
+    textWithIconButtonColors: {
+      defaultColor: DARK_THEME.color1,
+      pressedColor: DARK_THEME.primaryPressed,
+      disabledColor: DARK_THEME.color4,
+    },
+    uploadColors: {
+      backgroundColor: DARK_THEME.color4,
+      borderColor: DARK_THEME.color4,
+      textColor: DARK_THEME.color2,
+      cloudColor: DARK_THEME.primaryDefault,
+    },
+    postCardColors: {
+      backgroundColor: DARK_THEME.color7,
+      titleColor: DARK_THEME.color1,
+      textColor: DARK_THEME.color3,
+    },
+  },
+};
+
+export const CustomLightTheme = {
+  dark: false,
+  colors: {
+    ...DefaultTheme.colors,
+    profileImgColors: {
+      backgroundColor: LIGHT_THEME.color4,
+      SVGColor: LIGHT_THEME.color3,
+    },
+    checkInputColors: {
+      backgroundColor: LIGHT_THEME.color5,
+      checkedColor: LIGHT_THEME.primaryDefault,
+      borderColor: LIGHT_THEME.color2,
+    },
+    copyInputColors: {
+      defaultBackgroundColor: LIGHT_THEME.color5,
+      pressedBackgroundColor: LIGHT_THEME.primaryDefault,
+      disabledBackgroundColor: LIGHT_THEME.color5,
+      defaultTextColor: LIGHT_THEME.color1,
+      pressedTextColor: LIGHT_THEME.color1,
+      disabledTextColor: LIGHT_THEME.color3,
+    },
+    largeButtonColors: {
+      buttonColor: LIGHT_THEME.primaryDefault,
+      pressedButtonColor: LIGHT_THEME.primaryPressed,
+      disabledButtonColor: LIGHT_THEME.color5,
+      textColor: LIGHT_THEME.color7,
+      pressedTextColor: LIGHT_THEME.color7,
+      disabledTextColor: LIGHT_THEME.color3,
+      cancelColor: LIGHT_THEME.errorColor,
+    },
+    mediumButtonColors: {
+      buttonColor: LIGHT_THEME.color7,
+      pressedButtonColor: LIGHT_THEME.primaryDefault,
+      disabledButtonColor: LIGHT_THEME.color5,
+      textColor: LIGHT_THEME.primaryDefault,
+      pressedTextColor: LIGHT_THEME.color7,
+      disabledTextColor: LIGHT_THEME.color3,
+      cancelColor: LIGHT_THEME.errorColor,
+    },
+    deleteButtonColors: {
+      backgroundColor: LIGHT_THEME.errorColor,
+      textColor: LIGHT_THEME.color6,
+    },
+    iconButtonColors: {
+      defaultColor: LIGHT_THEME.color1,
+      pressedColor: LIGHT_THEME.primaryPressed,
+      disabledColor: LIGHT_THEME.color3,
+    },
+    inputColors: {
+      labelColor: LIGHT_THEME.color3,
+      initialColor: LIGHT_THEME.color3,
+      typingColor: LIGHT_THEME.color1,
+      disabledColor: LIGHT_THEME.color5,
+      successColor: LIGHT_THEME.primaryDefault,
+      errorColor: LIGHT_THEME.errorColor,
+      caretColor: DARK_THEME.primaryPressed,
+    },
+    defaultRoundButtonColors: {
+      defaultColor: LIGHT_THEME.primaryDefault,
+      defaultIconColor: LIGHT_THEME.color7,
+      pressColor: LIGHT_THEME.primaryPressed,
+      pressIconColor: LIGHT_THEME.color7,
+      disabledColor: LIGHT_THEME.color3,
+      disabledIconColor: LIGHT_THEME.color5,
+    },
+    closeRoundButtonColors: {
+      defaultColor: DARK_THEME.color5,
+      defaultIconColor: LIGHT_THEME.color2,
+      pressColor: LIGHT_THEME.primaryDefault,
+      pressIconColor: LIGHT_THEME.color1,
+      disabledColor: LIGHT_THEME.color2,
+      disabledIconColor: LIGHT_THEME.color3,
+    },
+    tabsColors: {
+      defaultTabColor: LIGHT_THEME.color6,
+      activeTabColor: LIGHT_THEME.primaryPressed,
+      defaultTextColor: LIGHT_THEME.color1,
+      activeTextColor: LIGHT_THEME.color7,
+    },
+    tapbarColors: {
+      backgroundColor: LIGHT_THEME.color1,
+      defaultColor: LIGHT_THEME.color4,
+      activeColor: LIGHT_THEME.primaryDefault,
+    },
+    textButtonColors: {
+      defaultColor: LIGHT_THEME.primaryDefault,
+      pressedColor: LIGHT_THEME.primaryPressed,
+      disabledColor: LIGHT_THEME.color4,
+    },
+    textWithIconButtonColors: {
+      defaultColor: LIGHT_THEME.color1,
+      pressedColor: LIGHT_THEME.primaryPressed,
+      disabledColor: LIGHT_THEME.color4,
+    },
+    uploadColors: {
+      backgroundColor: LIGHT_THEME.color7,
+      borderColor: LIGHT_THEME.primaryDefault,
+      textColor: LIGHT_THEME.color1,
+      cloudColor: LIGHT_THEME.primaryDefault,
+    },
+    postCardColors: {
+      backgroundColor: LIGHT_THEME.color7,
+      titleColor: LIGHT_THEME.color1,
+      textColor: LIGHT_THEME.color3,
+    },
+  },
+};

@@ -1,10 +1,11 @@
 import { Pressable, StyleSheet } from 'react-native';
-import { ICON_BUTTON_COLORS } from './colors';
 import { IIconButton } from './type';
-
-const { defaultColor, pressedColor, disabledColor } = ICON_BUTTON_COLORS;
+import { useTheme } from '@react-navigation/native';
 
 const IconButton = ({ status, onRenderSVG }: IIconButton) => {
+  const { defaultColor, pressedColor, disabledColor } =
+    useTheme().colors.iconButtonColors;
+
   const color = status === 'disabled' ? disabledColor : defaultColor;
 
   return (
@@ -13,7 +14,5 @@ const IconButton = ({ status, onRenderSVG }: IIconButton) => {
     </Pressable>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default IconButton;

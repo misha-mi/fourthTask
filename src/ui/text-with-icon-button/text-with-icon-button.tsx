@@ -1,8 +1,6 @@
 import { ReactElement } from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
-import { DARK_THEME, LIGHT_THEME } from '../../assets/colors';
-
-const { color1, color4, primaryPressed } = true ? LIGHT_THEME : DARK_THEME;
+import { useTheme } from '@react-navigation/native';
 
 const TextWithIconButton = ({
   onRenderSVG,
@@ -13,10 +11,17 @@ const TextWithIconButton = ({
   text: string;
   isDisabled?: boolean;
 }) => {
+  const { defaultColor, pressedColor, disabledColor } =
+    useTheme().colors.textButtonColors;
+
   return (
     <Pressable style={styles.wrapper} disabled={isDisabled}>
       {({ pressed }) => {
-        const color = pressed ? primaryPressed : isDisabled ? color4 : color1;
+        const color = pressed
+          ? pressedColor
+          : isDisabled
+          ? disabledColor
+          : defaultColor;
         return (
           <>
             {onRenderSVG(color)}

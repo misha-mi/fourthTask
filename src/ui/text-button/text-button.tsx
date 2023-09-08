@@ -1,11 +1,10 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { DARK_THEME, LIGHT_THEME } from '../../assets/colors';
-
-const { color4, primaryDefault, primaryPressed } = true
-  ? DARK_THEME
-  : LIGHT_THEME;
+import { Pressable, StyleSheet, Text } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 const TextButton = ({ text, onClick, isDisabled }: ITextButton) => {
+  const { defaultColor, pressedColor, dsiabledColor } =
+    useTheme().colors.textButtonColors;
+
   return (
     <Pressable style={styles.pressable}>
       {({ pressed }) => (
@@ -13,10 +12,12 @@ const TextButton = ({ text, onClick, isDisabled }: ITextButton) => {
           style={[
             styles.text,
             {
-              color: pressed ? primaryPressed : primaryDefault,
-              borderColor: pressed ? primaryPressed : primaryDefault,
+              color: pressed ? pressedColor : defaultColor,
+              borderColor: pressed ? pressedColor : defaultColor,
             },
-            isDisabled ? { color: color4, borderColor: color4 } : {},
+            isDisabled
+              ? { color: dsiabledColor, borderColor: dsiabledColor }
+              : null,
           ]}>
           {text}
         </Text>
