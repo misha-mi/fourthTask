@@ -17,6 +17,7 @@ const CustomButton = ({
     textColor,
     pressedTextColor,
     disabledTextColor,
+    cancelColor,
   } = size === 'large' ? LARGE_BUTTON_COLORS : MEDIUM_BUTTON_COLORS;
   return (
     <Pressable
@@ -38,7 +39,7 @@ const CustomButton = ({
               { color: pressed ? pressedTextColor : textColor },
               styles.text,
               status === 'disabled' ? { color: disabledTextColor } : {},
-              isRedText ? { color: '#C2534C' } : {},
+              isRedText ? { color: cancelColor } : {},
             ]}>
             {title}
           </Text>

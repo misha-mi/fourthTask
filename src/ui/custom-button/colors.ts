@@ -1,4 +1,4 @@
-import {DARK_THEME, LIGHT_THEME} from '../../assets/colors';
+import { DARK_THEME, LIGHT_THEME } from '../../assets/colors';
 
 export const LARGE_BUTTON_COLORS = true
   ? {
@@ -8,6 +8,7 @@ export const LARGE_BUTTON_COLORS = true
       textColor: DARK_THEME.primaryDefault,
       pressedTextColor: DARK_THEME.color7,
       disabledTextColor: DARK_THEME.color4,
+      cancelColor: DARK_THEME.errorColor,
     }
   : {
       buttonColor: LIGHT_THEME.primaryDefault,
@@ -16,6 +17,7 @@ export const LARGE_BUTTON_COLORS = true
       textColor: LIGHT_THEME.color7,
       pressedTextColor: LIGHT_THEME.color7,
       disabledTextColor: LIGHT_THEME.color3,
+      cancelColor: LIGHT_THEME.errorColor,
     };
 
 export const MEDIUM_BUTTON_COLORS = true
@@ -26,6 +28,7 @@ export const MEDIUM_BUTTON_COLORS = true
       textColor: DARK_THEME.primaryDefault,
       pressedTextColor: DARK_THEME.color7,
       disabledTextColor: DARK_THEME.color4,
+      cancelColor: DARK_THEME.errorColor,
     }
   : {
       buttonColor: LIGHT_THEME.color7,
@@ -34,4 +37,5 @@ export const MEDIUM_BUTTON_COLORS = true
       textColor: LIGHT_THEME.primaryDefault,
       pressedTextColor: LIGHT_THEME.color7,
       disabledTextColor: LIGHT_THEME.color3,
+      cancelColor: LIGHT_THEME.errorColor,
     };

@@ -1,8 +1,8 @@
-import Svg, {SvgProps, G, Path, Defs, ClipPath, Rect} from 'react-native-svg';
-const ShowSVG = (props: SvgProps) => (
-  <Svg width={20} height={20} fill="none" {...props}>
+import Svg, { SvgProps, G, Path, Defs, ClipPath, Rect } from 'react-native-svg';
+const ShowSVG = ({ color }: { color: string }) => (
+  <Svg width={20} height={20} fill="none">
     <G clipPath="url(#a)">
-      <G fill="#fff" clipPath="url(#b)">
+      <G fill={color} clipPath="url(#b)">
         <Path d="M10.445 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
         <Path
           fillRule="evenodd"
@@ -13,10 +13,10 @@ const ShowSVG = (props: SvgProps) => (
     </G>
     <Defs>
       <ClipPath id="a">
-        <Rect width={20} height={20} fill="#fff" rx={10} />
+        <Rect width={20} height={20} fill={color} rx={10} />
       </ClipPath>
       <ClipPath id="b">
-        <Path fill="#fff" d="M0 0h20v20H0z" />
+        <Path fill={color} d="M0 0h20v20H0z" />
       </ClipPath>
     </Defs>
   </Svg>

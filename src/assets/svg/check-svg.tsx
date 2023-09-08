@@ -1,4 +1,5 @@
 import Svg, { SvgProps, G, Path, Defs, ClipPath } from 'react-native-svg';
+import { Styles } from 'react-native-svg/lib/typescript/xml';
 const CheckSVG = ({ color }: { color: string }) => (
   <Svg width={16} height={16} fill="none" viewBox="0 0 24 24">
     <G clipPath="url(#a)">

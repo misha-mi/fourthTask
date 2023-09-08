@@ -1,8 +1,8 @@
-import Svg, {SvgProps, G, Path, Defs, ClipPath} from 'react-native-svg';
-const NoShowSVG = (props: SvgProps) => (
-  <Svg width={20} height={20} fill="none" {...props}>
+import Svg, { SvgProps, G, Path, Defs, ClipPath } from 'react-native-svg';
+const NoShowSVG = ({ color }: { color: string }) => (
+  <Svg width={20} height={20} fill="none">
     <G clipPath="url(#a)">
-      <G fill="#fff" clipPath="url(#b)">
+      <G fill={color} clipPath="url(#b)">
         <Path
           fillRule="evenodd"
           d="M3.28 2.22a.75.75 0 0 0-1.06 1.06l14.5 14.5a.75.75 0 1 0 1.06-1.06l-1.745-1.745a10.029 10.029 0 0 0 3.3-4.38 1.651 1.651 0 0 0 0-1.185A10.004 10.004 0 0 0 9.999 3a9.956 9.956 0 0 0-4.744 1.194L3.28 2.22ZM7.752 6.69l1.092 1.092a2.5 2.5 0 0 1 3.374 3.373l1.091 1.092a4 4 0 0 0-5.557-5.557Z"
@@ -13,10 +13,10 @@ const NoShowSVG = (props: SvgProps) => (
     </G>
     <Defs>
       <ClipPath id="a">
-        <Path fill="#fff" d="M0 0h20v20H0z" />
+        <Path fill={color} d="M0 0h20v20H0z" />
       </ClipPath>
       <ClipPath id="b">
-        <Path fill="#fff" d="M0 0h20v20H0z" />
+        <Path fill={color} d="M0 0h20v20H0z" />
       </ClipPath>
     </Defs>
   </Svg>

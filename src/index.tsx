@@ -28,6 +28,7 @@ import PostCard from './components/post-card/post-card';
 import RoundButton from './ui/round-button/round-button';
 import CameraSVG from './assets/svg/camera-svg';
 import PlusSVG from './assets/svg/plus-svg';
+import Input from './ui/input/input';
 
 const Index = () => {
   return (
@@ -238,6 +239,55 @@ const Index = () => {
             />
           </View>
         </View>
+
+        <Text style={styles.text}>Input</Text>
+        <View style={[styles.container, styles.bgBlack]}>
+          <Input
+            label="E-mail"
+            placeholder="Enter your e-mail"
+            status="waiting"
+          />
+          <Input
+            label="E-mail"
+            placeholder="Enter your e-mail"
+            status="disabled"
+          />
+          <Input
+            label="E-mail"
+            placeholder="Enter your e-mail"
+            status="success"
+          />
+          <Input
+            label="E-mail"
+            placeholder="Enter your e-mail"
+            status="error"
+          />
+
+          <Input
+            label="Password"
+            isPasswordInput
+            placeholder="Enter your password"
+            status="waiting"
+          />
+          <Input
+            label="Password"
+            isPasswordInput
+            placeholder="Enter your password"
+            status="disabled"
+          />
+          <Input
+            label="Password"
+            isPasswordInput
+            placeholder="Enter your password"
+            status="success"
+          />
+          <Input
+            label="Password"
+            isPasswordInput
+            placeholder="Enter your password"
+            status="error"
+          />
+        </View>
       </ScrollView>
     </ImageBackground>
   );
@@ -271,7 +321,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     gap: 6,
     backgroundColor: 'white',
-    alignSelf: 'flex-start',
   },
   bgBlack: {
     padding: 10,
