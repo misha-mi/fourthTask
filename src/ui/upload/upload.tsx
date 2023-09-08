@@ -6,15 +6,17 @@ const Upload = ({ isEmpty }: { isEmpty: boolean }) => {
   const { backgroundColor, borderColor, textColor, cloudColor } =
     useTheme().colors.uploadColors;
 
+  const emptyStyles = isEmpty
+    ? { ...styles.border, borderColor: borderColor }
+    : null;
+
   return (
     <View
-      style={[
-        styles.wrapper,
-        isEmpty ? { ...styles.border, borderColor: borderColor } : {},
-        {
-          backgroundColor: backgroundColor,
-        },
-      ]}>
+      style={{
+        ...styles.wrapper,
+        ...emptyStyles,
+        backgroundColor: backgroundColor,
+      }}>
       {isEmpty ? (
         <Pressable style={styles.pressable}>
           <CloudSVG color={cloudColor} />

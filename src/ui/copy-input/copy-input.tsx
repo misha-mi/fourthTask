@@ -3,6 +3,7 @@ import CopySVG from '../../assets/svg/copy-svg';
 import { useTheme } from '@react-navigation/native';
 import { ICopyInput } from './type';
 import Spinner from '../spinner/spinner';
+import { TPressed } from '../../types';
 
 const CopyInput = ({ textCopy, status }: ICopyInput) => {
   const {
@@ -14,48 +15,47 @@ const CopyInput = ({ textCopy, status }: ICopyInput) => {
     disabledTextColor,
   } = useTheme().colors.copyInputColors;
 
+  const handlerPressButton = ({ pressed }: TPressed) => {
+    const disabledColor =
+      status === 'disabled' ? disabledBackgroundColor : defaultBackgroundColor;
+
+    const backgroundColor = {
+      backgroundColor: pressed ? pressedBackgroundColor : disabledColor,
+    };
+
+    return [backgroundColor, styles.pressable];
+  };
+
+  const handlerPressContent = ({ pressed }: TPressed) => {
+    const disabledColor =
+      status === 'disabled' ? disabledTextColor : defaultTextColor;
+
+    const contentColor = pressed ? pressedTextColor : disabledColor;
+    return (
+      <>
+        <Text
+          style={{
+            ...styles.text,
+            color: contentColor,
+          }}>
+          {textCopy}
+        </Text>
+
+        <CopySVG style={styles.copySVG} color={contentColor} />
+      </>
+    );
+  };
+
   return (
     <Pressable
       disabled={status === 'loading' || status === 'disabled'}
-      style={({ pressed }) => [
-        {
-          backgroundColor: pressed
-            ? pressedBackgroundColor
-            : defaultBackgroundColor,
-        },
-        styles.pressable,
-        status === 'disabled'
-          ? { backgroundColor: disabledBackgroundColor }
-          : {},
-      ]}>
+      style={handlerPressButton}>
       {status === 'loading' ? (
         <View style={styles.spinner}>
           <Spinner color={pressedBackgroundColor} />
         </View>
       ) : (
-        ({ pressed }) => (
-          <>
-            <Text
-              style={[
-                styles.text,
-                { color: pressed ? pressedTextColor : defaultTextColor },
-                status === 'disabled' ? { color: disabledTextColor } : {},
-              ]}>
-              {textCopy}
-            </Text>
-
-            <CopySVG
-              style={styles.copySVG}
-              color={
-                pressed
-                  ? pressedTextColor
-                  : status === 'disabled'
-                  ? disabledTextColor
-                  : defaultTextColor
-              }
-            />
-          </>
-        )
+        handlerPressContent
       )}
     </Pressable>
   );

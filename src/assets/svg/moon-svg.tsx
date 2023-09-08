@@ -1,5 +1,7 @@
 import Svg, { G, Path, Defs, ClipPath } from 'react-native-svg';
-const MoonSVG = ({ color }: { color: string }) => (
+import { TColor } from '../../types';
+
+const MoonSVG = ({ color }: TColor) => (
   <Svg width={24} height={24} fill="none">
     <G clipPath="url(#a)">
       <Path

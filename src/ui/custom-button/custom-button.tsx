@@ -2,6 +2,7 @@ import { Pressable, Text, StyleSheet } from 'react-native';
 import { ICustomButton } from './type';
 import { useTheme } from '@react-navigation/native';
 import Spinner from '../spinner/spinner';
+import { TPressed } from '../../types';
 
 const CustomButton = ({
   title,
@@ -22,31 +23,38 @@ const CustomButton = ({
     cancelColor,
   } = size === 'large' ? theme.largeButtonColors : theme.mediumButtonColors;
 
+  const handlerPressButton = ({ pressed }: TPressed) => {
+    const disabledColor =
+      status === 'disabled' ? disabledButtonColor : buttonColor;
+
+    const backgroundColor = {
+      backgroundColor: pressed ? pressedButtonColor : disabledColor,
+    };
+
+    return [backgroundColor, styles.wrapper, styles[size]];
+  };
+
+  const handlerPressContent = ({ pressed }: TPressed) => {
+    const pressColor = { color: pressed ? pressedTextColor : textColor };
+
+    const disabledContentColor =
+      status === 'disabled' ? { color: disabledTextColor } : null;
+
+    const colorRed = isRedText ? { color: cancelColor } : null;
+
+    return (
+      <Text style={[pressColor, styles.text, disabledContentColor, colorRed]}>
+        {title}
+      </Text>
+    );
+  };
+
   return (
-    <Pressable
-      disabled={status !== 'waiting'}
-      style={({ pressed }) => [
-        {
-          backgroundColor: pressed ? pressedButtonColor : buttonColor,
-        },
-        styles.wrapper,
-        styles[size],
-        status === 'disabled' ? { backgroundColor: disabledButtonColor } : {},
-      ]}>
+    <Pressable disabled={status !== 'waiting'} style={handlerPressButton}>
       {status === 'loading' ? (
         <Spinner color={pressedButtonColor} />
       ) : (
-        ({ pressed }) => (
-          <Text
-            style={[
-              { color: pressed ? pressedTextColor : textColor },
-              styles.text,
-              status === 'disabled' ? { color: disabledTextColor } : {},
-              isRedText ? { color: cancelColor } : {},
-            ]}>
-            {title}
-          </Text>
-        )
+        handlerPressContent
       )}
     </Pressable>
   );

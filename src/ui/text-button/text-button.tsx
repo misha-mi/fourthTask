@@ -1,27 +1,31 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
 import { useTheme } from '@react-navigation/native';
+import { TPressed } from '../../types';
 
 const TextButton = ({ text, onClick, isDisabled }: ITextButton) => {
-  const { defaultColor, pressedColor, dsiabledColor } =
+  const { defaultColor, pressedColor, disabledColor } =
     useTheme().colors.textButtonColors;
 
+  const handlerPressButton = ({ pressed }: TPressed) => {
+    const disabledButtonColor = isDisabled ? disabledColor : defaultColor;
+
+    const color = pressed ? pressedColor : disabledButtonColor;
+
+    return (
+      <Text
+        style={{
+          ...styles.text,
+          color: color,
+          borderColor: color,
+        }}>
+        {text}
+      </Text>
+    );
+  };
+
   return (
-    <Pressable style={styles.pressable}>
-      {({ pressed }) => (
-        <Text
-          style={[
-            styles.text,
-            {
-              color: pressed ? pressedColor : defaultColor,
-              borderColor: pressed ? pressedColor : defaultColor,
-            },
-            isDisabled
-              ? { color: dsiabledColor, borderColor: dsiabledColor }
-              : null,
-          ]}>
-          {text}
-        </Text>
-      )}
+    <Pressable style={styles.pressable} disabled={isDisabled}>
+      {handlerPressButton}
     </Pressable>
   );
 };

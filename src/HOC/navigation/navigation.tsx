@@ -1,5 +1,5 @@
-import { NavigationContainer, useTheme } from '@react-navigation/native';
-import { ReactElement, useEffect, useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { ReactElement } from 'react';
 import { CustomDarkTheme, CustomLightTheme } from './themes';
 import { useColorScheme } from 'react-native';
 

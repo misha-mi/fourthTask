@@ -1,10 +1,7 @@
 import { Pressable, StyleSheet } from 'react-native';
 import { IRoundButton } from './type';
-import {
-  CLOSE_ROUND_BUTTON_COLORS,
-  DEFAULT_ROUND_BUTTON_COLORS,
-} from './colors';
 import { useTheme } from '@react-navigation/native';
+import { TPressed } from '../../types';
 
 const RoundButton = ({
   onRenderSVG,
@@ -12,7 +9,8 @@ const RoundButton = ({
   isDisabled,
   size,
 }: IRoundButton) => {
-  const theme = useTheme().colors;
+  const { closeRoundButtonColors, defaultRoundButtonColors } =
+    useTheme().colors;
 
   const {
     defaultColor,
@@ -21,33 +19,31 @@ const RoundButton = ({
     pressIconColor,
     disabledColor,
     disabledIconColor,
-  } = isCloseButton
-    ? theme.closeRoundButtonColors
-    : theme.defaultRoundButtonColors;
+  } = isCloseButton ? closeRoundButtonColors : defaultRoundButtonColors;
+
+  const handlerPressButton = ({ pressed }: TPressed) => {
+    const disabledButtonColor = isDisabled ? disabledColor : defaultColor;
+
+    const backgroundColor = {
+      backgroundColor: pressed ? pressColor : disabledButtonColor,
+    };
+
+    return [backgroundColor, styles[size], styles.wrapper];
+  };
+
+  const handlerPressContent = ({ pressed }: TPressed) => {
+    const disabledContentColor = isDisabled
+      ? disabledIconColor
+      : defaultIconColor;
+
+    const color = pressed ? pressIconColor : disabledContentColor;
+
+    return onRenderSVG(color);
+  };
 
   return (
-    <Pressable
-      disabled={isDisabled}
-      style={({ pressed }) => [
-        {
-          backgroundColor: pressed
-            ? pressColor
-            : isDisabled
-            ? disabledColor
-            : defaultColor,
-        },
-        styles[size],
-        styles.wrapper,
-      ]}>
-      {({ pressed }) =>
-        onRenderSVG(
-          pressed
-            ? pressIconColor
-            : isDisabled
-            ? disabledIconColor
-            : defaultIconColor,
-        )
-      }
+    <Pressable disabled={isDisabled} style={handlerPressButton}>
+      {handlerPressContent}
     </Pressable>
   );
 };

@@ -1,17 +1,21 @@
-import { Pressable, StyleSheet } from 'react-native';
+import { Pressable } from 'react-native';
 import { IIconButton } from './type';
 import { useTheme } from '@react-navigation/native';
+import { TPressed } from '../../types';
 
 const IconButton = ({ status, onRenderSVG }: IIconButton) => {
   const { defaultColor, pressedColor, disabledColor } =
     useTheme().colors.iconButtonColors;
 
-  const color = status === 'disabled' ? disabledColor : defaultColor;
+  const handlerPressButton = ({ pressed }: TPressed) => {
+    const disabledButtonColor =
+      status === 'disabled' ? disabledColor : defaultColor;
+    const color = pressed ? pressedColor : disabledButtonColor;
+    return onRenderSVG(color);
+  };
 
   return (
-    <Pressable disabled={status === 'disabled'}>
-      {({ pressed }) => onRenderSVG(pressed ? pressedColor : color)}
-    </Pressable>
+    <Pressable disabled={status === 'disabled'}>{handlerPressButton}</Pressable>
   );
 };
 

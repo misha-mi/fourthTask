@@ -1,5 +1,7 @@
-import Svg, { SvgProps, G, Path, Defs, ClipPath } from 'react-native-svg';
-const BookmarkSVG = ({ color }: { color: string }) => (
+import Svg, { G, Path, Defs, ClipPath } from 'react-native-svg';
+import { TColor } from '../../types';
+
+const BookmarkSVG = ({ color }: TColor) => (
   <Svg width={24} height={24} fill="none">
     <G clipPath="url(#a)">
       <Path

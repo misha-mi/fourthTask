@@ -1,5 +1,7 @@
-import Svg, { SvgProps, G, Path, Defs, ClipPath } from 'react-native-svg';
-const TrashSVG = ({ color }: { color: string }) => (
+import Svg, { G, Path, Defs, ClipPath } from 'react-native-svg';
+import { TColor } from '../../types';
+
+const TrashSVG = ({ color }: TColor) => (
   <Svg width={33} height={32} fill="none">
     <G clipPath="url(#a)">
       <Path

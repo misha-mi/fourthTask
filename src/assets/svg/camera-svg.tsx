@@ -1,5 +1,7 @@
-import Svg, { SvgProps, G, Path, Defs, ClipPath } from 'react-native-svg';
-const CameraSVG = ({ color }: { color: string }) => (
+import Svg, { G, Path, Defs, ClipPath } from 'react-native-svg';
+import { TColor } from '../../types';
+
+const CameraSVG = ({ color }: TColor) => (
   <Svg width={22} height={22} fill="none">
     <G fill={color} clipPath="url(#a)">
       <Path d="M11 8.25a3.437 3.437 0 1 0 0 6.875 3.437 3.437 0 0 0 0-6.875Z" />

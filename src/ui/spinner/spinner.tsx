@@ -1,8 +1,9 @@
-import {Animated, Easing} from 'react-native';
+import { Animated, Easing } from 'react-native';
 import LoadingSVG from '../../assets/svg/loading-svg';
-import {useEffect} from 'react';
+import { useEffect } from 'react';
+import { TColor } from '../../types';
 
-const Spinner = ({color}: {color: string}) => {
+const Spinner = ({ color }: TColor) => {
   const spinValue = new Animated.Value(0);
 
   const spin = () => {
@@ -24,7 +25,7 @@ const Spinner = ({color}: {color: string}) => {
   });
 
   return (
-    <Animated.View style={{transform: [{rotate}]}}>
+    <Animated.View style={{ transform: [{ rotate }] }}>
       <LoadingSVG color={color} />
     </Animated.View>
   );

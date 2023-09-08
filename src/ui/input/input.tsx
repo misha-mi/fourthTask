@@ -50,12 +50,10 @@ const Input = ({ placeholder, label, status, isPasswordInput }: IInput) => {
   return (
     <View>
       <Text
-        style={[
-          styles.label,
-          {
-            color: labelColor,
-          },
-        ]}>
+        style={{
+          ...styles.label,
+          color: labelColor,
+        }}>
         {label}
       </Text>
       <View style={styles.wrapper}>
@@ -71,16 +69,18 @@ const Input = ({ placeholder, label, status, isPasswordInput }: IInput) => {
           onChangeText={setValue}
           style={[styles.input, underlineInput, textColor]}
         />
+
         <View style={styles.positionSVG}>
           {status === 'success' && !isPasswordInput ? (
             <CheckSVG color={successColor} />
-          ) : null}
-          <Pressable
-            onTouchEnd={() =>
-              setIsShow(isShow => !isShow && status !== 'disabled')
-            }>
-            {isPasswordInput ? showSVG : null}
-          </Pressable>
+          ) : (
+            <Pressable
+              onTouchEnd={() =>
+                setIsShow(isShow => !isShow && status !== 'disabled')
+              }>
+              {isPasswordInput ? showSVG : null}
+            </Pressable>
+          )}
         </View>
       </View>
     </View>

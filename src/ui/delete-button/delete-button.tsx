@@ -6,9 +6,9 @@ const DeleteButton = () => {
   const { backgroundColor, textColor } = useTheme().colors.deleteButtonColors;
 
   return (
-    <Pressable style={[styles.wrapper, { backgroundColor: backgroundColor }]}>
+    <Pressable style={{ ...styles.wrapper, backgroundColor: backgroundColor }}>
       <TrashSVG color={textColor} />
-      <Text style={[styles.text, { color: textColor }]}>Delete</Text>
+      <Text style={{ ...styles.text, color: textColor }}>Delete</Text>
     </Pressable>
   );
 };
@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'Outfit-Regular',
     fontSize: 14,
-    color: '#F4F5F4',
   },
 });
 

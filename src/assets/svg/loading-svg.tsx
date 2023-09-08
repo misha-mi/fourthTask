@@ -1,6 +1,7 @@
-import * as React from 'react';
-import Svg, {SvgProps, Circle, Path} from 'react-native-svg';
-const LoadingSVG = ({color = '#B8DE64'}: SvgProps) => (
+import Svg, { Circle, Path } from 'react-native-svg';
+import { TColor } from '../../types';
+
+const LoadingSVG = ({ color }: TColor) => (
   <Svg width={25} height={24} fill="none">
     <Circle
       cx={12.5}

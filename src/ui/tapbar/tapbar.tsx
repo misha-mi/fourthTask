@@ -28,12 +28,10 @@ const Tapbar = () => {
 
   return (
     <View
-      style={[
-        styles.wrapper,
-        {
-          backgroundColor: backgroundColor,
-        },
-      ]}>
+      style={{
+        ...styles.wrapper,
+        backgroundColor: backgroundColor,
+      }}>
       {BUTTONS.map(({ text, onRenderSVG }, id) => {
         const color = id === activeButton ? activeColor : defaultColor;
         return (
@@ -43,7 +41,7 @@ const Tapbar = () => {
             onTouchEnd={() => setActiveButton(id)}>
             <>
               {onRenderSVG(color)}
-              <Text style={[styles.text, { color: color }]}>{text}</Text>
+              <Text style={{ ...styles.text, color: color }}>{text}</Text>
             </>
           </Pressable>
         );

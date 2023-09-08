@@ -1,5 +1,7 @@
-import Svg, { SvgProps, G, Path, Defs, ClipPath } from 'react-native-svg';
-const NoShowSVG = ({ color }: { color: string }) => (
+import Svg, { G, Path, Defs, ClipPath } from 'react-native-svg';
+import { TColor } from '../../types';
+
+const NoShowSVG = ({ color }: TColor) => (
   <Svg width={20} height={20} fill="none">
     <G clipPath="url(#a)">
       <G fill={color} clipPath="url(#b)">

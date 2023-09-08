@@ -26,10 +26,12 @@ const PostCard = ({ isOpen }: IPostCard) => {
         {title}
         <Text style={{ ...styles.text, color: textColor }}>11.09.22</Text>
       </View>
+
       <Image
         source={require('../../assets/img/upload.jpg')}
         style={styles.image}
       />
+
       {isOpen ? (
         <Text style={[{ ...styles.text, color: textColor }, styles.mt20]}>
           The Queen of the Carnival in Rio de Janeiro and up to two princesses
@@ -46,16 +48,19 @@ const PostCard = ({ isOpen }: IPostCard) => {
           bridesmaids. Incorporated into every aspect of the Rio
         </Text>
       ) : null}
+
       <View style={[styles.justifyContentSB, styles.flexRow, styles.mt20]}>
         <View style={[styles.gap8, styles.flexRow]}>
           <ProfileImg userImg="../../assets/img/user.png" size="verySmall" />
           <Text style={{ ...styles.text, color: textColor }}>Hannah K.</Text>
         </View>
+
         <View style={[styles.gap12, styles.flexRow]}>
           <View style={[styles.gap8, styles.flexRow]}>
             <IconButton onRenderSVG={color => <HeartSVG color={color} />} />
             <Text style={{ ...styles.text, color: titleColor }}>137</Text>
           </View>
+
           <IconButton onRenderSVG={color => <ShareSVG color={color} />} />
         </View>
       </View>

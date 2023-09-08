@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
-import Svg, { SvgProps, G, Path, Defs, ClipPath } from 'react-native-svg';
+import Svg, { G, Path, Defs, ClipPath } from 'react-native-svg';
+
 const CloseSVG = ({ color, isSmall }: { color: string; isSmall?: boolean }) => (
   <Svg
     style={isSmall ? styles.small : styles.default}

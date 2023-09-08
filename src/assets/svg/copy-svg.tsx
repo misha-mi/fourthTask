@@ -1,5 +1,12 @@
-import Svg, { SvgProps, G, Path, Defs, ClipPath } from 'react-native-svg';
-const CopySVG = ({ color, style }: SvgProps) => (
+import { StyleProp, ViewStyle } from 'react-native';
+import Svg, { G, Path, Defs, ClipPath } from 'react-native-svg';
+
+interface ICopySVG {
+  color: string;
+  style: StyleProp<ViewStyle>;
+}
+
+const CopySVG = ({ color, style }: ICopySVG) => (
   <Svg width={24} height={24} fill="none" style={style}>
     <G clipPath="url(#a)">
       <Path

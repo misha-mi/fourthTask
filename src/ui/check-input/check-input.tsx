@@ -2,8 +2,9 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { ReactElement, useState } from 'react';
 import CheckSVG from '../../assets/svg/check-svg';
 import { useTheme } from '@react-navigation/native';
+import { ICheckInput } from './type';
 
-const CheckInput = ({ type = 'square' }: { type?: 'round' | 'square' }) => {
+const CheckInput = ({ type = 'square' }: ICheckInput) => {
   const theme = useTheme();
   const { backgroundColor, checkedColor, borderColor } =
     theme.colors.checkInputColors;
@@ -16,12 +17,10 @@ const CheckInput = ({ type = 'square' }: { type?: 'round' | 'square' }) => {
     case 'round':
       iconChecked = (
         <View
-          style={[
-            styles.view,
-            {
-              backgroundColor: checkedColor,
-            },
-          ]}
+          style={{
+            ...styles.view,
+            backgroundColor: checkedColor,
+          }}
         />
       );
       break;

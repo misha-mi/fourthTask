@@ -1,7 +1,6 @@
 import { Image, View, StyleSheet } from 'react-native';
 import UserSVG from '../../assets/svg/user-svg';
 import { IProfileImg } from './type';
-
 import { useTheme } from '@react-navigation/native';
 
 const ProfileImg = ({ userImg, size = 'large' }: IProfileImg) => {
@@ -10,12 +9,11 @@ const ProfileImg = ({ userImg, size = 'large' }: IProfileImg) => {
 
   return (
     <View
-      style={[
-        style.wrapper,
-        style[size],
-        ,
-        { backgroundColor: backgroundColor },
-      ]}>
+      style={{
+        ...style.wrapper,
+        ...style[size],
+        backgroundColor: backgroundColor,
+      }}>
       {userImg ? (
         <Image
           source={require('../../assets/img/user.png')}
