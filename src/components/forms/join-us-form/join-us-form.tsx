@@ -11,7 +11,7 @@ type Inputs = {
   passwordConfirm: string;
 };
 
-const JoinUsForm = () => {
+const JoinUsForm = ({ onClickLogIn }: { onClickLogIn: () => void }) => {
   const [isAfterFirstSubmit, setIsAfterFirstSubmit] = useState(true);
 
   const {
@@ -101,7 +101,11 @@ const JoinUsForm = () => {
       </View>
 
       <View style={styles.mt91}>
-        <IfMessage ifMessage="Already have an account?" thenMessage="Log in" />
+        <IfMessage
+          ifMessage="Already have an account?"
+          thenMessage="Log in"
+          onClick={onClickLogIn}
+        />
       </View>
 
       <View style={styles.mt20}>

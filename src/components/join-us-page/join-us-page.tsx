@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import TitleAuthorization from '../../ui/title-authorization/title-authorization';
 import JoinUsForm from '../forms/join-us-form/join-us-form';
 
-const JoinUsPage = () => {
+const JoinUsPage = ({ navigation }) => {
   return (
     <View style={styles.wrapper}>
       <TitleAuthorization
@@ -10,7 +10,7 @@ const JoinUsPage = () => {
         subtitleText="You will be able to fully communicate"
       />
       <View style={styles.mt40}>
-        <JoinUsForm />
+        <JoinUsForm onClickLogIn={() => navigation.navigate('LogIn')} />
       </View>
     </View>
   );

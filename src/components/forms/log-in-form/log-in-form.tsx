@@ -12,7 +12,7 @@ type Inputs = {
   passwordConfirm: string;
 };
 
-const LogInForm = () => {
+const LogInForm = ({ onClickRegister }: { onClickRegister: () => void }) => {
   const [isAfterFirstSubmit, setIsAfterFirstSubmit] = useState(true);
 
   const {
@@ -83,7 +83,11 @@ const LogInForm = () => {
       </View>
 
       <View style={styles.mt91}>
-        <IfMessage ifMessage="No account?" thenMessage="Register" />
+        <IfMessage
+          ifMessage="No account?"
+          thenMessage="Register"
+          onClick={onClickRegister}
+        />
       </View>
 
       <View style={styles.mt20}>

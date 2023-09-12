@@ -1,6 +1,7 @@
 import { ImageBackground, View, StyleSheet, Text } from 'react-native';
 import CustomButton from '../../ui/custom-button/custom-button';
 import AlreadyHave from '../../ui/if-message/if-message';
+import IfMessage from '../../ui/if-message/if-message';
 
 const WelcomePage = ({ navigation }) => {
   return (
@@ -11,7 +12,11 @@ const WelcomePage = ({ navigation }) => {
         <Text style={[styles.text, styles.rotate3deg]}>SHARE</Text>
         <Text style={[styles.text, styles.rotate9deg]}>YOUR TALE</Text>
       </View>
-      <AlreadyHave />
+      <IfMessage
+        ifMessage="Already have an account?"
+        thenMessage="Log in"
+        onClick={() => navigation.navigate('LogIn')}
+      />
       <CustomButton
         title="Create an account"
         onClick={() => navigation.navigate('JoinUs')}

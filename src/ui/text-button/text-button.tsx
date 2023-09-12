@@ -24,7 +24,10 @@ const TextButton = ({ text, onClick, isDisabled }: ITextButton) => {
   };
 
   return (
-    <Pressable style={styles.pressable} disabled={isDisabled}>
+    <Pressable
+      style={styles.pressable}
+      disabled={isDisabled}
+      onPressOut={onClick}>
       {handlerPressButton}
     </Pressable>
   );

@@ -19,7 +19,7 @@ const Index = () => {
 
   return (
     <Navigation>
-      <Stack.Navigator initialRouteName="LogIn">
+      <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen name="Welcome" component={WelcomePage} />
         <Stack.Screen name="JoinUs" component={JoinUsPage} />
         <Stack.Screen name="SuccessJoinUsPage" component={SuccessJoinUsPage} />

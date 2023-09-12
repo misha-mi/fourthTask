@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import TitleAuthorization from '../../ui/title-authorization/title-authorization';
 import LogInForm from '../forms/log-in-form/log-in-form';
 
-const LogInPage = () => {
+const LogInPage = ({ navigation }) => {
   return (
     <View style={styles.wrapper}>
       <TitleAuthorization
@@ -10,7 +10,7 @@ const LogInPage = () => {
         subtitleText="You will be able to fully communicate"
       />
       <View style={styles.mt40}>
-        <LogInForm />
+        <LogInForm onClickRegister={() => navigation.navigate('JoinUs')} />
       </View>
     </View>
   );
