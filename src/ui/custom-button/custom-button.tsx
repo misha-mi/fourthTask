@@ -50,7 +50,10 @@ const CustomButton = ({
   };
 
   return (
-    <Pressable disabled={status !== 'waiting'} style={handlerPressButton}>
+    <Pressable
+      disabled={status !== 'waiting'}
+      style={handlerPressButton}
+      onPressOut={onClick}>
       {status === 'loading' ? (
         <Spinner color={pressedButtonColor} />
       ) : (

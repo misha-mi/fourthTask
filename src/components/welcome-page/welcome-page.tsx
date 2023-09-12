@@ -1,8 +1,8 @@
 import { ImageBackground, View, StyleSheet, Text } from 'react-native';
-import TextButton from '../../ui/text-button/text-button';
 import CustomButton from '../../ui/custom-button/custom-button';
+import AlreadyHave from '../../ui/alredy-have/alredy-have';
 
-const WelcomePage = () => {
+const WelcomePage = ({ navigation }) => {
   return (
     <ImageBackground
       source={require('../../assets/img/welcome-bg.jpg')}
@@ -11,11 +11,11 @@ const WelcomePage = () => {
         <Text style={[styles.text, styles.rotate3deg]}>SHARE</Text>
         <Text style={[styles.text, styles.rotate9deg]}>YOUR TALE</Text>
       </View>
-      <View style={styles.wrapper}>
-        <Text style={styles.already}>Already have an account?</Text>
-        <TextButton text="Log in" />
-      </View>
-      <CustomButton title="Create an account" />
+      <AlreadyHave />
+      <CustomButton
+        title="Create an account"
+        onClick={() => navigation.navigate('JoinUs')}
+      />
     </ImageBackground>
   );
 };
@@ -51,17 +51,6 @@ const styles = StyleSheet.create({
   },
   rotate9deg: {
     transform: [{ rotate: '-9deg' }],
-  },
-  wrapper: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-    gap: 5,
-  },
-  already: {
-    fontFamily: 'Outfit-Regular',
-    fontSize: 16,
-    color: '#FFFFFF',
   },
 });
 
