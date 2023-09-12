@@ -5,6 +5,7 @@ export const CustomDarkTheme = {
   dark: true,
   colors: {
     ...DarkTheme.colors,
+    background: DARK_THEME.color7,
     profileImgColors: {
       backgroundColor: DARK_THEME.color4,
       SVGColor: DARK_THEME.color6,
@@ -106,6 +107,11 @@ export const CustomDarkTheme = {
       titleColor: DARK_THEME.color1,
       textColor: DARK_THEME.color3,
     },
+    titleAuthorizationColors: {
+      titleColor: DARK_THEME.primaryPressed,
+      subtitleColor: DARK_THEME.color1,
+    },
+    defaultColors: DARK_THEME,
   },
 };
 
@@ -113,6 +119,7 @@ export const CustomLightTheme = {
   dark: false,
   colors: {
     ...DefaultTheme.colors,
+    background: DARK_THEME.color1,
     profileImgColors: {
       backgroundColor: LIGHT_THEME.color4,
       SVGColor: LIGHT_THEME.color3,
@@ -214,5 +221,10 @@ export const CustomLightTheme = {
       titleColor: LIGHT_THEME.color1,
       textColor: LIGHT_THEME.color3,
     },
+    titleAuthorizationColors: {
+      titleColor: LIGHT_THEME.primaryDefault,
+      subtitleColor: LIGHT_THEME.color1,
+    },
+    defaultColors: LIGHT_THEME,
   },
 };
