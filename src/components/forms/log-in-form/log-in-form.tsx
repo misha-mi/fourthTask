@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import Input from '../../../ui/input/input';
+import AlreadyHave from '../../../ui/if-message/if-message';
 import CustomButton from '../../../ui/custom-button/custom-button';
 import IfMessage from '../../../ui/if-message/if-message';
 
@@ -11,7 +12,7 @@ type Inputs = {
   passwordConfirm: string;
 };
 
-const JoinUsForm = () => {
+const LogInForm = () => {
   const [isAfterFirstSubmit, setIsAfterFirstSubmit] = useState(true);
 
   const {
@@ -79,29 +80,10 @@ const JoinUsForm = () => {
             />
           )}
         />
-
-        <Controller
-          control={control}
-          rules={{
-            required: 'Confirm password is required',
-          }}
-          name="passwordConfirm"
-          render={({ field: { onChange, value } }) => (
-            <Input
-              label="Confirm password"
-              placeholder="Confirm your password"
-              status={handlerGenerateStatus(errors.passwordConfirm?.message)}
-              isPasswordInput
-              onChange={onChange}
-              value={value}
-              errorMessage={errors.passwordConfirm?.message}
-            />
-          )}
-        />
       </View>
 
       <View style={styles.mt91}>
-        <IfMessage ifMessage="Already have an account?" thenMessage="Log in" />
+        <IfMessage ifMessage="No account?" thenMessage="Register" />
       </View>
 
       <View style={styles.mt20}>
@@ -123,4 +105,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default JoinUsForm;
+export default LogInForm;

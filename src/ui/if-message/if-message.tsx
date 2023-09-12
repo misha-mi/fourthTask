@@ -2,15 +2,19 @@ import { View, Text, StyleSheet } from 'react-native';
 import TextButton from '../text-button/text-button';
 import { useTheme } from '@react-navigation/native';
 
-const AlreadyHave = () => {
+const IfMessage = ({
+  ifMessage,
+  thenMessage,
+}: {
+  ifMessage: string;
+  thenMessage: string;
+}) => {
   const textColor = useTheme().colors.defaultColors.color1;
 
   return (
     <View style={styles.wrapper}>
-      <Text style={{ ...styles.already, color: textColor }}>
-        Already have an account?
-      </Text>
-      <TextButton text="Log in" />
+      <Text style={{ ...styles.already, color: textColor }}>{ifMessage}</Text>
+      <TextButton text={thenMessage} />
     </View>
   );
 };
@@ -29,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AlreadyHave;
+export default IfMessage;

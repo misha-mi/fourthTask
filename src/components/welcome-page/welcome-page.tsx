@@ -1,6 +1,6 @@
 import { ImageBackground, View, StyleSheet, Text } from 'react-native';
 import CustomButton from '../../ui/custom-button/custom-button';
-import AlreadyHave from '../../ui/alredy-have/alredy-have';
+import AlreadyHave from '../../ui/if-message/if-message';
 
 const WelcomePage = ({ navigation }) => {
   return (
