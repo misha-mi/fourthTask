@@ -111,6 +111,11 @@ export const CustomDarkTheme = {
       titleColor: DARK_THEME.primaryPressed,
       subtitleColor: DARK_THEME.color1,
     },
+    successJoinUsColors: {
+      titleColor: DARK_THEME.color7,
+      textColor: DARK_THEME.color1,
+      backgroundColor: DARK_THEME.primaryPressed,
+    },
     defaultColors: DARK_THEME,
   },
 };
@@ -224,6 +229,11 @@ export const CustomLightTheme = {
     titleAuthorizationColors: {
       titleColor: LIGHT_THEME.primaryDefault,
       subtitleColor: LIGHT_THEME.color1,
+    },
+    successJoinUsColors: {
+      titleColor: LIGHT_THEME.color7,
+      textColor: LIGHT_THEME.color1,
+      backgroundColor: LIGHT_THEME.primaryDefault,
     },
     defaultColors: LIGHT_THEME,
   },

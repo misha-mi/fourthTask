@@ -1,9 +1,10 @@
-import Svg, {SvgProps, G, Path, Defs, ClipPath} from 'react-native-svg';
-const CheckCircleSVG = (props: SvgProps) => (
-  <Svg width={18} height={18} fill="none" {...props}>
+import Svg, { G, Path, Defs, ClipPath } from 'react-native-svg';
+import { TColor } from '../../types';
+const CheckCircleSVG = ({ color }: TColor) => (
+  <Svg width={18} height={18} fill="none">
     <G clipPath="url(#a)">
       <Path
-        stroke="#B8DE64"
+        stroke={color}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={1.1}
@@ -12,7 +13,7 @@ const CheckCircleSVG = (props: SvgProps) => (
     </G>
     <Defs>
       <ClipPath id="a">
-        <Path fill="#fff" d="M0 0h18v18H0z" />
+        <Path fill={color} d="M0 0h18v18H0z" />
       </ClipPath>
     </Defs>
   </Svg>
