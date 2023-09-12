@@ -32,6 +32,7 @@ import CameraSVG from './assets/svg/camera-svg';
 import PlusSVG from './assets/svg/plus-svg';
 import Input from './ui/input/input';
 import Navigation from './HOC/navigation/navigation';
+import WelcomePage from './components/welcome-page/welcome-page';
 
 const Index = () => {
   const handlerChangeColorTheme = () => {
@@ -45,7 +46,7 @@ const Index = () => {
 
   return (
     <Navigation>
-      <ImageBackground
+      {/* <ImageBackground
         source={require('./assets/img/welcome-bg.jpg')}
         style={styles.wrapper}>
         <Button title="Change Theme" onPress={handlerChangeColorTheme} />
@@ -303,7 +304,8 @@ const Index = () => {
             />
           </View>
         </ScrollView>
-      </ImageBackground>
+      </ImageBackground> */}
+      <WelcomePage />
     </Navigation>
   );
 };
