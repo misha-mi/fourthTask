@@ -1,8 +1,6 @@
 import { StyleSheet, View } from 'react-native';
-import AlreadyHave from '../../ui/alredy-have/alredy-have';
-import CustomButton from '../../ui/custom-button/custom-button';
 import TitleAuthorization from '../../ui/title-authorization/title-authorization';
-import Input from '../../ui/input/input';
+import JoinUsForm from '../forms/join-us-form/join-us-form';
 
 const JoinUsPage = () => {
   return (
@@ -11,30 +9,8 @@ const JoinUsPage = () => {
         titleText="Join us"
         subtitleText="You will be able to fully communicate"
       />
-      <View style={styles.gap16}>
-        <Input
-          label="E-mail"
-          placeholder="Enter your e-mail"
-          status="waiting"
-        />
-        <Input
-          label="Password"
-          placeholder="Enter your password"
-          status="waiting"
-        />
-        <Input
-          label="Confirm password"
-          placeholder="Confirm your password"
-          status="waiting"
-        />
-      </View>
-
-      <View style={styles.mt91}>
-        <AlreadyHave />
-      </View>
-
-      <View style={styles.mt20}>
-        <CustomButton title="Continue" />
+      <View style={styles.mt40}>
+        <JoinUsForm />
       </View>
     </View>
   );
@@ -47,15 +23,8 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingBottom: 20,
   },
-  gap16: {
-    gap: 16,
+  mt40: {
     marginTop: 40,
-  },
-  mt91: {
-    marginTop: 91,
-  },
-  mt20: {
-    marginTop: 20,
   },
 });
 

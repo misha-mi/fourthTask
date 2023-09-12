@@ -6,7 +6,15 @@ import ShowSVG from '../../assets/svg/show-svg';
 import NoShowSVG from '../../assets/svg/no-show-svg';
 import { useTheme } from '@react-navigation/native';
 
-const Input = ({ placeholder, label, status, isPasswordInput }: IInput) => {
+const Input = ({
+  placeholder,
+  label,
+  status,
+  isPasswordInput,
+  onChange,
+  value,
+  errorMessage,
+}: IInput) => {
   const {
     labelColor,
     initialColor,
@@ -17,7 +25,6 @@ const Input = ({ placeholder, label, status, isPasswordInput }: IInput) => {
     caretColor,
   } = useTheme().colors.inputColors;
 
-  const [value, setValue] = useState('');
   const [isFocus, setIsFocus] = useState(false);
   const [isShow, setIsShow] = useState(false);
 
@@ -40,6 +47,7 @@ const Input = ({ placeholder, label, status, isPasswordInput }: IInput) => {
 
   const underlineInput = { borderBottomWidth: 2, borderColor: statusColor };
   const textColor = { color: statusColor };
+  const labelStatusColor = status === 'waiting' ? labelColor : statusColor;
 
   const showSVG = !isShow ? (
     <NoShowSVG color={statusColor} />
@@ -52,7 +60,7 @@ const Input = ({ placeholder, label, status, isPasswordInput }: IInput) => {
       <Text
         style={{
           ...styles.label,
-          color: labelColor,
+          color: labelStatusColor,
         }}>
         {label}
       </Text>
@@ -61,14 +69,16 @@ const Input = ({ placeholder, label, status, isPasswordInput }: IInput) => {
           secureTextEntry={isPasswordInput && !isShow}
           editable={status !== 'disabled'}
           placeholder={placeholder}
-          placeholderTextColor={initialColor}
+          placeholderTextColor={statusColor}
           selectionColor={caretColor}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
           value={value}
-          onChangeText={setValue}
+          onChangeText={onChange}
           style={[styles.input, underlineInput, textColor]}
         />
+
+        <Text style={{ color: statusColor, marginTop: 6 }}>{errorMessage}</Text>
 
         <View style={styles.positionSVG}>
           {status === 'success' && !isPasswordInput ? (
