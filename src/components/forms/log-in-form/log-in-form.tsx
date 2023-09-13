@@ -2,32 +2,52 @@ import { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import Input from '../../../ui/input/input';
-import AlreadyHave from '../../../ui/if-message/if-message';
 import CustomButton from '../../../ui/custom-button/custom-button';
 import IfMessage from '../../../ui/if-message/if-message';
+import { ILogIntForm, TErrorArr, TInputs } from './type';
+import { THandlerGenerateStatus } from '../join-us-form/type';
+import { useMutation } from '@apollo/client';
+import { LOG_IN } from '../../../apollo/service/log-in';
 
-type Inputs = {
-  email: string;
-  password: string;
-  passwordConfirm: string;
-};
-
-const LogInForm = ({ onClickRegister }: { onClickRegister: () => void }) => {
+const LogInForm = ({ onClickRegister }: ILogIntForm) => {
   const [isAfterFirstSubmit, setIsAfterFirstSubmit] = useState(true);
+  const [joinUs, { data: logInData, error: logInError }] = useMutation(LOG_IN, {
+    errorPolicy: 'all',
+  });
+
+  const incorrectErrorOrPassword = logInData?.userSignIn?.problem?.message;
+  const arrErrorRequest = {
+    email: '',
+    password: '',
+  };
+
+  if (Array.isArray(logInError?.graphQLErrors[0].extensions.errors)) {
+    logInError?.graphQLErrors[0].extensions.errors.forEach(
+      ({ field, errors }: TErrorArr) => {
+        arrErrorRequest[field] =
+          errors[0].slice(0, 1).toUpperCase() + errors[0].slice(1);
+      },
+    );
+  }
 
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit = (data: Inputs) => console.log(data);
+  } = useForm<TInputs>();
+
+  const onSubmit = (data: TInputs) => {
+    joinUs({
+      variables: { ...data },
+    });
+  };
 
   const handlerClickButtonSubmit = () => {
     if (isAfterFirstSubmit) setIsAfterFirstSubmit(false);
     handleSubmit(onSubmit)();
   };
 
-  const handlerGenerateStatus = (errorMessage: string | undefined) => {
+  const handlerGenerateStatus: THandlerGenerateStatus = errorMessage => {
     if (isAfterFirstSubmit) {
       return 'waiting';
     } else if (errorMessage) {
@@ -54,10 +74,18 @@ const LogInForm = ({ onClickRegister }: { onClickRegister: () => void }) => {
             <Input
               label="E-mail"
               placeholder="Enter your e-mail"
-              status={handlerGenerateStatus(errors.email?.message)}
+              status={handlerGenerateStatus(
+                incorrectErrorOrPassword ||
+                  arrErrorRequest.email ||
+                  errors.email?.message,
+              )}
               onChange={onChange}
               value={value}
-              errorMessage={errors.email?.message}
+              errorMessage={
+                incorrectErrorOrPassword ||
+                arrErrorRequest.email ||
+                errors.email?.message
+              }
             />
           )}
         />
@@ -72,11 +100,19 @@ const LogInForm = ({ onClickRegister }: { onClickRegister: () => void }) => {
             <Input
               label="Password"
               placeholder="Enter your password"
-              status={handlerGenerateStatus(errors.password?.message)}
+              status={handlerGenerateStatus(
+                incorrectErrorOrPassword ||
+                  arrErrorRequest.password ||
+                  errors.password?.message,
+              )}
               isPasswordInput
               onChange={onChange}
               value={value}
-              errorMessage={errors.password?.message}
+              errorMessage={
+                incorrectErrorOrPassword ||
+                arrErrorRequest.password ||
+                errors.password?.message
+              }
             />
           )}
         />
