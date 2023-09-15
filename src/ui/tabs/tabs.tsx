@@ -1,26 +1,28 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTheme } from '@react-navigation/native';
+import { ITabs } from './type';
+import { TSort } from '../../types';
 
-const tabs = ['New', 'Top'];
+const tabs: TSort[] = ['new', 'top'];
 
-const Tabs = () => {
-  const [activeTab, setActiveTab] = useState(0);
-
+const Tabs = ({ sort, setSort }: ITabs) => {
   const { defaultTabColor, activeTabColor, defaultTextColor, activeTextColor } =
     useTheme().colors.tabsColors;
 
   return (
     <View style={styles.wrapper}>
       {tabs.map((item, id) => {
-        const tabColor = id === activeTab ? activeTabColor : defaultTabColor;
-        const textColor = id === activeTab ? activeTextColor : defaultTextColor;
+        const tabColor = sort === item ? activeTabColor : defaultTabColor;
+        const textColor = sort === item ? activeTextColor : defaultTextColor;
         return (
           <Pressable
             key={id}
             style={{ ...styles.item, backgroundColor: tabColor }}
-            onTouchEnd={() => setActiveTab(id)}>
-            <Text style={{ ...styles.text, color: textColor }}>{item}</Text>
+            onTouchEnd={() => setSort(item)}>
+            <Text style={{ ...styles.text, color: textColor }}>
+              {item.slice(0, 1).toUpperCase() + item.slice(1)}
+            </Text>
           </Pressable>
         );
       })}

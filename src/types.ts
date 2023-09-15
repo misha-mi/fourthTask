@@ -22,3 +22,7 @@ export type TUser = {
 export type TControl = {
   control: Control<TUser, any>;
 };
+
+export type TSort = 'new' | 'top';
+
+export type TFilter = 'main' | 'favorites' | 'my posts';

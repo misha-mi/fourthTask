@@ -2,34 +2,27 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import HomeSVG from '../../assets/svg/home-svg';
 import BookmarkSVG from '../../assets/svg/bookmark-svg';
 import PhotoSVG from '../../assets/svg/photo-svg';
-import { useState } from 'react';
 import { useTheme } from '@react-navigation/native';
+import { ITapbar, TButtons } from './type';
 
-const BUTTONS = [
+const BUTTONS: TButtons = [
   {
-    text: 'Main',
+    text: 'main',
     onRenderSVG: (color: string) => <HomeSVG color={color} />,
   },
   {
-    text: 'Favorites',
+    text: 'favorites',
     onRenderSVG: (color: string) => <BookmarkSVG color={color} />,
   },
   {
-    text: 'My posts',
+    text: 'my posts',
     onRenderSVG: (color: string) => <PhotoSVG color={color} />,
   },
 ];
 
-const Tapbar = ({ navigation }) => {
-  const [activeButton, setActiveButton] = useState(0);
-
+const Tapbar = ({ filter, setFilter }: ITapbar) => {
   const { backgroundColor, defaultColor, activeColor } =
     useTheme().colors.tapbarColors;
-
-  const handlerClick = (path: string, id: number) => {
-    setActiveButton(id);
-    navigation.navigate(path);
-  };
 
   return (
     <View
@@ -38,15 +31,18 @@ const Tapbar = ({ navigation }) => {
         backgroundColor: backgroundColor,
       }}>
       {BUTTONS.map(({ text, onRenderSVG }, id) => {
-        const color = id === activeButton ? activeColor : defaultColor;
+        const color =
+          filter === text.toLowerCase() ? activeColor : defaultColor;
         return (
           <Pressable
             key={id}
             style={styles.pressabel}
-            onTouchEnd={() => handlerClick(text, id)}>
+            onTouchEnd={() => setFilter(text)}>
             <>
               {onRenderSVG(color)}
-              <Text style={{ ...styles.text, color: color }}>{text}</Text>
+              <Text style={{ ...styles.text, color: color }}>
+                {text.slice(0, 1).toUpperCase() + text.slice(1)}
+              </Text>
             </>
           </Pressable>
         );
@@ -58,7 +54,7 @@ const Tapbar = ({ navigation }) => {
 const styles = StyleSheet.create({
   wrapper: {
     width: 'auto',
-    height: 100,
+    height: 80,
     flexDirection: 'row',
     padding: 40,
     paddingTop: 20,

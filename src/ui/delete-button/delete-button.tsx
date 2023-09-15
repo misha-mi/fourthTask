@@ -16,7 +16,7 @@ const DeleteButton = () => {
 const styles = StyleSheet.create({
   wrapper: {
     width: 73,
-    height: 364,
+    height: 'auto',
     justifyContent: 'center',
     alignItems: 'center',
     gap: 8,
