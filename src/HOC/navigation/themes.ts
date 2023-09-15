@@ -103,7 +103,7 @@ export const CustomDarkTheme = {
       cloudColor: DARK_THEME.primaryPressed,
     },
     postCardColors: {
-      backgroundColor: DARK_THEME.color7,
+      backgroundColor: DARK_THEME.color6,
       titleColor: DARK_THEME.color1,
       textColor: DARK_THEME.color3,
     },

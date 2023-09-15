@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ApolloProvider } from '@apollo/client';
 import apolloClient from './apollo/client';
 import ProfilePage from './components/profile-page/profile-page';
+import MainPage from './components/main-page/main-page';
 const Stack = createNativeStackNavigator();
 
 const Index = () => {
@@ -23,7 +24,7 @@ const Index = () => {
     <ApolloProvider client={apolloClient}>
       <Navigation>
         <Stack.Navigator
-          initialRouteName="Profile"
+          initialRouteName="Main"
           screenOptions={{
             headerShown: false,
           }}>
@@ -34,6 +35,7 @@ const Index = () => {
             component={SuccessJoinUsPage}
           />
           <Stack.Screen name="LogIn" component={LogInPage} />
+          <Stack.Screen name="Main" component={MainPage} />
           <Stack.Screen name="Profile" component={ProfilePage} />
         </Stack.Navigator>
       </Navigation>
