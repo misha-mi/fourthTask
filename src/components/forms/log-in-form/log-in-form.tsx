@@ -10,7 +10,14 @@ import { useMutation } from '@apollo/client';
 import { LOG_IN } from '../../../apollo/service/log-in';
 
 const LogInForm = ({ onClickRegister }: ILogIntForm) => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TInputs>();
+
   const [isAfterFirstSubmit, setIsAfterFirstSubmit] = useState(true);
+
   const [joinUs, { data: logInData, error: logInError }] = useMutation(LOG_IN, {
     errorPolicy: 'all',
   });
@@ -29,12 +36,6 @@ const LogInForm = ({ onClickRegister }: ILogIntForm) => {
       },
     );
   }
-
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<TInputs>();
 
   const onSubmit = (data: TInputs) => {
     joinUs({

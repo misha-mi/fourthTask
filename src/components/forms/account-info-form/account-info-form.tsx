@@ -1,0 +1,57 @@
+import { Control, Controller } from 'react-hook-form';
+import { View } from 'react-native';
+import Input from '../../../ui/input/input';
+import { TControl, TUser } from '../../../types';
+
+const AccountInfoForm = ({ control }: TControl) => {
+  return (
+    <View>
+      <Controller
+        control={control}
+        name="email"
+        render={({ field: { onChange, value } }) => (
+          <Input
+            label="E-mail"
+            placeholder="Enter your e-mail"
+            status={'waiting'}
+            onChange={onChange}
+            value={value}
+            errorMessage={''}
+          />
+        )}
+      />
+
+      <Controller
+        control={control}
+        name="phone"
+        render={({ field: { onChange, value } }) => (
+          <Input
+            label="Phone number"
+            placeholder="Enter your phone number"
+            status={'waiting'}
+            onChange={onChange}
+            value={value}
+            errorMessage={''}
+          />
+        )}
+      />
+
+      <Controller
+        control={control}
+        name="country"
+        render={({ field: { onChange, value } }) => (
+          <Input
+            label="Country"
+            placeholder="Enter your country"
+            status={'waiting'}
+            onChange={onChange}
+            value={value}
+            errorMessage={''}
+          />
+        )}
+      />
+    </View>
+  );
+};
+
+export default AccountInfoForm;
