@@ -19,7 +19,13 @@ const SettingPersonalInfo = ({ control }: TControl) => {
         <Text style={[styles.title, { color: color1, marginBottom: 16 }]}>
           Gender
         </Text>
-        <SettingGender />
+        <Controller
+          control={control}
+          name="gender"
+          render={({ field: { onChange, value } }) => (
+            <SettingGender gender={value} setGender={onChange} />
+          )}
+        />
       </View>
 
       <Text style={[styles.title, { color: color1 }]}>Date of birth</Text>

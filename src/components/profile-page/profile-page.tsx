@@ -13,7 +13,11 @@ import CameraSVG from '../../assets/svg/camera-svg';
 const ProfilePage = () => {
   const { color1 } = useTheme().colors.defaultColors;
 
-  const { control, handleSubmit } = useForm<TUser>();
+  const { control, handleSubmit } = useForm<TUser>({
+    defaultValues: {
+      gender: 'Male',
+    },
+  });
 
   return (
     <ScrollView>

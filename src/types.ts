@@ -12,7 +12,7 @@ export type TUser = {
   firstName: string;
   lastName: string;
   middleName: string;
-  gender: string;
+  gender: 'Male' | 'Female';
   birthDate: string;
   email: string;
   phone: string;

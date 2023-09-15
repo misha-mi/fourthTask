@@ -4,12 +4,14 @@ import CheckSVG from '../../assets/svg/check-svg';
 import { useTheme } from '@react-navigation/native';
 import { ICheckInput } from './type';
 
-const CheckInput = ({ type = 'square' }: ICheckInput) => {
+const CheckInput = ({
+  type = 'square',
+  isChecked,
+  setIsChecked,
+}: ICheckInput) => {
   const theme = useTheme();
   const { backgroundColor, checkedColor, borderColor } =
     theme.colors.checkInputColors;
-
-  const [isChecked, setIsChecked] = useState(false);
 
   let iconChecked: ReactElement;
 
@@ -29,10 +31,6 @@ const CheckInput = ({ type = 'square' }: ICheckInput) => {
       break;
   }
 
-  const handlerCheck = () => {
-    setIsChecked(state => !state);
-  };
-
   return (
     <Pressable
       style={[
@@ -43,7 +41,7 @@ const CheckInput = ({ type = 'square' }: ICheckInput) => {
           borderRadius: type === 'round' ? 20 : 4,
         },
       ]}
-      onTouchEnd={handlerCheck}>
+      onTouchEnd={setIsChecked}>
       {isChecked ? iconChecked : null}
     </Pressable>
   );
