@@ -4,7 +4,7 @@ import Tabs from '../../ui/tabs/tabs';
 import PostCard from '../post-card/post-card';
 import Tapbar from '../../ui/tapbar/tapbar';
 
-const MainPage = () => {
+const MainPage = ({ navigation }) => {
   return (
     <View
       style={{
@@ -27,7 +27,7 @@ const MainPage = () => {
         </View>
       </ScrollView>
 
-      <Tapbar />
+      <Tapbar navigation={navigation} />
     </View>
   );
 };

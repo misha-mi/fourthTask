@@ -20,11 +20,16 @@ const BUTTONS = [
   },
 ];
 
-const Tapbar = () => {
+const Tapbar = ({ navigation }) => {
   const [activeButton, setActiveButton] = useState(0);
 
   const { backgroundColor, defaultColor, activeColor } =
     useTheme().colors.tapbarColors;
+
+  const handlerClick = (path: string, id: number) => {
+    setActiveButton(id);
+    navigation.navigate(path);
+  };
 
   return (
     <View
@@ -38,7 +43,7 @@ const Tapbar = () => {
           <Pressable
             key={id}
             style={styles.pressabel}
-            onTouchEnd={() => setActiveButton(id)}>
+            onTouchEnd={() => handlerClick(text, id)}>
             <>
               {onRenderSVG(color)}
               <Text style={{ ...styles.text, color: color }}>{text}</Text>
