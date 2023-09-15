@@ -116,6 +116,11 @@ export const CustomDarkTheme = {
       textColor: DARK_THEME.color1,
       backgroundColor: DARK_THEME.primaryPressed,
     },
+    noPostsColors: {
+      titleColor: DARK_THEME.color7,
+      textColor: DARK_THEME.color4,
+      backgroundColor: DARK_THEME.primaryPressed,
+    },
     defaultColors: DARK_THEME,
   },
 };
@@ -231,6 +236,11 @@ export const CustomLightTheme = {
       subtitleColor: LIGHT_THEME.color1,
     },
     successJoinUsColors: {
+      titleColor: LIGHT_THEME.color7,
+      textColor: LIGHT_THEME.color1,
+      backgroundColor: LIGHT_THEME.primaryDefault,
+    },
+    noPostsColors: {
       titleColor: LIGHT_THEME.color7,
       textColor: LIGHT_THEME.color1,
       backgroundColor: LIGHT_THEME.primaryDefault,
