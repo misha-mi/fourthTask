@@ -4,7 +4,7 @@ import ArrowSVG from '../../assets/svg/arrow-svg';
 import TextButton from '../../ui/text-button/text-button';
 import ProfileImg from '../../ui/profile-img/profile-img';
 import { useTheme } from '@react-navigation/native';
-import SettingPersonalInfo from '../setting-personal-info/setting-personal-info';
+import SettingPersonalInfo from '../../components/setting-personal-info/setting-personal-info';
 import { useForm } from 'react-hook-form';
 import { TUser } from '../../types';
 import RoundButton from '../../ui/round-button/round-button';

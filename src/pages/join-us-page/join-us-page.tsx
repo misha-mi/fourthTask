@@ -1,16 +1,16 @@
 import { StyleSheet, View } from 'react-native';
 import TitleAuthorization from '../../ui/title-authorization/title-authorization';
-import LogInForm from '../forms/log-in-form/log-in-form';
+import JoinUsForm from '../../components/forms/join-us-form/join-us-form';
 
-const LogInPage = ({ navigation }) => {
+const JoinUsPage = ({ navigation }) => {
   return (
     <View style={styles.wrapper}>
       <TitleAuthorization
-        titleText="Log in"
+        titleText="Join us"
         subtitleText="You will be able to fully communicate"
       />
       <View style={styles.mt40}>
-        <LogInForm onClickRegister={() => navigation.navigate('JoinUs')} />
+        <JoinUsForm onClickLogIn={() => navigation.navigate('LogIn')} />
       </View>
     </View>
   );
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LogInPage;
+export default JoinUsPage;

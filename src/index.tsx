@@ -1,13 +1,13 @@
 import Navigation from './HOC/navigation/navigation';
-import JoinUsPage from './components/join-us-page/join-us-page';
-import LogInPage from './components/log-in-page/log-in-page';
-import SuccessJoinUsPage from './components/success-join-us-page/success-join-us-page';
-import WelcomePage from './components/welcome-page/welcome-page';
+import JoinUsPage from './pages/join-us-page/join-us-page';
+import LogInPage from './pages/log-in-page/log-in-page';
+import SuccessJoinUsPage from './pages/success-join-us-page/success-join-us-page';
+import WelcomePage from './pages/welcome-page/welcome-page';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ApolloProvider } from '@apollo/client';
 import apolloClient from './apollo/client';
-import ProfilePage from './components/profile-page/profile-page';
-import MainPage from './components/main-page/main-page';
+import ProfilePage from './pages/profile-page/profile-page';
+import MainPage from './pages/main-page/main-page';
 const Stack = createNativeStackNavigator();
 
 const Index = () => {
@@ -24,7 +24,7 @@ const Index = () => {
     <ApolloProvider client={apolloClient}>
       <Navigation>
         <Stack.Navigator
-          initialRouteName="Main"
+          initialRouteName="Welcome"
           screenOptions={{
             headerShown: false,
           }}>

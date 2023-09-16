@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import ProfileImg from '../../ui/profile-img/profile-img';
 import Tabs from '../../ui/tabs/tabs';
-import PostsList from '../posts-list/posts-list';
+import PostsList from '../../components/posts-list/posts-list';
 import Tapbar from '../../ui/tapbar/tapbar';
 import { useState } from 'react';
 import { TFilter, TSort } from '../../types';
