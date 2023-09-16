@@ -26,3 +26,19 @@ export type TControl = {
 export type TSort = 'new' | 'top';
 
 export type TFilter = 'main' | 'favorites' | 'my posts';
+
+export type TAuthor = {
+  avatarUrl: string;
+  firstName: string;
+};
+
+export type TPost = {
+  title: string;
+  createdAt: string;
+  description: string;
+  id: string;
+  isLiked: boolean;
+  likesCount: number;
+  mediaUrl: string;
+  author: TAuthor;
+};

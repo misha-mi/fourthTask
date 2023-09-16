@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import ProfileImg from '../../ui/profile-img/profile-img';
 import Tabs from '../../ui/tabs/tabs';
-import PostCard from '../post-card/post-card';
+import PostsList from '../posts-list/posts-list';
 import Tapbar from '../../ui/tapbar/tapbar';
 import { useState } from 'react';
 import { TFilter, TSort } from '../../types';
@@ -19,7 +19,7 @@ const MainPage = ({ navigation }: IMainPage) => {
       ? 'Hello John!'
       : filter.slice(0, 1).toUpperCase() + filter.slice(1);
 
-  let noPostsMessage: String;
+  let noPostsMessage: string;
 
   switch (filter) {
     case 'favorites':
@@ -51,11 +51,7 @@ const MainPage = ({ navigation }: IMainPage) => {
               <Tabs sort={sort} setSort={setSort} />
             </View>
 
-            <View style={styles.posts}>
-              <PostCard />
-              <PostCard />
-              <PostCard />
-            </View>
+            <PostsList filter={filter} sort={sort} />
           </>
         ) : (
           <NoPosts message={noPostsMessage} />
@@ -90,10 +86,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Outfit-Medium',
     fontSize: 32,
     color: 'white',
-  },
-  posts: {
-    marginTop: 24,
-    gap: 4,
   },
   positions: {
     position: 'absolute',

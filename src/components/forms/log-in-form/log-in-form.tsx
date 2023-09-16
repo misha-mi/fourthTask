@@ -18,7 +18,7 @@ const LogInForm = ({ onClickRegister }: ILogIntForm) => {
 
   const [isAfterFirstSubmit, setIsAfterFirstSubmit] = useState(true);
 
-  const [joinUs, { data: logInData, error: logInError }] = useMutation(LOG_IN, {
+  const [logIn, { data: logInData, error: logInError }] = useMutation(LOG_IN, {
     errorPolicy: 'all',
   });
 
@@ -38,7 +38,7 @@ const LogInForm = ({ onClickRegister }: ILogIntForm) => {
   }
 
   const onSubmit = (data: TInputs) => {
-    joinUs({
+    logIn({
       variables: { ...data },
     });
   };

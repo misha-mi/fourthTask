@@ -4,4 +4,5 @@ import { TStatus } from '../../types';
 export interface IIconButton {
   status?: TStatus;
   onRenderSVG: (color: string) => ReactElement;
+  isActive?: boolean;
 }

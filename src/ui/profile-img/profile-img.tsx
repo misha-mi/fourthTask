@@ -16,7 +16,7 @@ const ProfileImg = ({ userImg, size = 'large' }: IProfileImg) => {
       }}>
       {userImg ? (
         <Image
-          source={require('../../assets/img/user.png')}
+          source={{ uri: userImg }}
           resizeMode="cover"
           style={style[size]}
         />

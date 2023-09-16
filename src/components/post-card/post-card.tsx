@@ -17,7 +17,17 @@ import { useTheme } from '@react-navigation/native';
 import DeleteButton from '../../ui/delete-button/delete-button';
 import { useRef } from 'react';
 
-const PostCard = ({ isOpen }: IPostCard) => {
+const PostCard = ({ isOpen, dataPost }: IPostCard) => {
+  const {
+    title,
+    createdAt,
+    description,
+    isLiked,
+    likesCount,
+    mediaUrl,
+    author,
+  } = dataPost;
+
   const { backgroundColor, titleColor, textColor } =
     useTheme().colors.postCardColors;
 
@@ -31,8 +41,8 @@ const PostCard = ({ isOpen }: IPostCard) => {
     ? styles.justifyContentC
     : styles.justifyContentSB;
 
-  const title = !isOpen ? (
-    <Text style={{ ...styles.title, color: titleColor }}>Apple love</Text>
+  const showTitle = !isOpen ? (
+    <Text style={{ ...styles.title, color: titleColor }}>{title}</Text>
   ) : null;
 
   const handlerTouchEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -56,42 +66,35 @@ const PostCard = ({ isOpen }: IPostCard) => {
       showsHorizontalScrollIndicator={false}>
       <View style={[{ backgroundColor: postColor, width: WIDTH }, styles.post]}>
         <View style={[headerJustifyContent, styles.flexRow]}>
-          {title}
-          <Text style={{ ...styles.text, color: textColor }}>11.09.22</Text>
+          {showTitle}
+          <Text style={{ ...styles.text, color: textColor }}>{createdAt}</Text>
         </View>
 
-        <Image
-          source={require('../../assets/img/upload.jpg')}
-          style={styles.image}
-        />
+        <Image source={{ uri: mediaUrl }} style={styles.image} />
 
         {isOpen ? (
           <Text style={[{ ...styles.text, color: textColor }, styles.mt20]}>
-            The Queen of the Carnival in Rio de Janeiro and up to two princesses
-            having the duty to woo the revelry, along with the King Momo. Unlike
-            some cities, in the city of Rio de Janeiro, Queens of Carnival
-            do not see a certain school of samba. In competitions, princesses
-            are usually placed as second and third, and are correspondingly
-            1st and 2nd Princess. Some of them after the reign become queens
-            or battery bridesmaids. Incorporated into every aspect of the Rio
-            carnival are dancing and music. The most famous dance is carnival
-            samba, a Brazilian dance with African influences. The samba remains
-            a popular dance not only in carnival but in the ghettos outside
-            of the main cities.Some of them after the reign become queens
-            or battery bridesmaids. Incorporated into every aspect of the Rio
+            {description}
           </Text>
         ) : null}
 
         <View style={[styles.justifyContentSB, styles.flexRow, styles.mt20]}>
           <View style={[styles.gap8, styles.flexRow]}>
-            <ProfileImg userImg="../../assets/img/user.png" size="verySmall" />
-            <Text style={{ ...styles.text, color: textColor }}>Hannah K.</Text>
+            <ProfileImg userImg={author.avatarUrl} size="verySmall" />
+            <Text style={{ ...styles.text, color: textColor }}>
+              {author.firstName}
+            </Text>
           </View>
 
           <View style={[styles.gap12, styles.flexRow]}>
             <View style={[styles.gap8, styles.flexRow]}>
-              <IconButton onRenderSVG={color => <HeartSVG color={color} />} />
-              <Text style={{ ...styles.text, color: titleColor }}>137</Text>
+              <IconButton
+                onRenderSVG={color => <HeartSVG color={color} />}
+                isActive={isLiked}
+              />
+              <Text style={{ ...styles.text, color: titleColor }}>
+                {likesCount}
+              </Text>
             </View>
 
             <IconButton onRenderSVG={color => <ShareSVG color={color} />} />
