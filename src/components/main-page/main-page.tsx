@@ -11,27 +11,12 @@ import PlusSVG from '../../assets/svg/plus-svg';
 import NoPosts from '../../ui/no-posts/no-posts';
 
 const MainPage = ({ navigation }: IMainPage) => {
-  const [sort, setSort] = useState<TSort>('new');
   const [filter, setFilter] = useState<TFilter>('main');
 
   const textTitle =
     filter === 'main'
       ? 'Hello John!'
       : filter.slice(0, 1).toUpperCase() + filter.slice(1);
-
-  let noPostsMessage: string;
-
-  switch (filter) {
-    case 'favorites':
-      noPostsMessage = "You haven't added anything to your favorites yet";
-      break;
-    case 'my posts':
-      noPostsMessage = "You haven't posted any posts yet";
-      break;
-    case 'main':
-      noPostsMessage = 'Sorry there is not a single post';
-      break;
-  }
 
   return (
     <View style={styles.container}>
@@ -45,18 +30,9 @@ const MainPage = ({ navigation }: IMainPage) => {
           </View>
         </View>
 
-        {!false ? (
-          <>
-            <View style={styles.p16}>
-              <Tabs sort={sort} setSort={setSort} />
-            </View>
-
-            <PostsList filter={filter} sort={sort} />
-          </>
-        ) : (
-          <NoPosts message={noPostsMessage} />
-        )}
+        <PostsList filter={filter} />
       </ScrollView>
+
       {filter === 'my posts' ? (
         <View style={styles.positions}>
           <RoundButton
@@ -65,6 +41,7 @@ const MainPage = ({ navigation }: IMainPage) => {
           />
         </View>
       ) : null}
+
       <Tapbar filter={filter} setFilter={setFilter} />
     </View>
   );
