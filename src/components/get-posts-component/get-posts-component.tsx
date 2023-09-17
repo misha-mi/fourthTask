@@ -6,13 +6,14 @@ import Tabs from '../../ui/tabs/tabs';
 import PostsList from '../posts-list/posts-list';
 
 const GetPostsComponent = ({ getPosts, isTabs }: IGetPostsHOC) => {
-  const [postsData, setPostsData] = useState<TPost[]>([]);
+  const [postsIDArr, setPostsIDArr] = useState<string[]>([]);
   const [afterCursor, setAfterCursor] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [sort, setSort] = useState<TSort>('new');
 
   const handlerCompleted: THandlerCompleted = ({ data, pageInfo }) => {
-    setPostsData(state => [...state, ...data]);
+    const arrId = data.map(item => item.id);
+    setPostsIDArr(state => [...state, ...arrId]);
     setAfterCursor(pageInfo.afterCursor);
     setIsLoading(false);
   };
@@ -29,7 +30,7 @@ const GetPostsComponent = ({ getPosts, isTabs }: IGetPostsHOC) => {
   };
 
   useEffect(() => {
-    setPostsData([]);
+    setPostsIDArr([]);
     setAfterCursor('');
     handlerGetPost('', sort);
   }, [sort]);
@@ -43,7 +44,7 @@ const GetPostsComponent = ({ getPosts, isTabs }: IGetPostsHOC) => {
   return (
     <ScrollView>
       {showTabs}
-      <PostsList postsData={postsData} sort={sort} setSort={setSort} />
+      <PostsList postsIDArr={postsIDArr} sort={sort} setSort={setSort} />
       <Button title="more" onPress={() => handlerGetPost(afterCursor, sort)} />
     </ScrollView>
   );

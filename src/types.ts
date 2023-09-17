@@ -34,7 +34,7 @@ export type TGetPost = (
 ) => void;
 
 export type THandlerCompleted = (posts: {
-  data: TPost[];
+  data: { id: string }[];
   pageInfo: { afterCursor: string };
 }) => void;
 

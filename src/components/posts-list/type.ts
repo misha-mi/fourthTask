@@ -1,7 +1,7 @@
 import { TFilter, TPost, TSort } from '../../types';
 
 export interface IPostsList {
-  postsData: TPost[];
+  postsIDArr: string[];
   sort: TSort;
   setSort: (sort: TSort) => void;
 }
