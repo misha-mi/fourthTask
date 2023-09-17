@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { THandlerCompleted, TPost, TSort } from '../../types';
 import { IGetPostsHOC } from './type';
-import { View, Button } from 'react-native';
+import { View, Button, ScrollView } from 'react-native';
 import Tabs from '../../ui/tabs/tabs';
 import PostsList from '../posts-list/posts-list';
 
@@ -41,11 +41,11 @@ const GetPostsComponent = ({ getPosts, isTabs }: IGetPostsHOC) => {
   ) : null;
 
   return (
-    <View>
+    <ScrollView>
       {showTabs}
       <PostsList postsData={postsData} sort={sort} setSort={setSort} />
       <Button title="more" onPress={() => handlerGetPost(afterCursor, sort)} />
-    </View>
+    </ScrollView>
   );
 };
 
