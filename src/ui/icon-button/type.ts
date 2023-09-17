@@ -5,4 +5,5 @@ export interface IIconButton {
   status?: TStatus;
   onRenderSVG: (color: string) => ReactElement;
   isActive?: boolean;
+  onClick: () => void;
 }

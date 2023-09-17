@@ -3,7 +3,12 @@ import { IIconButton } from './type';
 import { useTheme } from '@react-navigation/native';
 import { TPressed } from '../../types';
 
-const IconButton = ({ status, onRenderSVG, isActive }: IIconButton) => {
+const IconButton = ({
+  status,
+  onRenderSVG,
+  isActive,
+  onClick,
+}: IIconButton) => {
   const { defaultColor, pressedColor, disabledColor } =
     useTheme().colors.iconButtonColors;
 
@@ -17,7 +22,9 @@ const IconButton = ({ status, onRenderSVG, isActive }: IIconButton) => {
   };
 
   return (
-    <Pressable disabled={status === 'disabled'}>{handlerPressButton}</Pressable>
+    <Pressable disabled={status === 'disabled'} onTouchEnd={onClick}>
+      {handlerPressButton}
+    </Pressable>
   );
 };
 

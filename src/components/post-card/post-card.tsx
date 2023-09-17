@@ -16,8 +16,14 @@ import ShareSVG from '../../assets/svg/share-svg';
 import { useTheme } from '@react-navigation/native';
 import DeleteButton from '../../ui/delete-button/delete-button';
 import { useRef } from 'react';
+import { useMutation } from '@apollo/client';
+import { LIKE_POST } from '../../apollo/service/like-post';
+import { UNLIKE_POST } from '../../apollo/service/unlike-post';
 
 const PostCard = ({ isOpen, dataPost }: IPostCard) => {
+  const [likePost] = useMutation(LIKE_POST);
+  const [unlikePost] = useMutation(UNLIKE_POST);
+
   const {
     title,
     createdAt,
@@ -26,6 +32,7 @@ const PostCard = ({ isOpen, dataPost }: IPostCard) => {
     likesCount,
     mediaUrl,
     author,
+    id,
   } = dataPost;
 
   const { backgroundColor, titleColor, textColor } =
@@ -56,6 +63,11 @@ const PostCard = ({ isOpen, dataPost }: IPostCard) => {
         ? refScroll.current?.scrollTo({ x: 0, y: 0, animated: true })
         : console.log(lengthForDelete, event.nativeEvent.contentOffset.x);
     }
+  };
+
+  const handlerLike = () => {
+    const variables = { variables: { id } };
+    isLiked ? unlikePost(variables) : likePost(variables);
   };
 
   return (
@@ -91,6 +103,7 @@ const PostCard = ({ isOpen, dataPost }: IPostCard) => {
               <IconButton
                 onRenderSVG={color => <HeartSVG color={color} />}
                 isActive={isLiked}
+                onClick={handlerLike}
               />
               <Text style={{ ...styles.text, color: titleColor }}>
                 {likesCount}
