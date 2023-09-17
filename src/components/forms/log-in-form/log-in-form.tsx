@@ -22,7 +22,6 @@ const LogInForm = ({ onClickRegister }: ILogIntForm) => {
   const [logIn, { data: logInData, error: logInError }] = useMutation(LOG_IN, {
     errorPolicy: 'all',
     onCompleted: data => {
-      console.log(data.userSignIn.token);
       setToken(data.userSignIn.token);
     },
   });

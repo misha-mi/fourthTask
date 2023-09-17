@@ -1,12 +1,27 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client/core';
-import { getToken } from '../storage/storage';
+import {
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+} from '@apollo/client/core';
+import { setContext } from '@apollo/client/link/context';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const apolloClient = new ApolloClient({
+const httpLink = createHttpLink({
   uri: 'https://internship-social-media.purrweb.com/graphql',
-  cache: new InMemoryCache(),
-  headers: {
-    Authorization: `Bearer ${getToken()}`,
-  },
 });
 
-export default apolloClient;
+const authLink = setContext(async (_, { headers }) => {
+  const token = await AsyncStorage.getItem('token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+export default client;

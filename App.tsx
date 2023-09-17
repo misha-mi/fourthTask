@@ -1,6 +1,8 @@
+import { ApolloProvider } from '@apollo/client';
 import Index from './src';
 import { useEffect } from 'react';
 import BootSplash from 'react-native-bootsplash';
+import apolloClient from './src/apollo/client';
 
 function App(): JSX.Element {
   useEffect(() => {
@@ -12,7 +14,11 @@ function App(): JSX.Element {
     });
   }, []);
 
-  return <Index />;
+  return (
+    <ApolloProvider client={apolloClient}>
+      <Index />
+    </ApolloProvider>
+  );
 }
 
 export default App;
