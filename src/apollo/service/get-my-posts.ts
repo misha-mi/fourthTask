@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
-export const GET_POSTS = gql`
+export const GET_MY_POSTS = gql`
   query GetMyPosts($limit: Int, $afterCursor: String) {
-    myPosts(input: { limit: $limit, afterCursor: $afterCursor }) {
+    posts: myPosts(input: { limit: $limit, afterCursor: $afterCursor }) {
       data {
         author {
           avatarUrl
@@ -20,6 +20,5 @@ export const GET_POSTS = gql`
         afterCursor
       }
     }
-  }
   }
 `;

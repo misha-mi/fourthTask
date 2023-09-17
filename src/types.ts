@@ -27,6 +27,17 @@ export type TSort = 'new' | 'top';
 
 export type TFilter = 'main' | 'favorites' | 'my posts';
 
+export type TGetPost = (
+  afterCursor: string,
+  onCompleted: THandlerCompleted,
+  sort?: TSort,
+) => void;
+
+export type THandlerCompleted = (posts: {
+  data: TPost[];
+  pageInfo: { afterCursor: string };
+}) => void;
+
 export type TAuthor = {
   avatarUrl: string;
   firstName: string;

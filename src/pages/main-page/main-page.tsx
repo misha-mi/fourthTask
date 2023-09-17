@@ -1,22 +1,27 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import ProfileImg from '../../ui/profile-img/profile-img';
-import Tabs from '../../ui/tabs/tabs';
-import PostsList from '../../components/posts-list/posts-list';
 import Tapbar from '../../ui/tapbar/tapbar';
 import { useState } from 'react';
-import { TFilter, TSort } from '../../types';
-import { IMainPage } from './type';
+import { TFilter } from '../../types';
 import RoundButton from '../../ui/round-button/round-button';
 import PlusSVG from '../../assets/svg/plus-svg';
-import NoPosts from '../../ui/no-posts/no-posts';
+import GetPostsHoc from '../../components/get-posts-component/get-posts-component';
+import { useLazyQuery } from '@apollo/client';
+import { GET_POSTS } from '../../apollo/service/get-posts';
+import { GET_FAVORITES_POSTS } from '../../apollo/service/get-favorites-posts';
+import { GET_MY_POSTS } from '../../apollo/service/get-my-posts';
 
-const MainPage = ({ navigation }: IMainPage) => {
+const MainPage = () => {
   const [filter, setFilter] = useState<TFilter>('main');
 
   const textTitle =
     filter === 'main'
       ? 'Hello John!'
       : filter.slice(0, 1).toUpperCase() + filter.slice(1);
+
+  const [posts] = useLazyQuery(GET_POSTS);
+  const [favouritePosts] = useLazyQuery(GET_FAVORITES_POSTS);
+  const [myPosts] = useLazyQuery(GET_MY_POSTS);
 
   return (
     <View style={styles.container}>
@@ -30,7 +35,7 @@ const MainPage = ({ navigation }: IMainPage) => {
           </View>
         </View>
 
-        <PostsList filter={filter} />
+        <GetPostsHoc getPosts={posts} isTabs />
       </ScrollView>
 
       {filter === 'my posts' ? (

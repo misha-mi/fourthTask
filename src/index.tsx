@@ -24,7 +24,7 @@ const Index = () => {
     <ApolloProvider client={apolloClient}>
       <Navigation>
         <Stack.Navigator
-          initialRouteName="Welcome"
+          initialRouteName="Main"
           screenOptions={{
             headerShown: false,
           }}>
