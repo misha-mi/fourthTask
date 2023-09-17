@@ -46,7 +46,8 @@ const MainPage = () => {
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
-        }}>
+        }}
+        tabBar={props => <Tapbar {...props} />}>
         <Tab.Screen name="MainPosts" component={AllPosts} />
         <Tab.Screen name="FavouritePosts" component={FavoritePosts} />
         <Tab.Screen name="MyPosts" component={MyPosts} />

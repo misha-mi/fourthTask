@@ -1,9 +1,16 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+} from 'react-native';
 import HomeSVG from '../../assets/svg/home-svg';
 import BookmarkSVG from '../../assets/svg/bookmark-svg';
 import PhotoSVG from '../../assets/svg/photo-svg';
 import { useTheme } from '@react-navigation/native';
-import { ITapbar, TButtons } from './type';
+import { TButtons } from './type';
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 const BUTTONS: TButtons = [
   {
@@ -20,27 +27,43 @@ const BUTTONS: TButtons = [
   },
 ];
 
-const Tapbar = ({ filter, setFilter }: ITapbar) => {
+const Tapbar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
   const { backgroundColor, defaultColor, activeColor } =
     useTheme().colors.tapbarColors;
 
   return (
     <View
       style={{
-        ...styles.wrapper,
         backgroundColor: backgroundColor,
+        ...styles.wrapper,
       }}>
-      {BUTTONS.map(({ text, onRenderSVG }, id) => {
-        const color =
-          filter === text.toLowerCase() ? activeColor : defaultColor;
+      {state.routes.map((route, index) => {
+        const { onRenderSVG, text } = BUTTONS[index];
+
+        const isFocused = state.index === index;
+        const color = isFocused ? activeColor : defaultColor;
+
+        const onPress = () => {
+          const event = navigation.emit({
+            type: 'tabPress',
+            target: route.key,
+            canPreventDefault: true,
+          });
+
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name, { name: route.name, merge: true });
+          }
+        };
+
         return (
-          <Pressable
-            key={id}
-            style={styles.pressabel}
-            onTouchEnd={() => setFilter(text)}>
+          <Pressable key={index} style={styles.pressabel} onPress={onPress}>
             <>
               {onRenderSVG(color)}
-              <Text style={{ ...styles.text, color: color }}>
+              <Text
+                style={{
+                  ...styles.text,
+                  color: color,
+                }}>
                 {text.slice(0, 1).toUpperCase() + text.slice(1)}
               </Text>
             </>
