@@ -12,13 +12,18 @@ import {
   THandlerGenerateStatus,
   TInputs,
 } from './type';
+import { setToken } from '../../../storage/storage';
 
-const JoinUsForm = ({ onClickLogIn }: IJoinUsForm) => {
+const JoinUsForm = ({ onNavigate }: IJoinUsForm) => {
   const [isAfterFirstSubmit, setIsAfterFirstSubmit] = useState(true);
   const [joinUs, { data: joinUsData, error: joinUsError }] = useMutation(
     JOIN_US,
     {
       errorPolicy: 'all',
+      onCompleted: data => {
+        setToken(data.userSignUp.token);
+        onNavigate('SuccessJoinUsPage');
+      },
     },
   );
 
@@ -159,7 +164,7 @@ const JoinUsForm = ({ onClickLogIn }: IJoinUsForm) => {
         <IfMessage
           ifMessage="Already have an account?"
           thenMessage="Log in"
-          onClick={onClickLogIn}
+          onClick={() => onNavigate('LogIn')}
         />
       </View>
 

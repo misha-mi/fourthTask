@@ -6,11 +6,12 @@ import CustomButton from '../../../ui/custom-button/custom-button';
 import IfMessage from '../../../ui/if-message/if-message';
 import { ILogIntForm, TErrorArr, TInputs } from './type';
 import { THandlerGenerateStatus } from '../join-us-form/type';
-import { useMutation } from '@apollo/client';
+import { useLazyQuery, useMutation } from '@apollo/client';
 import { LOG_IN } from '../../../apollo/service/log-in';
 import { setToken } from '../../../storage/storage';
+import { GET_USER } from '../../../apollo/service/get-user';
 
-const LogInForm = ({ onClickRegister }: ILogIntForm) => {
+const LogInForm = ({ onNavigate }: ILogIntForm) => {
   const {
     control,
     handleSubmit,
@@ -19,10 +20,12 @@ const LogInForm = ({ onClickRegister }: ILogIntForm) => {
 
   const [isAfterFirstSubmit, setIsAfterFirstSubmit] = useState(true);
 
+  const [getUser] = useLazyQuery(GET_USER);
   const [logIn, { data: logInData, error: logInError }] = useMutation(LOG_IN, {
     errorPolicy: 'all',
     onCompleted: data => {
       setToken(data.userSignIn.token);
+      getUser();
     },
   });
 
@@ -127,7 +130,7 @@ const LogInForm = ({ onClickRegister }: ILogIntForm) => {
         <IfMessage
           ifMessage="No account?"
           thenMessage="Register"
-          onClick={onClickRegister}
+          onClick={() => onNavigate('JoinUs')}
         />
       </View>
 

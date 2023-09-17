@@ -1,5 +1,5 @@
 export interface ILogIntForm {
-  onClickRegister: () => void;
+  onNavigate: (path: 'JoinUs') => void;
 }
 
 export type TInputs = {

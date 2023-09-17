@@ -7,8 +7,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useLazyQuery, useQuery } from '@apollo/client';
 import ProfilePage from './pages/profile-page/profile-page';
 import MainPage from './pages/main-page/main-page';
-import { getToken } from './storage/storage';
+import { setToken } from './storage/storage';
 import { GET_USER } from './apollo/service/get-user';
+import BootSplash from 'react-native-bootsplash';
 import { useEffect } from 'react';
 
 const Stack = createNativeStackNavigator();
@@ -24,10 +25,12 @@ const Index = () => {
   // };
 
   const { data, loading } = useQuery(GET_USER, {
-    onCompleted: console.log,
-    onError: console.log,
     errorPolicy: 'all',
   });
+
+  useEffect(() => {
+    if (!loading) BootSplash.hide({ fade: true });
+  }, [loading]);
 
   return (
     <Navigation>

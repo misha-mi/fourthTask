@@ -1,5 +1,5 @@
 export interface IJoinUsForm {
-  onClickLogIn: () => void;
+  onNavigate: (path: 'LogIn' | 'SuccessJoinUsPage') => void;
 }
 
 export type TInputs = {

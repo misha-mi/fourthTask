@@ -2,10 +2,14 @@ import { useTheme } from '@react-navigation/native';
 import CheckCircleSVG from '../../assets/svg/check-circle-svg';
 import CustomButton from '../../ui/custom-button/custom-button';
 import { View, Text, StyleSheet } from 'react-native';
+import { useLazyQuery } from '@apollo/client';
+import { GET_USER } from '../../apollo/service/get-user';
 
 const SuccessJoinUsPage = () => {
   const { titleColor, textColor, backgroundColor } =
     useTheme().colors.successJoinUsColors;
+
+  const [getUser] = useLazyQuery(GET_USER);
 
   return (
     <View style={styles.wrapper}>
@@ -23,7 +27,7 @@ const SuccessJoinUsPage = () => {
         </Text>
       </View>
       <View style={styles.mt52}>
-        <CustomButton title="Continue" onClick={() => console.log('click')} />
+        <CustomButton title="Continue" onClick={getUser} />
       </View>
     </View>
   );
