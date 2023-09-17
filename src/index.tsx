@@ -23,7 +23,7 @@ const Index = () => {
   //   }
   // };
 
-  const { data } = useQuery(GET_USER, {
+  const { data, loading } = useQuery(GET_USER, {
     onCompleted: console.log,
     onError: console.log,
     errorPolicy: 'all',
@@ -35,7 +35,12 @@ const Index = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        {true ? (
+        {data?.userMe ? (
+          <>
+            <Stack.Screen name="Main" component={MainPage} />
+            <Stack.Screen name="Profile" component={ProfilePage} />
+          </>
+        ) : (
           <>
             <Stack.Screen name="Welcome" component={WelcomePage} />
             <Stack.Screen name="JoinUs" component={JoinUsPage} />
@@ -44,11 +49,6 @@ const Index = () => {
               component={SuccessJoinUsPage}
             />
             <Stack.Screen name="LogIn" component={LogInPage} />
-          </>
-        ) : (
-          <>
-            <Stack.Screen name="Main" component={MainPage} />
-            <Stack.Screen name="Profile" component={ProfilePage} />
           </>
         )}
       </Stack.Navigator>
