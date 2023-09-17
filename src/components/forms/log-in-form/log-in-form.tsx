@@ -8,6 +8,7 @@ import { ILogIntForm, TErrorArr, TInputs } from './type';
 import { THandlerGenerateStatus } from '../join-us-form/type';
 import { useMutation } from '@apollo/client';
 import { LOG_IN } from '../../../apollo/service/log-in';
+import { setToken } from '../../../storage/storage';
 
 const LogInForm = ({ onClickRegister }: ILogIntForm) => {
   const {
@@ -20,6 +21,10 @@ const LogInForm = ({ onClickRegister }: ILogIntForm) => {
 
   const [logIn, { data: logInData, error: logInError }] = useMutation(LOG_IN, {
     errorPolicy: 'all',
+    onCompleted: data => {
+      console.log(data.userSignIn.token);
+      setToken(data.userSignIn.token);
+    },
   });
 
   const incorrectErrorOrPassword = logInData?.userSignIn?.problem?.message;
