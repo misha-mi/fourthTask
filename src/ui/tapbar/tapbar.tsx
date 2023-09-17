@@ -1,16 +1,9 @@
-import {
-  TouchableOpacity,
-  StyleSheet,
-  Text,
-  View,
-  Pressable,
-} from 'react-native';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 import HomeSVG from '../../assets/svg/home-svg';
 import BookmarkSVG from '../../assets/svg/bookmark-svg';
 import PhotoSVG from '../../assets/svg/photo-svg';
 import { useTheme } from '@react-navigation/native';
-import { TButtons } from './type';
-import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { ITapbar, TButtons } from './type';
 
 const BUTTONS: TButtons = [
   {
@@ -27,7 +20,7 @@ const BUTTONS: TButtons = [
   },
 ];
 
-const Tapbar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
+const Tapbar = ({ state, navigation, setFilter }: ITapbar) => {
   const { backgroundColor, defaultColor, activeColor } =
     useTheme().colors.tapbarColors;
 
@@ -51,6 +44,7 @@ const Tapbar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
           });
 
           if (!isFocused && !event.defaultPrevented) {
+            setFilter(text);
             navigation.navigate(route.name, { name: route.name, merge: true });
           }
         };

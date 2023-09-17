@@ -43,11 +43,12 @@ const MainPage = () => {
           <ProfileImg userImg="../../assets/img/user.png" size="small" />
         </View>
       </View>
+
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
         }}
-        tabBar={props => <Tapbar {...props} />}>
+        tabBar={props => <Tapbar {...props} setFilter={setFilter} />}>
         <Tab.Screen name="MainPosts" component={AllPosts} />
         <Tab.Screen name="FavouritePosts" component={FavoritePosts} />
         <Tab.Screen name="MyPosts" component={MyPosts} />
