@@ -21,6 +21,7 @@ import { LIKE_POST } from '../../apollo/service/like-post';
 import { UNLIKE_POST } from '../../apollo/service/unlike-post';
 import { GET_POST } from '../../apollo/service/get-post';
 import { TPost } from '../../types';
+import { GET_FAVORITES_POSTS } from '../../apollo/service/get-favorites-posts';
 
 const PostCard = ({ isOpen, postID }: IPostCard) => {
   const [likePost] = useMutation(LIKE_POST);
@@ -71,8 +72,11 @@ const PostCard = ({ isOpen, postID }: IPostCard) => {
   };
 
   const handlerLike = () => {
-    const variables = { variables: { id } };
-    isLiked ? unlikePost(variables) : likePost(variables);
+    const options = {
+      variables: { id },
+      refetchQueries: [GET_FAVORITES_POSTS, 'GetFavoritesPosts'],
+    };
+    isLiked ? unlikePost(options) : likePost(options);
   };
 
   return (

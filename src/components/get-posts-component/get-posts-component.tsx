@@ -8,7 +8,8 @@ import { useQuery } from '@apollo/client';
 
 const GetPostsComponent = ({ query, isTabs }: IGetPostsHOC) => {
   const [sort, setSort] = useState<TSort>('new');
-  const { data, loading, error, fetchMore } = useQuery(query, {
+
+  const { data, loading, fetchMore } = useQuery(query, {
     variables: { limit: 3, type: sort.toUpperCase() },
     errorPolicy: 'all',
   });
