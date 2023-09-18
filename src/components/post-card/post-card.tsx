@@ -16,19 +16,14 @@ import ShareSVG from '../../assets/svg/share-svg';
 import { useTheme } from '@react-navigation/native';
 import DeleteButton from '../../ui/delete-button/delete-button';
 import { useRef } from 'react';
-import { useMutation, useQuery, useSuspenseQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { LIKE_POST } from '../../apollo/service/like-post';
 import { UNLIKE_POST } from '../../apollo/service/unlike-post';
-import { GET_POST } from '../../apollo/service/get-post';
-import { TPost } from '../../types';
 import { GET_FAVORITES_POSTS } from '../../apollo/service/get-favorites-posts';
 
-const PostCard = ({ isOpen, postID }: IPostCard) => {
+const PostCard = ({ isOpen, postData, onOpenPost }: IPostCard) => {
   const [likePost] = useMutation(LIKE_POST);
   const [unlikePost] = useMutation(UNLIKE_POST);
-  const { data } = useSuspenseQuery<{ post: TPost }>(GET_POST, {
-    variables: { id: postID },
-  });
 
   const {
     title,
@@ -39,7 +34,7 @@ const PostCard = ({ isOpen, postID }: IPostCard) => {
     mediaUrl,
     author,
     id,
-  } = data.post;
+  } = postData;
 
   const { backgroundColor, titleColor, textColor } =
     useTheme().colors.postCardColors;

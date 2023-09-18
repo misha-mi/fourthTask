@@ -1,7 +1,7 @@
 import { TFilter, TPost, TSort } from '../../types';
 
 export interface IPostsList {
-  postsIDArr: string[];
+  postsData: TPost[];
 }
 
 export type THandlerCompleted = (posts: {

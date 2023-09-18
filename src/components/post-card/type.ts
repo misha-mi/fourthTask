@@ -1,4 +1,6 @@
+import { TPost } from '../../types';
+
 export interface IPostCard {
   isOpen?: boolean;
-  postID: string;
+  postData: TPost;
 }

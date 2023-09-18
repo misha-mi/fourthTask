@@ -1,17 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import PostCard from '../post-card/post-card';
 import { IPostsList } from './type';
-import { Suspense } from 'react';
 
-const PostsList = ({ postsIDArr }: IPostsList) => {
+const PostsList = ({ postsData }: IPostsList) => {
   return (
     <View style={[styles.mt24, styles.gap4]}>
-      {postsIDArr.map(id => (
-        <Suspense
-          key={id}
-          fallback={<Text style={{ color: 'red' }}>Loading...</Text>}>
-          <PostCard postID={id} />
-        </Suspense>
+      {postsData.map(item => (
+        <View key={item.id}>
+          <PostCard postData={item} />
+        </View>
       ))}
     </View>
   );

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { THandlerCompleted, TPost, TSort } from '../../types';
+import { useState } from 'react';
+import { TSort } from '../../types';
 import { IGetPostsHOC } from './type';
 import { View, Button, ScrollView } from 'react-native';
 import Tabs from '../../ui/tabs/tabs';
@@ -13,7 +13,6 @@ const GetPostsComponent = ({ query, isTabs }: IGetPostsHOC) => {
     variables: { limit: 3, type: sort.toUpperCase() },
     errorPolicy: 'all',
   });
-  const postsIDArr = !loading ? data.posts.data.map(item => item.id) : [];
 
   const handlerFetchMore = (afterCursor: string, sort?: TSort) => {
     if (afterCursor) {
@@ -43,7 +42,7 @@ const GetPostsComponent = ({ query, isTabs }: IGetPostsHOC) => {
   return (
     <ScrollView>
       {showTabs}
-      <PostsList postsIDArr={postsIDArr} />
+      {!loading ? <PostsList postsData={data.posts.data} /> : null}
       <Button
         title="more"
         onPress={() => handlerFetchMore(data.posts.pageInfo.afterCursor, sort)}
