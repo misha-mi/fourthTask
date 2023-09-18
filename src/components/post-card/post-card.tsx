@@ -25,7 +25,7 @@ import { TPost } from '../../types';
 const PostCard = ({ isOpen, postID }: IPostCard) => {
   const [likePost] = useMutation(LIKE_POST);
   const [unlikePost] = useMutation(UNLIKE_POST);
-  const { data } = useSuspenseQuery<{ data: { post: TPost } }>(GET_POST, {
+  const { data } = useSuspenseQuery<{ post: TPost }>(GET_POST, {
     variables: { id: postID },
   });
 
