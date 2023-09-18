@@ -24,15 +24,13 @@ const MainPage = () => {
 
   const AllPosts = () => {
     const [posts] = useLazyQuery(GET_POSTS);
-    return <GetPostsComponent getPosts={posts} isTabs />;
+    return <GetPostsComponent query={GET_POSTS} isTabs />;
   };
   const FavoritePosts = () => {
-    const [favouritePosts] = useLazyQuery(GET_FAVORITES_POSTS);
-    return <GetPostsComponent getPosts={favouritePosts} />;
+    return <GetPostsComponent query={GET_FAVORITES_POSTS} />;
   };
   const MyPosts = () => {
-    const [myPosts] = useLazyQuery(GET_MY_POSTS);
-    return <GetPostsComponent getPosts={myPosts} />;
+    return <GetPostsComponent query={GET_MY_POSTS} />;
   };
 
   return (

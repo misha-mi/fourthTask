@@ -1,7 +1,7 @@
-import { LazyQueryExecFunction, OperationVariables } from '@apollo/client';
+import { DocumentNode, LazyQueryExecFunction, OperationVariables } from '@apollo/client';
 import { TGetPost, TPost, TSort } from '../../types';
 
 export interface IGetPostsHOC {
-  getPosts: LazyQueryExecFunction<any, OperationVariables>;
+  query: DocumentNode;
   isTabs?: boolean;
 }

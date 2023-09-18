@@ -3,7 +3,7 @@ import PostCard from '../post-card/post-card';
 import { IPostsList } from './type';
 import { Suspense } from 'react';
 
-const PostsList = ({ postsIDArr, sort, setSort }: IPostsList) => {
+const PostsList = ({ postsIDArr }: IPostsList) => {
   return (
     <View style={[styles.mt24, styles.gap4]}>
       {postsIDArr.map(id => (
