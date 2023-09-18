@@ -39,7 +39,7 @@ const Index = () => {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName="Main">
+        initialRouteName="PostPage">
         {data?.userMe ? (
           <>
             <Stack.Screen name="Main" component={MainPage} />
