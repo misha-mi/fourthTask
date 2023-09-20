@@ -6,6 +6,8 @@ import { Controller, useForm } from 'react-hook-form';
 import { THandlerGenerateStatus } from '../join-us-form/type';
 import { useState } from 'react';
 import { useTheme } from '@react-navigation/native';
+import { useMutation } from '@apollo/client';
+import { POST_CREATE } from '../../../apollo/service/post-create';
 
 type TInputs = {
   description: string;
@@ -17,6 +19,8 @@ const CreatePostForm = () => {
   const { errorColor } = useTheme().colors.defaultColors;
 
   const [isAfterFirstSubmit, setIsAfterFirstSubmit] = useState(true);
+
+  const [createPost] = useMutation(POST_CREATE);
 
   const {
     control,
