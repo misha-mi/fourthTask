@@ -2,6 +2,7 @@ import { Image, Pressable, Text, View, StyleSheet } from 'react-native';
 import CloudSVG from '../../assets/svg/cloud-svg';
 import { useTheme } from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
+import { getLinkForPhoto } from '../../service/get-link-for-photo';
 
 const Upload = ({ img, setImg }) => {
   const { backgroundColor, borderColor, textColor, cloudColor } =
@@ -11,7 +12,7 @@ const Upload = ({ img, setImg }) => {
     ? { ...styles.border, borderColor: borderColor }
     : null;
 
-  const getPhoto = () => {
+  const changePhoto = async () => {
     ImagePicker.openPicker({
       width: 300,
       height: 400,
@@ -27,7 +28,7 @@ const Upload = ({ img, setImg }) => {
         backgroundColor: backgroundColor,
       }}>
       {!img ? (
-        <Pressable style={styles.pressable} onTouchEnd={getPhoto}>
+        <Pressable style={styles.pressable} onTouchEnd={changePhoto}>
           <CloudSVG color={cloudColor} />
           <Text style={{ ...styles.text, color: textColor }}>
             Upload your photo here

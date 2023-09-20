@@ -1,8 +1,11 @@
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import Upload from '../../../ui/upload/upload';
 import Input from '../../../ui/input/input';
 import CustomButton from '../../../ui/custom-button/custom-button';
 import { Controller, useForm } from 'react-hook-form';
+import { THandlerGenerateStatus } from '../join-us-form/type';
+import { useState } from 'react';
+import { useTheme } from '@react-navigation/native';
 
 type TInputs = {
   description: string;
@@ -11,54 +14,104 @@ type TInputs = {
 };
 
 const CreatePostForm = () => {
+  const { errorColor } = useTheme().colors.defaultColors;
+
+  const [isAfterFirstSubmit, setIsAfterFirstSubmit] = useState(true);
+
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<TInputs>();
+
+  const onSubmit = (data: TInputs) => {
+    // logIn({
+    //   variables: { ...data },
+    // });
+  };
+
+  const handlerClickButtonSubmit = () => {
+    if (isAfterFirstSubmit) setIsAfterFirstSubmit(false);
+    handleSubmit(onSubmit)();
+  };
+
+  const handlerGenerateStatus: THandlerGenerateStatus = errorMessage => {
+    if (isAfterFirstSubmit) {
+      return 'waiting';
+    } else if (errorMessage) {
+      return 'error';
+    } else {
+      return 'success';
+    }
+  };
 
   return (
     <View>
       <View style={{ marginBottom: 25 }}>
         <Controller
           control={control}
+          rules={{ required: 'Img is required' }}
           name="mediaUrl"
           render={({ field: { onChange, value } }) => (
             <Upload img={value} setImg={onChange} />
           )}
         />
+        <Text style={{ color: errorColor, marginTop: 6 }}>
+          {errors.mediaUrl?.message}
+        </Text>
       </View>
 
       <Controller
         control={control}
+        rules={{
+          required: 'Title is required',
+          minLength: {
+            value: 5,
+            message: 'Title must be longer than or equal to 5 characters',
+          },
+        }}
         name="title"
         render={({ field: { onChange, value } }) => (
           <Input
             label="Title"
             placeholder="Enter title of post"
-            status="waiting"
+            status={handlerGenerateStatus(errors.title?.message)}
             onChange={onChange}
             value={value}
+            errorMessage={errors.title?.message}
           />
         )}
       />
 
       <Controller
         control={control}
+        rules={{
+          required: 'Description is required',
+          minLength: {
+            value: 40,
+            message:
+              'Description must be longer than or equal to 40 characters',
+          },
+        }}
         name="description"
         render={({ field: { onChange, value } }) => (
           <Input
             label="Description"
             placeholder="Enter your post"
-            status="waiting"
+            status={handlerGenerateStatus(errors.description?.message)}
             onChange={onChange}
             value={value}
+            errorMessage={errors.description?.message}
           />
         )}
       />
 
       <View style={{ marginTop: 40 }}>
-        <CustomButton title="Publish" status="disabled" />
+        <CustomButton
+          title="Publish"
+          status={!isValid && !isAfterFirstSubmit ? 'disabled' : 'waiting'}
+          onClick={handlerClickButtonSubmit}
+        />
       </View>
     </View>
   );
