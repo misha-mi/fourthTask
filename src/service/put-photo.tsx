@@ -1,10 +1,9 @@
 type TPutPhoto = (uriPost: string, photo: string) => Promise<string>;
 
-export const PutPhoto: TPutPhoto = async (uriPut, photo) => {
+export const putPhoto: TPutPhoto = async (uriPut, photo) => {
   const path = await fetch(uriPut, {
     method: 'PUT',
     body: photo,
-  }).then(res => res.text());
-
+  }).then(res => res.url);
   return path.slice(0, path.indexOf('?'));
 };

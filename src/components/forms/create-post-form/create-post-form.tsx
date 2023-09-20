@@ -8,10 +8,12 @@ import { useState } from 'react';
 import { useTheme } from '@react-navigation/native';
 import { useMutation } from '@apollo/client';
 import { POST_CREATE } from '../../../apollo/service/post-create';
+import { getLinkForPhoto } from '../../../service/get-link-for-photo';
+import { putPhoto } from '../../../service/put-photo';
 
 type TInputs = {
   description: string;
-  mediaUrl: string;
+  media: { path: string; data: string };
   title: string;
 };
 
@@ -28,10 +30,20 @@ const CreatePostForm = () => {
     formState: { errors, isValid },
   } = useForm<TInputs>();
 
-  const onSubmit = (data: TInputs) => {
-    // logIn({
-    //   variables: { ...data },
-    // });
+  const onSubmit = async (dataForm: TInputs) => {
+    const { path, data } = dataForm.media;
+    const fileName = path.slice(path.lastIndexOf('/') + 1);
+
+    const uriPut = await getLinkForPhoto(fileName, 'POSTS');
+
+    const uriPush = await putPhoto(uriPut, data);
+
+    createPost({
+      variables: {
+        ...dataForm,
+        mediaUrl: uriPush,
+      },
+    });
   };
 
   const handlerClickButtonSubmit = () => {
@@ -55,13 +67,13 @@ const CreatePostForm = () => {
         <Controller
           control={control}
           rules={{ required: 'Img is required' }}
-          name="mediaUrl"
+          name="media"
           render={({ field: { onChange, value } }) => (
             <Upload img={value} setImg={onChange} />
           )}
         />
         <Text style={{ color: errorColor, marginTop: 6 }}>
-          {errors.mediaUrl?.message}
+          {errors.media?.message}
         </Text>
       </View>
 
