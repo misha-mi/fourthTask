@@ -3,11 +3,11 @@ import CloudSVG from '../../assets/svg/cloud-svg';
 import { useTheme } from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
 
-const Upload = () => {
+const Upload = ({ img, setImg }) => {
   const { backgroundColor, borderColor, textColor, cloudColor } =
     useTheme().colors.uploadColors;
 
-  const emptyStyles = true
+  const emptyStyles = !img
     ? { ...styles.border, borderColor: borderColor }
     : null;
 
@@ -16,7 +16,7 @@ const Upload = () => {
       width: 300,
       height: 400,
       includeBase64: true,
-    }).then(console.log);
+    }).then(setImg);
   };
 
   return (
@@ -26,12 +26,16 @@ const Upload = () => {
         ...emptyStyles,
         backgroundColor: backgroundColor,
       }}>
-      <Pressable style={styles.pressable} onTouchEnd={getPhoto}>
-        <CloudSVG color={cloudColor} />
-        <Text style={{ ...styles.text, color: textColor }}>
-          Upload your photo here
-        </Text>
-      </Pressable>
+      {!img ? (
+        <Pressable style={styles.pressable} onTouchEnd={getPhoto}>
+          <CloudSVG color={cloudColor} />
+          <Text style={{ ...styles.text, color: textColor }}>
+            Upload your photo here
+          </Text>
+        </Pressable>
+      ) : (
+        <Image source={{ uri: img?.path }} style={{ height: 166 }} />
+      )}
     </View>
   );
 };

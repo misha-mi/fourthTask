@@ -1,9 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 import Header from '../../ui/header/header';
-import Upload from '../../ui/upload/upload';
-import Input from '../../ui/input/input';
-import CustomButton from '../../ui/custom-button/custom-button';
-import CreatePostForm from '../../components/forms/create-post-form/create-post';
+import CreatePostForm from '../../components/forms/create-post-form/create-post-form';
 
 const CreatePostPage = () => {
   return (

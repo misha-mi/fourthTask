@@ -23,7 +23,9 @@ const CreatePostForm = () => {
         <Controller
           control={control}
           name="mediaUrl"
-          render={({ field: { onChange, value } }) => <Upload />}
+          render={({ field: { onChange, value } }) => (
+            <Upload img={value} setImg={onChange} />
+          )}
         />
       </View>
 
