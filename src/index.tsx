@@ -12,6 +12,7 @@ import { GET_USER } from './apollo/service/get-user';
 import BootSplash from 'react-native-bootsplash';
 import { useEffect } from 'react';
 import PostPage from './pages/post-page/post-page';
+import CreatePostPage from './pages/create-post-page/create-post-page';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,7 +40,7 @@ const Index = () => {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName="PostPage">
+        initialRouteName="CreatePost">
         {data?.userMe ? (
           <>
             <Stack.Screen name="Main" component={MainPage} />
@@ -49,6 +50,7 @@ const Index = () => {
               component={PostPage}
               initialParams={{ id: '9a4cde44-c971-43dc-b419-543e250269ca' }}
             />
+            <Stack.Screen name="CreatePost" component={CreatePostPage} />
           </>
         ) : (
           <>
