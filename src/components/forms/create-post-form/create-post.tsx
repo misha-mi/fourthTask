@@ -23,7 +23,7 @@ const CreatePostForm = () => {
         <Controller
           control={control}
           name="mediaUrl"
-          render={({ field: { onChange, value } }) => <Upload isEmpty />}
+          render={({ field: { onChange, value } }) => <Upload />}
         />
       </View>
 
@@ -55,7 +55,9 @@ const CreatePostForm = () => {
         )}
       />
 
-      <CustomButton title="Publish" status="disabled" />
+      <View style={{ marginTop: 40 }}>
+        <CustomButton title="Publish" status="disabled" />
+      </View>
     </View>
   );
 };
