@@ -11,15 +11,20 @@ import { GET_FAVORITES_POSTS } from '../../apollo/service/get-favorites-posts';
 import { GET_MY_POSTS } from '../../apollo/service/get-my-posts';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useNavigation } from '@react-navigation/native';
+import { GET_USER } from '../../apollo/service/get-user';
+import { useQuery } from '@apollo/client';
 const Tab = createBottomTabNavigator();
 
 const MainPage = () => {
+  const {
+    data: { firstName, avatarUrl },
+  } = useQuery(GET_USER);
   const navigation = useNavigation();
   const [filter, setFilter] = useState<TFilter>('main');
 
   const textTitle =
     filter === 'main'
-      ? 'Hello John!'
+      ? `Hello ${firstName || 'Anonym'}!`
       : filter.slice(0, 1).toUpperCase() + filter.slice(1);
 
   const AllPosts = () => {
@@ -49,7 +54,7 @@ const MainPage = () => {
         <View style={styles.header}>
           <Text style={styles.name}>{textTitle}</Text>
           <Pressable onTouchEnd={navigation.toggleDrawer}>
-            <ProfileImg userImg="../../assets/img/user.png" size="small" />
+            <ProfileImg userImg={avatarUrl} size="small" />
           </Pressable>
         </View>
       </View>
