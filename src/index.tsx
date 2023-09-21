@@ -5,16 +5,12 @@ import SuccessJoinUsPage from './pages/success-join-us-page/success-join-us-page
 import WelcomePage from './pages/welcome-page/welcome-page';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useQuery } from '@apollo/client';
-import ProfilePage from './pages/profile-page/profile-page';
-import MainPage from './pages/main-page/main-page';
 import { GET_USER } from './apollo/service/get-user';
 import BootSplash from 'react-native-bootsplash';
 import { useEffect } from 'react';
 import PostPage from './pages/post-page/post-page';
 import CreatePostPage from './pages/create-post-page/create-post-page';
 import DrawerNavigator from './components/drawer-navigator/drawer-navigator';
-import { getToken } from './storage/storage';
-
 const Stack = createNativeStackNavigator();
 
 const Index = () => {

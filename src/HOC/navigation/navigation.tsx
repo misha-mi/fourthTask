@@ -1,12 +1,23 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
 import { ReactElement } from 'react';
 import { CustomDarkTheme, CustomLightTheme } from './themes';
 import { useColorScheme } from 'react-native';
 
+const linking: LinkingOptions<ReactNavigation.RootParamList> = {
+  prefixes: ['shareyourtale://', 'https://www.shareyourtale.com'],
+  config: {
+    screens: {
+      PostPage: 'post/:id',
+    },
+  },
+};
+
 const Navigation = ({ children }: { children: ReactElement }) => {
   const isDark = useColorScheme() === 'dark';
   return (
-    <NavigationContainer theme={isDark ? CustomDarkTheme : CustomLightTheme}>
+    <NavigationContainer
+      linking={linking}
+      theme={isDark ? CustomDarkTheme : CustomLightTheme}>
       {children}
     </NavigationContainer>
   );

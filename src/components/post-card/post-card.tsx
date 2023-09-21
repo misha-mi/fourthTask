@@ -8,6 +8,7 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
   Pressable,
+  Share,
 } from 'react-native';
 import { IPostCard } from './type';
 import ProfileImg from '../../ui/profile-img/profile-img';
@@ -88,6 +89,12 @@ const PostCard = ({ isOpen, postData }: IPostCard) => {
     });
   };
 
+  const handlerShare = () => {
+    Share.share({
+      message: `shareyourtale://post/${id}`,
+    });
+  };
+
   return (
     <ScrollView
       horizontal
@@ -133,7 +140,10 @@ const PostCard = ({ isOpen, postData }: IPostCard) => {
               </Text>
             </View>
 
-            <IconButton onRenderSVG={color => <ShareSVG color={color} />} />
+            <IconButton
+              onRenderSVG={color => <ShareSVG color={color} />}
+              onClick={handlerShare}
+            />
           </View>
         </View>
       </View>
