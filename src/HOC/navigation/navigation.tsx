@@ -6,7 +6,7 @@ import { useColorScheme } from 'react-native';
 const Navigation = ({ children }: { children: ReactElement }) => {
   const isDark = useColorScheme() === 'dark';
   return (
-    <NavigationContainer theme={isDark ? CustomLightTheme : CustomDarkTheme}>
+    <NavigationContainer theme={isDark ? CustomDarkTheme : CustomLightTheme}>
       {children}
     </NavigationContainer>
   );

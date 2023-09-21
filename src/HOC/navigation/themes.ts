@@ -129,7 +129,7 @@ export const CustomLightTheme = {
   dark: false,
   colors: {
     ...DefaultTheme.colors,
-    background: DARK_THEME.color1,
+    background: LIGHT_THEME.color7,
     profileImgColors: {
       backgroundColor: LIGHT_THEME.color4,
       SVGColor: LIGHT_THEME.color3,
@@ -206,7 +206,7 @@ export const CustomLightTheme = {
       activeTextColor: LIGHT_THEME.color7,
     },
     tapbarColors: {
-      backgroundColor: LIGHT_THEME.color7,
+      backgroundColor: LIGHT_THEME.color6,
       defaultColor: LIGHT_THEME.color4,
       activeColor: LIGHT_THEME.primaryDefault,
     },
@@ -227,7 +227,7 @@ export const CustomLightTheme = {
       cloudColor: LIGHT_THEME.primaryDefault,
     },
     postCardColors: {
-      backgroundColor: LIGHT_THEME.color7,
+      backgroundColor: LIGHT_THEME.color6,
       titleColor: LIGHT_THEME.color1,
       textColor: LIGHT_THEME.color3,
     },

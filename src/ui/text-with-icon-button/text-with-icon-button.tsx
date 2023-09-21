@@ -7,6 +7,7 @@ const TextWithIconButton = ({
   onRenderSVG,
   text,
   isDisabled,
+  onClick,
 }: ITextWithIconButton) => {
   const { defaultColor, pressedColor, disabledColor } =
     useTheme().colors.textWithIconButtonColors;
@@ -30,7 +31,10 @@ const TextWithIconButton = ({
   };
 
   return (
-    <Pressable style={styles.wrapper} disabled={isDisabled}>
+    <Pressable
+      style={styles.wrapper}
+      disabled={isDisabled}
+      onTouchEnd={onClick}>
       {handlerPressContent}
     </Pressable>
   );

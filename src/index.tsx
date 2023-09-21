@@ -13,19 +13,11 @@ import { useEffect } from 'react';
 import PostPage from './pages/post-page/post-page';
 import CreatePostPage from './pages/create-post-page/create-post-page';
 import DrawerNavigator from './components/drawer-navigator/drawer-navigator';
+import { getToken } from './storage/storage';
 
 const Stack = createNativeStackNavigator();
 
 const Index = () => {
-  // const handlerChangeColorTheme = () => {
-  //   const theme = Appearance.getColorScheme();
-  //   if (theme === 'dark') {
-  //     Appearance.setColorScheme('light');
-  //   } else {
-  //     Appearance.setColorScheme('dark');
-  //   }
-  // };
-
   const { data, loading } = useQuery(GET_USER, {
     errorPolicy: 'all',
   });
