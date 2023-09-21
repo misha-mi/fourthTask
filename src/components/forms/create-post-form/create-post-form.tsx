@@ -10,6 +10,8 @@ import { useMutation } from '@apollo/client';
 import { POST_CREATE } from '../../../apollo/service/post-create';
 import { getLinkForPhoto } from '../../../service/get-link-for-photo';
 import { putPhoto } from '../../../service/put-photo';
+import { GET_MY_POSTS } from '../../../apollo/service/get-my-posts';
+import { GET_POSTS } from '../../../apollo/service/get-posts';
 
 type TInputs = {
   description: string;
@@ -26,6 +28,7 @@ const CreatePostForm = () => {
 
   const [createPost] = useMutation(POST_CREATE, {
     onCompleted: () => navigation.goBack(),
+    refetchQueries: [GET_POSTS, GET_MY_POSTS],
   });
 
   const {

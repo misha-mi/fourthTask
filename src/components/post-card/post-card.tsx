@@ -21,7 +21,7 @@ import { LIKE_POST } from '../../apollo/service/like-post';
 import { UNLIKE_POST } from '../../apollo/service/unlike-post';
 import { GET_FAVORITES_POSTS } from '../../apollo/service/get-favorites-posts';
 
-const PostCard = ({ isOpen, postData, onOpenPost }: IPostCard) => {
+const PostCard = ({ isOpen, postData }: IPostCard) => {
   const [likePost] = useMutation(LIKE_POST);
   const [unlikePost] = useMutation(UNLIKE_POST);
 
