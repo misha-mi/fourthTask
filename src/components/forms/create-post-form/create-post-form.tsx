@@ -36,7 +36,10 @@ const CreatePostForm = () => {
 
     const uriPut = await getLinkForPhoto(fileName, 'POSTS');
 
-    const uriPush = await putPhoto(uriPut, data);
+    const res = await fetch(path);
+    const blobData = await res.blob();
+
+    const uriPush = await putPhoto(uriPut, blobData);
 
     createPost({
       variables: {

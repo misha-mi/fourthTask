@@ -4,10 +4,9 @@ import LogInPage from './pages/log-in-page/log-in-page';
 import SuccessJoinUsPage from './pages/success-join-us-page/success-join-us-page';
 import WelcomePage from './pages/welcome-page/welcome-page';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useLazyQuery, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import ProfilePage from './pages/profile-page/profile-page';
 import MainPage from './pages/main-page/main-page';
-import { setToken } from './storage/storage';
 import { GET_USER } from './apollo/service/get-user';
 import BootSplash from 'react-native-bootsplash';
 import { useEffect } from 'react';
@@ -40,7 +39,7 @@ const Index = () => {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName="CreatePost">
+        initialRouteName="Main">
         {data?.userMe ? (
           <>
             <Stack.Screen name="Main" component={MainPage} />
