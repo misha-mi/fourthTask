@@ -11,10 +11,13 @@ import { GET_POSTS } from '../../apollo/service/get-posts';
 import { GET_FAVORITES_POSTS } from '../../apollo/service/get-favorites-posts';
 import { GET_MY_POSTS } from '../../apollo/service/get-my-posts';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useNavigation } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
-const MainPage = ({ navigation }) => {
+const MainPage = () => {
+  const navigation = useNavigation();
+
   const [filter, setFilter] = useState<TFilter>('main');
 
   const textTitle =
@@ -23,14 +26,24 @@ const MainPage = ({ navigation }) => {
       : filter.slice(0, 1).toUpperCase() + filter.slice(1);
 
   const AllPosts = () => {
-    const [posts] = useLazyQuery(GET_POSTS);
     return <GetPostsComponent query={GET_POSTS} isTabs />;
   };
   const FavoritePosts = () => {
     return <GetPostsComponent query={GET_FAVORITES_POSTS} />;
   };
   const MyPosts = () => {
-    return <GetPostsComponent query={GET_MY_POSTS} />;
+    return (
+      <>
+        <GetPostsComponent query={GET_MY_POSTS} />
+        <View style={styles.positions}>
+          <RoundButton
+            size="large"
+            onRenderSVG={color => <PlusSVG color={color} />}
+            onClick={() => navigation.navigate('CreatePost')}
+          />
+        </View>
+      </>
+    );
   };
 
   return (
@@ -51,16 +64,6 @@ const MainPage = ({ navigation }) => {
         <Tab.Screen name="FavouritePosts" component={FavoritePosts} />
         <Tab.Screen name="MyPosts" component={MyPosts} />
       </Tab.Navigator>
-
-      {filter === 'my posts' ? (
-        <View style={styles.positions}>
-          <RoundButton
-            size="large"
-            onRenderSVG={color => <PlusSVG color={color} />}
-            onClick={() => navigation.navigate('CreatePost')}
-          />
-        </View>
-      ) : null}
 
       {/* <Tapbar filter={filter} setFilter={setFilter} /> */}
     </View>
@@ -86,7 +89,7 @@ const styles = StyleSheet.create({
   },
   positions: {
     position: 'absolute',
-    bottom: 100,
+    bottom: 32,
     right: 16,
   },
 });

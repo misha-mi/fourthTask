@@ -2,7 +2,6 @@ import { Image, Pressable, Text, View, StyleSheet } from 'react-native';
 import CloudSVG from '../../assets/svg/cloud-svg';
 import { useTheme } from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
-import { getLinkForPhoto } from '../../service/get-link-for-photo';
 
 const Upload = ({ img, setImg }) => {
   const { backgroundColor, borderColor, textColor, cloudColor } =
@@ -13,11 +12,7 @@ const Upload = ({ img, setImg }) => {
     : null;
 
   const changePhoto = async () => {
-    ImagePicker.openPicker({
-      width: 300,
-      height: 400,
-      includeBase64: true,
-    }).then(setImg);
+    ImagePicker.openPicker({}).then(setImg);
   };
 
   return (

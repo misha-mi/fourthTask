@@ -5,7 +5,7 @@ import CustomButton from '../../../ui/custom-button/custom-button';
 import { Controller, useForm } from 'react-hook-form';
 import { THandlerGenerateStatus } from '../join-us-form/type';
 import { useState } from 'react';
-import { useTheme } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 import { useMutation } from '@apollo/client';
 import { POST_CREATE } from '../../../apollo/service/post-create';
 import { getLinkForPhoto } from '../../../service/get-link-for-photo';
@@ -18,11 +18,15 @@ type TInputs = {
 };
 
 const CreatePostForm = () => {
+  const navigation = useNavigation();
   const { errorColor } = useTheme().colors.defaultColors;
 
   const [isAfterFirstSubmit, setIsAfterFirstSubmit] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [createPost] = useMutation(POST_CREATE);
+  const [createPost] = useMutation(POST_CREATE, {
+    onCompleted: () => navigation.goBack(),
+  });
 
   const {
     control,
@@ -31,7 +35,8 @@ const CreatePostForm = () => {
   } = useForm<TInputs>();
 
   const onSubmit = async (dataForm: TInputs) => {
-    const { path, data } = dataForm.media;
+    setIsLoading(true);
+    const { path } = dataForm.media;
     const fileName = path.slice(path.lastIndexOf('/') + 1);
 
     const uriPut = await getLinkForPhoto(fileName, 'POSTS');
@@ -46,7 +51,7 @@ const CreatePostForm = () => {
         ...dataForm,
         mediaUrl: uriPush,
       },
-    });
+    }).finally(() => setIsLoading(false));
   };
 
   const handlerClickButtonSubmit = () => {
@@ -61,6 +66,16 @@ const CreatePostForm = () => {
       return 'error';
     } else {
       return 'success';
+    }
+  };
+
+  const handlerGenerateButtonStatus = (isAfter, isValid, isLoadingRequest) => {
+    if (!isValid && !isAfter) {
+      return 'disabled';
+    } else if (isLoadingRequest) {
+      return 'loading';
+    } else {
+      return 'waiting';
     }
   };
 
@@ -128,7 +143,11 @@ const CreatePostForm = () => {
       <View style={{ marginTop: 40 }}>
         <CustomButton
           title="Publish"
-          status={!isValid && !isAfterFirstSubmit ? 'disabled' : 'waiting'}
+          status={handlerGenerateButtonStatus(
+            isAfterFirstSubmit,
+            isValid,
+            isLoading,
+          )}
           onClick={handlerClickButtonSubmit}
         />
       </View>
