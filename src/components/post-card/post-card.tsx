@@ -7,6 +7,7 @@ import {
   Dimensions,
   NativeSyntheticEvent,
   NativeScrollEvent,
+  Pressable,
 } from 'react-native';
 import { IPostCard } from './type';
 import ProfileImg from '../../ui/profile-img/profile-img';
@@ -29,6 +30,7 @@ const PostCard = ({ isOpen, postData }: IPostCard) => {
   const [unlikePost] = useMutation(UNLIKE_POST);
   const [deletePost] = useMutation(DELETE_POST);
   const route = useRoute();
+  const navigation = useNavigation();
 
   const {
     title,
@@ -94,12 +96,16 @@ const PostCard = ({ isOpen, postData }: IPostCard) => {
       onScrollEndDrag={handlerTouchEnd}
       showsHorizontalScrollIndicator={false}>
       <View style={[{ backgroundColor: postColor, width: WIDTH }, styles.post]}>
-        <View style={[headerJustifyContent, styles.flexRow]}>
-          {showTitle}
-          <Text style={{ ...styles.text, color: textColor }}>{createdAt}</Text>
-        </View>
+        <Pressable onTouchEnd={() => navigation.navigate('PostPage', { id })}>
+          <View style={[headerJustifyContent, styles.flexRow]}>
+            {showTitle}
+            <Text style={{ ...styles.text, color: textColor }}>
+              {createdAt}
+            </Text>
+          </View>
 
-        <Image source={{ uri: mediaUrl }} style={styles.image} />
+          <Image source={{ uri: mediaUrl }} style={styles.image} />
+        </Pressable>
 
         {isOpen ? (
           <Text style={[{ ...styles.text, color: textColor }, styles.mt20]}>

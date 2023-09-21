@@ -5,7 +5,7 @@ import { GET_POST } from '../../apollo/service/get-post';
 import { ParamListBase, useTheme } from '@react-navigation/native';
 import Header from '../../ui/header/header';
 
-const PostPage = ({ route }: ParamListBase) => {
+const PostPage = ({ route, navigation }: ParamListBase) => {
   const { data, loading } = useQuery(GET_POST, {
     variables: { id: route.params.id },
   });
@@ -14,7 +14,10 @@ const PostPage = ({ route }: ParamListBase) => {
 
   return (
     <View>
-      <Header title={data.post.title || ''} />
+      <Header
+        title={data.post.title || ''}
+        onBack={() => navigation.goBack()}
+      />
       <ScrollView>
         <PostCard postData={data.post} isOpen />
       </ScrollView>
