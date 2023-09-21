@@ -20,10 +20,14 @@ import { useMutation } from '@apollo/client';
 import { LIKE_POST } from '../../apollo/service/like-post';
 import { UNLIKE_POST } from '../../apollo/service/unlike-post';
 import { GET_FAVORITES_POSTS } from '../../apollo/service/get-favorites-posts';
+import { DELETE_POST } from '../../apollo/service/delete-post';
+import { GET_POSTS } from '../../apollo/service/get-posts';
+import { GET_MY_POSTS } from '../../apollo/service/get-my-posts';
 
 const PostCard = ({ isOpen, postData }: IPostCard) => {
   const [likePost] = useMutation(LIKE_POST);
   const [unlikePost] = useMutation(UNLIKE_POST);
+  const [deletePost] = useMutation(DELETE_POST);
   const route = useRoute();
 
   const {
@@ -63,7 +67,7 @@ const PostCard = ({ isOpen, postData }: IPostCard) => {
     if (refScroll.current) {
       lengthForDelete >= event.nativeEvent.contentOffset.x
         ? refScroll.current?.scrollTo({ x: 0, y: 0, animated: true })
-        : console.log(lengthForDelete, event.nativeEvent.contentOffset.x);
+        : null;
     }
   };
 
@@ -73,6 +77,13 @@ const PostCard = ({ isOpen, postData }: IPostCard) => {
       refetchQueries: [GET_FAVORITES_POSTS, 'GetFavoritesPosts'],
     };
     isLiked ? unlikePost(options) : likePost(options);
+  };
+
+  const handlerDelete = () => {
+    deletePost({
+      variables: { id },
+      refetchQueries: [GET_POSTS, GET_FAVORITES_POSTS, GET_MY_POSTS],
+    });
   };
 
   return (
@@ -120,7 +131,7 @@ const PostCard = ({ isOpen, postData }: IPostCard) => {
           </View>
         </View>
       </View>
-      <DeleteButton />
+      <DeleteButton onDelete={handlerDelete} />
     </ScrollView>
   );
 };

@@ -2,11 +2,13 @@ import { Text, Pressable, StyleSheet } from 'react-native';
 import TrashSVG from '../../assets/svg/trash-svg';
 import { useTheme } from '@react-navigation/native';
 
-const DeleteButton = () => {
+const DeleteButton = ({ onDelete }: { onDelete: () => void }) => {
   const { backgroundColor, textColor } = useTheme().colors.deleteButtonColors;
 
   return (
-    <Pressable style={{ ...styles.wrapper, backgroundColor: backgroundColor }}>
+    <Pressable
+      style={{ ...styles.wrapper, backgroundColor: backgroundColor }}
+      onTouchEnd={onDelete}>
       <TrashSVG color={textColor} />
       <Text style={{ ...styles.text, color: textColor }}>Delete</Text>
     </Pressable>
