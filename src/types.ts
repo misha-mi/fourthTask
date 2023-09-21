@@ -9,6 +9,7 @@ export type TPressed = { pressed: boolean };
 export type TColor = { color: string };
 
 export type TUser = {
+  avatarUrl: string;
   firstName: string;
   lastName: string;
   middleName: string;

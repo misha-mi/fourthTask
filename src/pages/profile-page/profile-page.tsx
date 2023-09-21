@@ -3,27 +3,32 @@ import IconButton from '../../ui/icon-button/icon-button';
 import ArrowSVG from '../../assets/svg/arrow-svg';
 import TextButton from '../../ui/text-button/text-button';
 import ProfileImg from '../../ui/profile-img/profile-img';
-import { useTheme } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 import SettingPersonalInfo from '../../components/setting-personal-info/setting-personal-info';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { TUser } from '../../types';
 import RoundButton from '../../ui/round-button/round-button';
 import CameraSVG from '../../assets/svg/camera-svg';
+import { useQuery } from '@apollo/client';
+import { GET_USER } from '../../apollo/service/get-user';
 
 const ProfilePage = () => {
   const { color1 } = useTheme().colors.defaultColors;
+  const navigation = useNavigation();
+  const { data } = useQuery<TUser>(GET_USER);
 
   const { control, handleSubmit } = useForm<TUser>({
-    defaultValues: {
-      gender: 'Male',
-    },
+    defaultValues: data,
   });
 
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.header}>
-          <IconButton onRenderSVG={color => <ArrowSVG color={color} />} />
+          <IconButton
+            onRenderSVG={color => <ArrowSVG color={color} />}
+            onClick={navigation.goBack}
+          />
           <Text style={{ ...styles.title, color: color1 }}>Profile</Text>
           <TextButton
             text="Done"
@@ -32,15 +37,22 @@ const ProfilePage = () => {
         </View>
 
         <View style={{ ...styles.jcCenter, position: 'relative' }}>
-          <View>
-            <ProfileImg />
-            <View style={styles.position}>
-              <RoundButton
-                onRenderSVG={color => <CameraSVG color={color} />}
-                size="medium"
-              />
-            </View>
-          </View>
+          <Controller
+            control={control}
+            name="avatarUrl"
+            render={({ field: { onChange, value } }) => (
+              <View>
+                <ProfileImg userImg={value} />
+                <View style={styles.position}>
+                  <RoundButton
+                    onRenderSVG={color => <CameraSVG color={color} />}
+                    size="medium"
+                    onClick={onChange}
+                  />
+                </View>
+              </View>
+            )}
+          />
         </View>
 
         <View style={styles.mt32}>
