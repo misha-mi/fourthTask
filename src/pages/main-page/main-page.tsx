@@ -14,7 +14,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 
-const MainPage = () => {
+const MainPage = ({ navigation }) => {
   const [filter, setFilter] = useState<TFilter>('main');
 
   const textTitle =
@@ -57,6 +57,7 @@ const MainPage = () => {
           <RoundButton
             size="large"
             onRenderSVG={color => <PlusSVG color={color} />}
+            onClick={() => navigation.navigate('CreatePost')}
           />
         </View>
       ) : null}

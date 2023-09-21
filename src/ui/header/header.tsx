@@ -3,7 +3,7 @@ import IconButton from '../icon-button/icon-button';
 import ArrowSVG from '../../assets/svg/arrow-svg';
 import { useTheme } from '@react-navigation/native';
 
-const Header = ({ title }: { title: string }) => {
+const Header = ({ title, onBack }: { title: string; onBack: () => void }) => {
   const { color1 } = useTheme().colors.defaultColors;
 
   return (
@@ -11,6 +11,7 @@ const Header = ({ title }: { title: string }) => {
       <View style={styles.posAbsolute}>
         <IconButton
           onRenderSVG={(color: string) => <ArrowSVG color={color} />}
+          onClick={onBack}
         />
       </View>
       <Text style={{ color: color1, ...styles.title }}>{title}</Text>

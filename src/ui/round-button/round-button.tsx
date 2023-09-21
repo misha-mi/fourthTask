@@ -8,6 +8,7 @@ const RoundButton = ({
   isCloseButton,
   isDisabled,
   size,
+  onClick,
 }: IRoundButton) => {
   const { closeRoundButtonColors, defaultRoundButtonColors } =
     useTheme().colors;
@@ -42,7 +43,10 @@ const RoundButton = ({
   };
 
   return (
-    <Pressable disabled={isDisabled} style={handlerPressButton}>
+    <Pressable
+      disabled={isDisabled}
+      style={handlerPressButton}
+      onTouchEnd={onClick}>
       {handlerPressContent}
     </Pressable>
   );

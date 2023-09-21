@@ -2,10 +2,10 @@ import { StyleSheet, View } from 'react-native';
 import Header from '../../ui/header/header';
 import CreatePostForm from '../../components/forms/create-post-form/create-post-form';
 
-const CreatePostPage = () => {
+const CreatePostPage = ({ navigation }) => {
   return (
     <View>
-      <Header title="Create post" />
+      <Header title="Create post" onBack={() => navigation.goBack()} />
       <View style={styles.wrapper}>
         <CreatePostForm />
       </View>

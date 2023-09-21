@@ -6,4 +6,5 @@ export interface IRoundButton {
   isCloseButton?: boolean;
   isDisabled?: boolean;
   size: TSize;
+  onClick: () => void;
 }
