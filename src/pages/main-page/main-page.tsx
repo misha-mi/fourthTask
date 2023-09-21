@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import ProfileImg from '../../ui/profile-img/profile-img';
 import Tapbar from '../../ui/tapbar/tapbar';
 import { useState } from 'react';
@@ -6,18 +6,15 @@ import { TFilter } from '../../types';
 import RoundButton from '../../ui/round-button/round-button';
 import PlusSVG from '../../assets/svg/plus-svg';
 import GetPostsComponent from '../../components/get-posts-component/get-posts-component';
-import { useLazyQuery } from '@apollo/client';
 import { GET_POSTS } from '../../apollo/service/get-posts';
 import { GET_FAVORITES_POSTS } from '../../apollo/service/get-favorites-posts';
 import { GET_MY_POSTS } from '../../apollo/service/get-my-posts';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useNavigation } from '@react-navigation/native';
-
 const Tab = createBottomTabNavigator();
 
 const MainPage = () => {
   const navigation = useNavigation();
-
   const [filter, setFilter] = useState<TFilter>('main');
 
   const textTitle =
@@ -51,7 +48,9 @@ const MainPage = () => {
       <View style={styles.p16}>
         <View style={styles.header}>
           <Text style={styles.name}>{textTitle}</Text>
-          <ProfileImg userImg="../../assets/img/user.png" size="small" />
+          <Pressable onTouchEnd={navigation.toggleDrawer}>
+            <ProfileImg userImg="../../assets/img/user.png" size="small" />
+          </Pressable>
         </View>
       </View>
 

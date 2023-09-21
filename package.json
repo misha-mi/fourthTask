@@ -14,6 +14,7 @@
     "@react-native-async-storage/async-storage": "^1.19.3",
     "@react-native-community/cli-doctor": "^11.3.8",
     "@react-navigation/bottom-tabs": "^6.5.8",
+    "@react-navigation/drawer": "^6.6.3",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/native-stack": "^6.9.13",
     "graphql": "^16.8.0",
@@ -21,7 +22,9 @@
     "react-hook-form": "^7.46.1",
     "react-native": "0.72.4",
     "react-native-bootsplash": "^5.0.3",
+    "react-native-gesture-handler": "^2.13.1",
     "react-native-image-crop-picker": "^0.38.0",
+    "react-native-reanimated": "^3.5.4",
     "react-native-safe-area-context": "^4.7.2",
     "react-native-screens": "^3.25.0",
     "react-native-svg": "^13.13.0"

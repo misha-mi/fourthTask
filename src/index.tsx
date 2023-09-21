@@ -12,6 +12,7 @@ import BootSplash from 'react-native-bootsplash';
 import { useEffect } from 'react';
 import PostPage from './pages/post-page/post-page';
 import CreatePostPage from './pages/create-post-page/create-post-page';
+import DrawerNavigator from './components/drawer-navigator/drawer-navigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,11 +40,10 @@ const Index = () => {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName="Main">
+        initialRouteName="Drawer">
         {data?.userMe ? (
           <>
-            <Stack.Screen name="Main" component={MainPage} />
-            <Stack.Screen name="Profile" component={ProfilePage} />
+            <Stack.Screen name="Drawer" component={DrawerNavigator} />
             <Stack.Screen
               name="PostPage"
               component={PostPage}
