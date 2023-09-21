@@ -13,7 +13,7 @@ import ProfileImg from '../../ui/profile-img/profile-img';
 import IconButton from '../../ui/icon-button/icon-button';
 import HeartSVG from '../../assets/svg/heart-svg';
 import ShareSVG from '../../assets/svg/share-svg';
-import { useTheme } from '@react-navigation/native';
+import { useNavigation, useRoute, useTheme } from '@react-navigation/native';
 import DeleteButton from '../../ui/delete-button/delete-button';
 import { useRef } from 'react';
 import { useMutation } from '@apollo/client';
@@ -24,6 +24,7 @@ import { GET_FAVORITES_POSTS } from '../../apollo/service/get-favorites-posts';
 const PostCard = ({ isOpen, postData }: IPostCard) => {
   const [likePost] = useMutation(LIKE_POST);
   const [unlikePost] = useMutation(UNLIKE_POST);
+  const route = useRoute();
 
   const {
     title,
@@ -78,6 +79,7 @@ const PostCard = ({ isOpen, postData }: IPostCard) => {
     <ScrollView
       horizontal
       ref={refScroll}
+      scrollEnabled={route.name === 'MyPosts'}
       onScrollEndDrag={handlerTouchEnd}
       showsHorizontalScrollIndicator={false}>
       <View style={[{ backgroundColor: postColor, width: WIDTH }, styles.post]}>
