@@ -2,23 +2,28 @@ import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import IconButton from '../../ui/icon-button/icon-button';
 import ArrowSVG from '../../assets/svg/arrow-svg';
 import TextButton from '../../ui/text-button/text-button';
-import ProfileImg from '../../ui/profile-img/profile-img';
 import { useNavigation, useTheme } from '@react-navigation/native';
 import SettingPersonalInfo from '../../components/setting-personal-info/setting-personal-info';
 import { Controller, useForm } from 'react-hook-form';
 import { TUser } from '../../types';
-import RoundButton from '../../ui/round-button/round-button';
-import CameraSVG from '../../assets/svg/camera-svg';
-import { useQuery } from '@apollo/client';
+import { useLazyQuery, useMutation } from '@apollo/client';
 import { GET_USER } from '../../apollo/service/get-user';
+import { EDIT_PROFILE } from '../../apollo/service/edit-profile';
+import SetProfileImgComponent from '../../components/set-profile-img-component/set-profile-img-component';
 
 const ProfilePage = () => {
   const { color1 } = useTheme().colors.defaultColors;
+
   const navigation = useNavigation();
-  const { data } = useQuery<TUser>(GET_USER);
+
+  const [getUserData] = useLazyQuery<{ userMe: TUser }>(GET_USER);
+  const [editProfile, { data, error }] = useMutation(EDIT_PROFILE, {
+    errorPolicy: 'all',
+  });
 
   const { control, handleSubmit } = useForm<TUser>({
-    defaultValues: data,
+    defaultValues: async () =>
+      await getUserData().then(res => res?.data?.userMe),
   });
 
   return (
@@ -32,25 +37,16 @@ const ProfilePage = () => {
           <Text style={{ ...styles.title, color: color1 }}>Profile</Text>
           <TextButton
             text="Done"
-            onClick={handleSubmit(data => console.log(data))}
+            onClick={handleSubmit(data => editProfile({ variables: data }))}
           />
         </View>
 
-        <View style={{ ...styles.jcCenter, position: 'relative' }}>
+        <View style={styles.jcCenter}>
           <Controller
             control={control}
             name="avatarUrl"
             render={({ field: { onChange, value } }) => (
-              <View>
-                <ProfileImg userImg={value} />
-                <View style={styles.position}>
-                  <RoundButton
-                    onRenderSVG={color => <CameraSVG color={color} />}
-                    size="medium"
-                    onClick={onChange}
-                  />
-                </View>
-              </View>
+              <SetProfileImgComponent img={value} setImg={onChange} />
             )}
           />
         </View>
@@ -80,11 +76,6 @@ const styles = StyleSheet.create({
   jcCenter: {
     marginTop: 12,
     alignItems: 'center',
-  },
-  position: {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
   },
   mt32: {
     marginTop: 32,

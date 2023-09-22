@@ -4,7 +4,7 @@ import { CustomDarkTheme, CustomLightTheme } from './themes';
 import { useColorScheme } from 'react-native';
 
 const linking: LinkingOptions<ReactNavigation.RootParamList> = {
-  prefixes: ['shareyourtale://', 'https://www.shareyourtale.com'],
+  prefixes: ['shareyourtale://', 'https://internship-social-media.purrweb.com'],
   config: {
     screens: {
       PostPage: 'post/:id',

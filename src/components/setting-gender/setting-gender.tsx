@@ -7,8 +7,8 @@ const SettingGender = ({
   gender,
   setGender,
 }: {
-  gender: 'Male' | 'Female';
-  setGender: (value: 'Male' | 'Female') => void;
+  gender: 'MALE' | 'FEMALE';
+  setGender: (value: 'MALE' | 'FEMALE') => void;
 }) => {
   const { color1 } = useTheme().colors.defaultColors;
 
@@ -17,16 +17,16 @@ const SettingGender = ({
       <View style={styles.wrapper}>
         <CheckInput
           type="round"
-          isChecked={gender === 'Male'}
-          setIsChecked={() => setGender('Male')}
+          isChecked={gender === 'MALE'}
+          setIsChecked={() => setGender('MALE')}
         />
         <Text style={{ ...styles.text, color: color1 }}>Male</Text>
       </View>
       <View style={styles.wrapper}>
         <CheckInput
           type="round"
-          isChecked={gender === 'Female'}
-          setIsChecked={() => setGender('Female')}
+          isChecked={gender === 'FEMALE'}
+          setIsChecked={() => setGender('FEMALE')}
         />
         <Text style={{ ...styles.text, color: color1 }}>Female</Text>
       </View>
