@@ -19,7 +19,7 @@ const ProfilePage = () => {
   const navigation = useNavigation();
 
   const [getUserData] = useLazyQuery<{ userMe: TUser }>(GET_USER);
-  const [editProfile] = useMutation(EDIT_PROFILE, {
+  const [editProfile, { data, error }] = useMutation(EDIT_PROFILE, {
     errorPolicy: 'all',
   });
 
@@ -29,6 +29,8 @@ const ProfilePage = () => {
   });
 
   const onSubmit = async (dataForm: TUser) => {
+    console.log(dataForm);
+
     const path = dataForm.avatarUrl;
     const fileName = path.slice(path.lastIndexOf('/') + 1);
 

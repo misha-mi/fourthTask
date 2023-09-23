@@ -2,7 +2,7 @@ export interface IInput {
   placeholder: string;
   label: string;
   status: 'waiting' | 'disabled' | 'success' | 'error';
-  onChange: () => void;
+  onChange?: () => void;
   value: string;
   errorMessage?: string;
   isPasswordInput?: boolean;

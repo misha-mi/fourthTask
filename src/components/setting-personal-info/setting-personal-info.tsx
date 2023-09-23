@@ -5,7 +5,6 @@ import { TControl } from '../../types';
 import { useTheme } from '@react-navigation/native';
 import SettingGender from '../setting-gender/setting-gender';
 import AccountInfoForm from '../forms/account-info-form/account-info-form';
-import Input from '../../ui/input/input';
 import DatePicker from '../date-packer/date-picker';
 
 const SettingPersonalInfo = ({ control }: TControl) => {
@@ -30,7 +29,14 @@ const SettingPersonalInfo = ({ control }: TControl) => {
       </View>
 
       <Text style={[styles.title, { color: color1 }]}>Date of birth</Text>
-      <DatePicker />
+
+      <Controller
+        control={control}
+        name="birthDate"
+        render={({ field: { onChange, value } }) => (
+          <DatePicker setDate={onChange} date={value} />
+        )}
+      />
 
       <Text style={[styles.title, { color: color1 }]}>Account info</Text>
       <AccountInfoForm control={control} />

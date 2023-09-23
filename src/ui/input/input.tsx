@@ -32,7 +32,7 @@ const Input = ({
 
   switch (status) {
     case 'disabled':
-      statusColor = disabledColor;
+      statusColor = initialColor;
       break;
     case 'success':
       statusColor = successColor;
