@@ -10,6 +10,8 @@ import { useLazyQuery, useMutation } from '@apollo/client';
 import { GET_USER } from '../../apollo/service/get-user';
 import { EDIT_PROFILE } from '../../apollo/service/edit-profile';
 import SetProfileImgComponent from '../../components/set-profile-img-component/set-profile-img-component';
+import { getLinkForPhoto } from '../../service/get-link-for-photo';
+import { putPhoto } from '../../service/put-photo';
 
 const ProfilePage = () => {
   const { color1 } = useTheme().colors.defaultColors;
@@ -17,7 +19,7 @@ const ProfilePage = () => {
   const navigation = useNavigation();
 
   const [getUserData] = useLazyQuery<{ userMe: TUser }>(GET_USER);
-  const [editProfile, { data, error }] = useMutation(EDIT_PROFILE, {
+  const [editProfile] = useMutation(EDIT_PROFILE, {
     errorPolicy: 'all',
   });
 
@@ -25,6 +27,25 @@ const ProfilePage = () => {
     defaultValues: async () =>
       await getUserData().then(res => res?.data?.userMe),
   });
+
+  const onSubmit = async (dataForm: TUser) => {
+    const path = dataForm.avatarUrl;
+    const fileName = path.slice(path.lastIndexOf('/') + 1);
+
+    const uriPut = await getLinkForPhoto(fileName, 'AVATARS');
+
+    const res = await fetch(path);
+    const blobData = await res.blob();
+
+    const uriPush = await putPhoto(uriPut, blobData);
+
+    editProfile({
+      variables: {
+        ...dataForm,
+        avatarUrl: uriPush,
+      },
+    });
+  };
 
   return (
     <ScrollView>
@@ -35,10 +56,7 @@ const ProfilePage = () => {
             onClick={navigation.goBack}
           />
           <Text style={{ ...styles.title, color: color1 }}>Profile</Text>
-          <TextButton
-            text="Done"
-            onClick={handleSubmit(data => editProfile({ variables: data }))}
-          />
+          <TextButton text="Done" onClick={handleSubmit(onSubmit)} />
         </View>
 
         <View style={styles.jcCenter}>

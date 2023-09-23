@@ -17,6 +17,7 @@ const SetProfileImgComponent = ({ img, setImg }) => {
       cropping: true,
       cropperCircleOverlay: true,
     }).then(image => {
+      setModalVisible(false);
       setImg(image.path);
     });
   };
@@ -28,8 +29,14 @@ const SetProfileImgComponent = ({ img, setImg }) => {
       cropping: true,
       cropperCircleOverlay: true,
     }).then(image => {
+      setModalVisible(false);
       setImg(image.path);
     });
+  };
+
+  const deletePhoto = () => {
+    setImg('');
+    setModalVisible(false);
   };
 
   return (
@@ -62,7 +69,7 @@ const SetProfileImgComponent = ({ img, setImg }) => {
             <CustomButton
               title="Delete photo"
               size="medium"
-              onClick={() => setImg('')}
+              onClick={deletePhoto}
               isRedText
             />
           </View>

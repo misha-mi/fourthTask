@@ -9,6 +9,13 @@ const AccountInfoForm = ({ control }: TControl) => {
       <Controller
         control={control}
         name="email"
+        rules={{
+          required: 'Email Address is required',
+          pattern: {
+            value: /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/,
+            message: 'Email must be an email',
+          },
+        }}
         render={({ field: { onChange, value } }) => (
           <Input
             label="E-mail"
