@@ -6,6 +6,7 @@ import { useTheme } from '@react-navigation/native';
 import SettingGender from '../setting-gender/setting-gender';
 import AccountInfoForm from '../forms/account-info-form/account-info-form';
 import Input from '../../ui/input/input';
+import DatePicker from '../date-packer/date-picker';
 
 const SettingPersonalInfo = ({ control }: TControl) => {
   const { color1 } = useTheme().colors.defaultColors;
@@ -29,20 +30,7 @@ const SettingPersonalInfo = ({ control }: TControl) => {
       </View>
 
       <Text style={[styles.title, { color: color1 }]}>Date of birth</Text>
-      <Controller
-        control={control}
-        name="birthDate"
-        render={({ field: { onChange, value } }) => (
-          <Input
-            label="B-day"
-            placeholder="Enter B-day"
-            status={'waiting'}
-            onChange={onChange}
-            value={value}
-            errorMessage={''}
-          />
-        )}
-      />
+      <DatePicker />
 
       <Text style={[styles.title, { color: color1 }]}>Account info</Text>
       <AccountInfoForm control={control} />
