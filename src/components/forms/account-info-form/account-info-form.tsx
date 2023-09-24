@@ -2,6 +2,7 @@ import { Control, Controller } from 'react-hook-form';
 import { View } from 'react-native';
 import Input from '../../../ui/input/input';
 import { TControl, TUser } from '../../../types';
+import PhoneInput from '../../../ui/phone-input/phone-input';
 
 const AccountInfoForm = ({ control }: TControl) => {
   return (
@@ -32,14 +33,7 @@ const AccountInfoForm = ({ control }: TControl) => {
         control={control}
         name="phone"
         render={({ field: { onChange, value } }) => (
-          <Input
-            label="Phone number"
-            placeholder="Enter your phone number"
-            status={'waiting'}
-            onChange={onChange}
-            value={value}
-            errorMessage={''}
-          />
+          <PhoneInput phone={value || ''} setPhone={onChange} />
         )}
       />
 

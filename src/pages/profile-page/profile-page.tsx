@@ -12,6 +12,7 @@ import { EDIT_PROFILE } from '../../apollo/service/edit-profile';
 import SetProfileImgComponent from '../../components/set-profile-img-component/set-profile-img-component';
 import { getLinkForPhoto } from '../../service/get-link-for-photo';
 import { putPhoto } from '../../service/put-photo';
+import PhoneInput from '../../ui/phone-input/phone-input';
 
 const ProfilePage = () => {
   const { color1 } = useTheme().colors.defaultColors;

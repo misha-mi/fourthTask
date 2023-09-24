@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   NativeScrollEvent,
   NativeSyntheticEvent,
@@ -33,10 +33,12 @@ const VerticalSlider = ({
   const arr = [...data.slice(-5), ...data, ...data.slice(0, 5)];
 
   let valueId = data.indexOf(value) + 1;
-  if (valueId <= 0) {
-    setValue(data[0]);
-    valueId = 1;
-  }
+  useEffect(() => {
+    if (valueId <= 0) {
+      setValue(data[0]);
+      valueId = 1;
+    }
+  }, [data]);
 
   const handlerScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const offsetY = event.nativeEvent.contentOffset.y;

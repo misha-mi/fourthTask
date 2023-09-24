@@ -14,6 +14,7 @@ const Input = ({
   onChange,
   value,
   errorMessage,
+  isPhonePad,
 }: IInput) => {
   const {
     labelColor,
@@ -76,6 +77,7 @@ const Input = ({
           value={value}
           onChangeText={onChange}
           style={[styles.input, underlineInput, textColor]}
+          keyboardType={isPhonePad ? 'phone-pad' : 'default'}
         />
 
         <Text style={{ color: statusColor, marginTop: 6 }}>{errorMessage}</Text>
