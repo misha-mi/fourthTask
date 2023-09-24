@@ -1,4 +1,5 @@
 export interface IPhoneInput {
   phone: string;
-  setPhone: (value: string) => void;
+  setPhone: (value: string | null) => void;
+  errorMessage: string | undefined;
 }

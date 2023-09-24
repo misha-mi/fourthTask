@@ -1,9 +1,8 @@
 import Input from '../input/input';
 import { IPhoneInput } from './type';
 
-function PhoneInput({ phone, setPhone }: IPhoneInput) {
+function PhoneInput({ phone, setPhone, errorMessage }: IPhoneInput) {
   const mask = '+7 xxx xxx xx xx';
-
   const getValue = () => {
     const arrNumber = phone.replace('+7', '').replace('+', '').split('');
     if (!arrNumber.length) return '';
@@ -15,17 +14,22 @@ function PhoneInput({ phone, setPhone }: IPhoneInput) {
   };
 
   const change = (value: string) => {
-    setPhone(value.replace(/\s/g, ''));
+    const phone = value.replace(/\s/g, '').slice(0, 12);
+    if (phone === '+7') {
+      setPhone(null);
+    } else {
+      setPhone(phone);
+    }
   };
 
   return (
     <Input
       label="Phone number"
       placeholder="Enter your phone number"
-      status={'waiting'}
+      status={errorMessage ? 'error' : 'waiting'}
       onChange={change}
       value={getValue()}
-      errorMessage={''}
+      errorMessage={errorMessage}
       isPhonePad
     />
   );

@@ -16,7 +16,7 @@ export type TUser = {
   gender: 'MALE' | 'FEMALE';
   birthDate: string;
   email: string;
-  phone: string;
+  phone: string | null;
   country: string;
 };
 

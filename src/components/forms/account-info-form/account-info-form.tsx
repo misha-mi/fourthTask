@@ -1,10 +1,12 @@
-import { Control, Controller } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import { View } from 'react-native';
 import Input from '../../../ui/input/input';
-import { TControl, TUser } from '../../../types';
+import { TControl } from '../../../types';
 import PhoneInput from '../../../ui/phone-input/phone-input';
 
 const AccountInfoForm = ({ control }: TControl) => {
+  const emailError = control.getFieldState('email');
+  const phoneError = control.getFieldState('phone');
   return (
     <View>
       <Controller
@@ -21,10 +23,9 @@ const AccountInfoForm = ({ control }: TControl) => {
           <Input
             label="E-mail"
             placeholder="Enter your e-mail"
-            status={'waiting'}
+            status={emailError.error?.message ? 'error' : 'waiting'}
             onChange={onChange}
             value={value}
-            errorMessage={''}
           />
         )}
       />
@@ -32,8 +33,18 @@ const AccountInfoForm = ({ control }: TControl) => {
       <Controller
         control={control}
         name="phone"
+        rules={{
+          pattern: {
+            value: /^\+7\d{10}$/,
+            message: 'Phone must be an phone',
+          },
+        }}
         render={({ field: { onChange, value } }) => (
-          <PhoneInput phone={value || ''} setPhone={onChange} />
+          <PhoneInput
+            phone={value || ''}
+            setPhone={onChange}
+            errorMessage={phoneError.error?.message}
+          />
         )}
       />
 

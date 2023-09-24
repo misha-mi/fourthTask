@@ -12,26 +12,39 @@ import { EDIT_PROFILE } from '../../apollo/service/edit-profile';
 import SetProfileImgComponent from '../../components/set-profile-img-component/set-profile-img-component';
 import { getLinkForPhoto } from '../../service/get-link-for-photo';
 import { putPhoto } from '../../service/put-photo';
-import PhoneInput from '../../ui/phone-input/phone-input';
+import ModalStatus from '../../ui/modal-status/modal-status';
+import { useEffect, useState } from 'react';
+import Spinner from '../../ui/spinner/spinner';
 
 const ProfilePage = () => {
   const { color1 } = useTheme().colors.defaultColors;
 
+  const [messagesForModalStatus, setMessagesForModalStatus] = useState<
+    string[] | null
+  >(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigation = useNavigation();
 
   const [getUserData] = useLazyQuery<{ userMe: TUser }>(GET_USER);
-  const [editProfile, { data, error }] = useMutation(EDIT_PROFILE, {
+  const [editProfile, { data }] = useMutation(EDIT_PROFILE, {
+    onCompleted: () => {
+      setMessagesForModalStatus(['Success']);
+    },
     errorPolicy: 'all',
   });
 
-  const { control, handleSubmit } = useForm<TUser>({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TUser>({
     defaultValues: async () =>
       await getUserData().then(res => res?.data?.userMe),
   });
 
   const onSubmit = async (dataForm: TUser) => {
-    console.log(dataForm);
-
+    setIsLoading(true);
     const path = dataForm.avatarUrl;
     const fileName = path.slice(path.lastIndexOf('/') + 1);
 
@@ -47,8 +60,26 @@ const ProfilePage = () => {
         ...dataForm,
         avatarUrl: uriPush,
       },
+    }).then(() => setIsLoading(false));
+  };
+
+  const handlerClickDone = () => {
+    handleSubmit(onSubmit)().then(() => {
+      if (Object.keys(errors).length) {
+        const arr: string[] = [];
+        if (errors.email?.message) arr.push(errors.email?.message);
+        if (errors.phone?.message) arr.push(errors.phone?.message);
+        setMessagesForModalStatus(arr);
+      }
     });
   };
+
+  useEffect(() => {
+    if (data?.userEditProfile.problem) {
+      setMessagesForModalStatus([data.userEditProfile.problem.message]);
+    } else if (data?.userEditProfile.user)
+      [setMessagesForModalStatus(['Success'])];
+  }, [data]);
 
   return (
     <ScrollView>
@@ -59,7 +90,11 @@ const ProfilePage = () => {
             onClick={navigation.goBack}
           />
           <Text style={{ ...styles.title, color: color1 }}>Profile</Text>
-          <TextButton text="Done" onClick={handleSubmit(onSubmit)} />
+          {isLoading ? (
+            <Spinner color="red" />
+          ) : (
+            <TextButton text="Done" onClick={handlerClickDone} />
+          )}
         </View>
 
         <View style={styles.jcCenter}>
@@ -76,6 +111,11 @@ const ProfilePage = () => {
           <SettingPersonalInfo control={control} />
         </View>
       </View>
+
+      <ModalStatus
+        messages={messagesForModalStatus}
+        setMessages={() => setMessagesForModalStatus(null)}
+      />
     </ScrollView>
   );
 };
