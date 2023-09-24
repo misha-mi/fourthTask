@@ -25,7 +25,12 @@ const Spinner = ({ color }: TColor) => {
   });
 
   return (
-    <Animated.View style={{ transform: [{ rotate }] }}>
+    <Animated.View
+      style={{
+        transform: [{ rotate }],
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
       <LoadingSVG color={color} />
     </Animated.View>
   );

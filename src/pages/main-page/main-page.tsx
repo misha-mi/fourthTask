@@ -23,8 +23,11 @@ const MainPage = () => {
       userMe: { firstName, avatarUrl },
     },
   } = useQuery(GET_USER);
+
   const navigation = useNavigation();
+
   const [filter, setFilter] = useState<TFilter>('main');
+
   const textTitle =
     filter === 'main'
       ? `Hello ${firstName || 'Anonym'}!`
@@ -34,12 +37,20 @@ const MainPage = () => {
     return <GetPostsComponent query={GET_POSTS} isTabs />;
   };
   const FavoritePosts = () => {
-    return <GetPostsComponent query={GET_FAVORITES_POSTS} />;
+    return (
+      <GetPostsComponent
+        query={GET_FAVORITES_POSTS}
+        noPostsMessage="You haven't added anything to your favorites yet"
+      />
+    );
   };
   const MyPosts = () => {
     return (
       <>
-        <GetPostsComponent query={GET_MY_POSTS} />
+        <GetPostsComponent
+          query={GET_MY_POSTS}
+          noPostsMessage="You haven't posted any posts yet"
+        />
         <View style={styles.positions}>
           <RoundButton
             size="large"

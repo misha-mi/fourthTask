@@ -1,13 +1,22 @@
-import { useState } from 'react';
+import { useState, ReactElement } from 'react';
 import { TSort } from '../../types';
 import { IGetPostsHOC } from './type';
-import { View, Button, ScrollView } from 'react-native';
+import {
+  View,
+  Button,
+  ScrollView,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+} from 'react-native';
 import Tabs from '../../ui/tabs/tabs';
 import PostsList from '../posts-list/posts-list';
 import { useQuery } from '@apollo/client';
+import NoPosts from '../../ui/no-posts/no-posts';
+import Spinner from '../../ui/spinner/spinner';
 
-const GetPostsComponent = ({ query, isTabs }: IGetPostsHOC) => {
+const GetPostsComponent = ({ query, isTabs, noPostsMessage }: IGetPostsHOC) => {
   const [sort, setSort] = useState<TSort>('new');
+  const [paginationLoading, setPaginationLoading] = useState(false);
 
   const { data, loading, fetchMore } = useQuery(query, {
     variables: { limit: 3, type: sort.toUpperCase() },
@@ -15,7 +24,8 @@ const GetPostsComponent = ({ query, isTabs }: IGetPostsHOC) => {
   });
 
   const handlerFetchMore = (afterCursor: string, sort?: TSort) => {
-    if (afterCursor) {
+    if (afterCursor && !paginationLoading) {
+      setPaginationLoading(true);
       fetchMore({
         variables: {
           limit: 3,
@@ -29,7 +39,14 @@ const GetPostsComponent = ({ query, isTabs }: IGetPostsHOC) => {
           ];
           return fetchMoreResult;
         },
-      });
+      }).then(() => setPaginationLoading(false));
+    }
+  };
+
+  const handlerScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const { contentOffset, contentSize, layoutMeasurement } = event.nativeEvent;
+    if (contentOffset.y + layoutMeasurement.height + 2 > contentSize.height) {
+      handlerFetchMore(data.posts.pageInfo.afterCursor, sort);
     }
   };
 
@@ -39,14 +56,33 @@ const GetPostsComponent = ({ query, isTabs }: IGetPostsHOC) => {
     </View>
   ) : null;
 
+  let showContent: ReactElement;
+
+  if (!loading) {
+    if (data.posts.data.length) {
+      showContent = <PostsList postsData={data.posts.data} />;
+    } else {
+      showContent = <NoPosts message={noPostsMessage || ''} />;
+    }
+  } else {
+    showContent = <Spinner color="white" />;
+  }
+
   return (
-    <ScrollView>
+    <ScrollView
+      contentContainerStyle={
+        !data?.posts.data.length && !loading
+          ? { flexGrow: 1, justifyContent: 'center' }
+          : {}
+      }
+      onScroll={handlerScroll}>
       {showTabs}
-      {!loading ? <PostsList postsData={data.posts.data} /> : null}
-      <Button
+
+      {showContent}
+      {/* <Button
         title="more"
         onPress={() => handlerFetchMore(data.posts.pageInfo.afterCursor, sort)}
-      />
+      /> */}
     </ScrollView>
   );
 };
