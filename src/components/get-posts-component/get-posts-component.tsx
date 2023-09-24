@@ -3,7 +3,6 @@ import { TSort } from '../../types';
 import { IGetPostsHOC } from './type';
 import {
   View,
-  Button,
   ScrollView,
   NativeScrollEvent,
   NativeSyntheticEvent,
@@ -13,8 +12,10 @@ import PostsList from '../posts-list/posts-list';
 import { useQuery } from '@apollo/client';
 import NoPosts from '../../ui/no-posts/no-posts';
 import Spinner from '../../ui/spinner/spinner';
+import { useTheme } from '@react-navigation/native';
 
 const GetPostsComponent = ({ query, isTabs, noPostsMessage }: IGetPostsHOC) => {
+  const { color1 } = useTheme().colors.myColors.defaultColors;
   const [sort, setSort] = useState<TSort>('new');
   const [paginationLoading, setPaginationLoading] = useState(false);
 
@@ -65,7 +66,7 @@ const GetPostsComponent = ({ query, isTabs, noPostsMessage }: IGetPostsHOC) => {
       showContent = <NoPosts message={noPostsMessage || ''} />;
     }
   } else {
-    showContent = <Spinner color="white" />;
+    showContent = <Spinner color={color1} />;
   }
 
   return (
@@ -79,10 +80,6 @@ const GetPostsComponent = ({ query, isTabs, noPostsMessage }: IGetPostsHOC) => {
       {showTabs}
 
       {showContent}
-      {/* <Button
-        title="more"
-        onPress={() => handlerFetchMore(data.posts.pageInfo.afterCursor, sort)}
-      /> */}
     </ScrollView>
   );
 };

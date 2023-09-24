@@ -6,8 +6,12 @@ import { useState } from 'react';
 import CustomButton from '../../ui/custom-button/custom-button';
 import Modal from 'react-native-modal';
 import ImagePicker from 'react-native-image-crop-picker';
+import { ISetProfileImgComponent } from './type';
+import { useTheme } from '@react-navigation/native';
 
-const SetProfileImgComponent = ({ img, setImg }) => {
+const SetProfileImgComponent = ({ img, setImg }: ISetProfileImgComponent) => {
+  const { color4 } = useTheme().colors.myColors.defaultColors;
+
   const [modalVisible, setModalVisible] = useState(false);
 
   const getPhoto = () => {
@@ -43,7 +47,7 @@ const SetProfileImgComponent = ({ img, setImg }) => {
     <View>
       <View style={{ position: 'relative' }}>
         <ProfileImg userImg={img} />
-        <View style={style.position}>
+        <View style={styles.position}>
           <RoundButton
             onRenderSVG={color => <CameraSVG color={color} />}
             size="medium"
@@ -55,7 +59,7 @@ const SetProfileImgComponent = ({ img, setImg }) => {
         isVisible={modalVisible}
         onBackdropPress={() => setModalVisible(false)}>
         <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-          <View style={styles.modalView}>
+          <View style={{ ...styles.modalView, backgroundColor: color4 }}>
             <CustomButton
               title="Take a photo"
               size="medium"
@@ -73,7 +77,7 @@ const SetProfileImgComponent = ({ img, setImg }) => {
               isRedText
             />
           </View>
-          <View style={styles.modalView}>
+          <View style={{ ...styles.modalView, backgroundColor: color4 }}>
             <CustomButton
               title="Cancel"
               size="medium"
@@ -86,21 +90,17 @@ const SetProfileImgComponent = ({ img, setImg }) => {
   );
 };
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   position: {
     position: 'absolute',
     bottom: 0,
     right: 0,
   },
-});
-
-const styles = StyleSheet.create({
   modalView: {
     width: 'auto',
     margin: 20,
     borderRadius: 15,
     gap: 1,
-    backgroundColor: '#696969',
     overflow: 'hidden',
   },
 });

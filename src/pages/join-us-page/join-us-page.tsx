@@ -1,8 +1,11 @@
 import { StyleSheet, View } from 'react-native';
 import TitleAuthorization from '../../ui/title-authorization/title-authorization';
 import JoinUsForm from '../../components/forms/join-us-form/join-us-form';
+import { useNavigation } from '@react-navigation/native';
 
-const JoinUsPage = ({ navigation }) => {
+const JoinUsPage = () => {
+  const navigation = useNavigation();
+
   const handlerNavigate = (path: 'LogIn' | 'SuccessJoinUsPage') => {
     navigation.navigate(path);
   };

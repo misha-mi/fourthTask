@@ -2,8 +2,9 @@ import { Image, Pressable, Text, View, StyleSheet } from 'react-native';
 import CloudSVG from '../../assets/svg/cloud-svg';
 import { useTheme } from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
+import { IUpload } from './type';
 
-const Upload = ({ img, setImg }) => {
+const Upload = ({ img, setImg }: IUpload) => {
   const { backgroundColor, borderColor, textColor, cloudColor } =
     useTheme().colors.myColors.uploadColors;
 

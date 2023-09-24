@@ -91,7 +91,7 @@ const ProfilePage = () => {
           />
           <Text style={{ ...styles.title, color: color1 }}>Profile</Text>
           {isLoading ? (
-            <Spinner color="red" />
+            <Spinner color={color1} />
           ) : (
             <TextButton text="Done" onClick={handlerClickDone} />
           )}

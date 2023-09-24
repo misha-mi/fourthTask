@@ -1,8 +1,9 @@
 import { Text, Pressable, StyleSheet } from 'react-native';
 import TrashSVG from '../../assets/svg/trash-svg';
 import { useTheme } from '@react-navigation/native';
+import { IDeleteButton } from './type';
 
-const DeleteButton = ({ onDelete }: { onDelete: () => void }) => {
+const DeleteButton = ({ onDelete }: IDeleteButton) => {
   const { backgroundColor, textColor } =
     useTheme().colors.myColors.deleteButtonColors;
 

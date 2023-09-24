@@ -1,9 +1,6 @@
 import { useTheme } from '@react-navigation/native';
 import { StyleSheet, Text, View } from 'react-native';
-
-interface INoPosts {
-  message: string;
-}
+import { INoPosts } from './type';
 
 const NoPosts = ({ message }: INoPosts) => {
   const { titleColor, textColor, backgroundColor } =

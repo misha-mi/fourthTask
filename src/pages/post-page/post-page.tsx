@@ -1,11 +1,14 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import PostCard from '../../components/post-card/post-card';
 import { useQuery } from '@apollo/client';
 import { GET_POST } from '../../apollo/service/get-post';
-import { ParamListBase, useTheme } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import Header from '../../ui/header/header';
 
-const PostPage = ({ route, navigation }: ParamListBase) => {
+const PostPage = () => {
+  const route = useRoute();
+  const navigation = useNavigation();
+
   const { data, loading } = useQuery(GET_POST, {
     variables: { id: route.params.id },
   });

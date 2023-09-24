@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
   already: {
     fontFamily: 'Outfit-Regular',
     fontSize: 16,
-    color: '#FFFFFF',
   },
 });
 

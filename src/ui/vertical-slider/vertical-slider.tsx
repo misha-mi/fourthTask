@@ -28,7 +28,7 @@ const VerticalSlider = ({
   setValue,
   alignItemValue,
 }: IVerticalSlider) => {
-  const { color1, color7 } = useTheme().colors.myColors.defaultColors;
+  const { color1 } = useTheme().colors.myColors.defaultColors;
 
   const refSlider = useRef<ScrollView>(null);
   const [offset, setOffset] = useState(0);

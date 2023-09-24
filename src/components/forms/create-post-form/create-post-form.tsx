@@ -12,12 +12,7 @@ import { getLinkForPhoto } from '../../../service/get-link-for-photo';
 import { putPhoto } from '../../../service/put-photo';
 import { GET_MY_POSTS } from '../../../apollo/service/get-my-posts';
 import { GET_POSTS } from '../../../apollo/service/get-posts';
-
-type TInputs = {
-  description: string;
-  media: { path: string; data: string };
-  title: string;
-};
+import { THandlerGenerateButtonStatus, TInputs } from './type';
 
 const CreatePostForm = () => {
   const navigation = useNavigation();
@@ -72,7 +67,11 @@ const CreatePostForm = () => {
     }
   };
 
-  const handlerGenerateButtonStatus = (isAfter, isValid, isLoadingRequest) => {
+  const handlerGenerateButtonStatus: THandlerGenerateButtonStatus = (
+    isAfter,
+    isValid,
+    isLoadingRequest,
+  ) => {
     if (!isValid && !isAfter) {
       return 'disabled';
     } else if (isLoadingRequest) {

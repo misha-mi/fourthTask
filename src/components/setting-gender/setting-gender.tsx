@@ -1,15 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 import CheckInput from '../../ui/check-input/check-input';
 import { useTheme } from '@react-navigation/native';
-import { useState } from 'react';
+import { ISettingGender } from './type';
 
-const SettingGender = ({
-  gender,
-  setGender,
-}: {
-  gender: 'MALE' | 'FEMALE';
-  setGender: (value: 'MALE' | 'FEMALE') => void;
-}) => {
+const SettingGender = ({ gender, setGender }: ISettingGender) => {
   const { color1 } = useTheme().colors.myColors.defaultColors;
 
   return (

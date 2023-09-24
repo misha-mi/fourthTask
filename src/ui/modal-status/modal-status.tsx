@@ -2,14 +2,9 @@ import Modal from 'react-native-modal';
 import { View, Text, StyleSheet } from 'react-native';
 import CustomButton from '../custom-button/custom-button';
 import { useTheme } from '@react-navigation/native';
+import { IModalStatus } from './type';
 
-const ModalStatus = ({
-  messages,
-  setMessages,
-}: {
-  messages: string[] | null;
-  setMessages: () => void;
-}) => {
+const ModalStatus = ({ messages, setMessages }: IModalStatus) => {
   const { color7, primaryPressed, errorColor } =
     useTheme().colors.myColors.defaultColors;
 
