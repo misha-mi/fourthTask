@@ -21,14 +21,16 @@ import client from '../../apollo/client';
 
 const CustomDrawer = (props: DrawerContentComponentProps) => {
   const {
-    data: { firstName, lastName, avatarUrl },
+    data: {
+      userMe: { firstName, avatarUrl, lastName },
+    },
   } = useQuery(GET_USER);
 
   const colorScheme = useColorScheme();
 
   const { color1 } = useTheme().colors.defaultColors;
 
-  const name = firstName + lastName || 'Anonym';
+  const name = firstName + ' ' + lastName || 'Anonym';
 
   let textChangeColorTheme: string;
 

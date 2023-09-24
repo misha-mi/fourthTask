@@ -17,11 +17,12 @@ const Tab = createBottomTabNavigator();
 
 const MainPage = () => {
   const {
-    data: { firstName, avatarUrl },
+    data: {
+      userMe: { firstName, avatarUrl },
+    },
   } = useQuery(GET_USER);
   const navigation = useNavigation();
   const [filter, setFilter] = useState<TFilter>('main');
-
   const textTitle =
     filter === 'main'
       ? `Hello ${firstName || 'Anonym'}!`
@@ -68,8 +69,6 @@ const MainPage = () => {
         <Tab.Screen name="FavouritePosts" component={FavoritePosts} />
         <Tab.Screen name="MyPosts" component={MyPosts} />
       </Tab.Navigator>
-
-      {/* <Tapbar filter={filter} setFilter={setFilter} /> */}
     </View>
   );
 };
