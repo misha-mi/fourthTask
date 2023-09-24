@@ -14,7 +14,7 @@ import SunSVG from '../../assets/svg/sun-svg';
 import { DrawerContentComponentProps } from '@react-navigation/drawer';
 import ProfileImg from '../../ui/profile-img/profile-img';
 import { useTheme } from '@react-navigation/native';
-import { setToken } from '../../storage/storage';
+import { setTheme, setToken } from '../../storage/storage';
 import { useQuery } from '@apollo/client';
 import { GET_USER } from '../../apollo/service/get-user';
 import client from '../../apollo/client';
@@ -48,8 +48,10 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
     const theme = Appearance.getColorScheme();
     if (theme === 'dark') {
       Appearance.setColorScheme('light');
+      setTheme('light');
     } else {
       Appearance.setColorScheme('dark');
+      setTheme('dark');
     }
   };
 

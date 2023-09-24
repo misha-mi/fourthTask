@@ -1,10 +1,11 @@
 import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
 import { CustomDarkTheme, CustomLightTheme } from './themes';
-import { useColorScheme } from 'react-native';
+import { Appearance, useColorScheme } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const linking: LinkingOptions<ReactNavigation.RootParamList> = {
-  prefixes: ['shareyourtale://', 'https://internship-social-media.purrweb.com'],
+  prefixes: ['shareyourtale://'],
   config: {
     screens: {
       PostPage: 'post/:id',
@@ -14,6 +15,17 @@ const linking: LinkingOptions<ReactNavigation.RootParamList> = {
 
 const Navigation = ({ children }: { children: ReactElement }) => {
   const isDark = useColorScheme() === 'dark';
+
+  useEffect(() => {
+    AsyncStorage.getItem('theme').then(res => {
+      if (res === 'dark' || res === 'light') {
+        Appearance.setColorScheme(res);
+      } else {
+        Appearance.setColorScheme('light');
+      }
+    });
+  }, []);
+
   return (
     <NavigationContainer
       linking={linking}

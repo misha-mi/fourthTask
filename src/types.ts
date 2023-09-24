@@ -54,3 +54,5 @@ export type TPost = {
   mediaUrl: string;
   author: TAuthor;
 };
+
+export type TColorTheme = 'dark' | 'light';
