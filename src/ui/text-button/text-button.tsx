@@ -4,7 +4,7 @@ import { TPressed } from '../../types';
 
 const TextButton = ({ text, onClick, isDisabled }: ITextButton) => {
   const { defaultColor, pressedColor, disabledColor } =
-    useTheme().colors.textButtonColors;
+    useTheme().colors.myColors.textButtonColors;
 
   const handlerPressButton = ({ pressed }: TPressed) => {
     const disabledButtonColor = isDisabled ? disabledColor : defaultColor;

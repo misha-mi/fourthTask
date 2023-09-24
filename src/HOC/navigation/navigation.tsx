@@ -21,7 +21,7 @@ const Navigation = ({ children }: { children: ReactElement }) => {
       if (res === 'dark' || res === 'light') {
         Appearance.setColorScheme(res);
       } else {
-        Appearance.setColorScheme('light');
+        Appearance.setColorScheme('dark');
       }
     });
   }, []);

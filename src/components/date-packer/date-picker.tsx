@@ -4,6 +4,7 @@ import Modal from 'react-native-modal';
 import CustomButton from '../../ui/custom-button/custom-button';
 import VerticalSlider from '../../ui/vertical-slider/vertical-slider';
 import Input from '../../ui/input/input';
+import { useTheme } from '@react-navigation/native';
 
 const DatePicker = ({
   setDate,
@@ -12,6 +13,8 @@ const DatePicker = ({
   setDate: (date: string) => void;
   date: string;
 }) => {
+  const { color1, color7 } = useTheme().colors.myColors.defaultColors;
+
   const [modalVisible, setModalVisible] = useState(false);
   const [day, setDay] = useState('1');
   const [month, setMonth] = useState('January');
@@ -83,25 +86,25 @@ const DatePicker = ({
         <View
           style={{
             ...styles.modalView,
-            backgroundColor: '#131313',
+            backgroundColor: color7,
             padding: 16,
           }}>
           <Text
             style={{
-              color: 'white',
+              color: color1,
               ...styles.title,
             }}>
             Pick the date of your birth
           </Text>
 
           <View
-            style={[{ backgroundColor: 'white' }, styles.divider, styles.mt18]}
+            style={[{ backgroundColor: color1 }, styles.divider, styles.mt18]}
           />
 
           <View style={styles.wrapper}>
             <View
               style={[
-                { backgroundColor: 'white' },
+                { backgroundColor: color1 },
                 styles.divider,
                 styles.positionTop,
               ]}></View>
@@ -136,7 +139,7 @@ const DatePicker = ({
 
             <View
               style={[
-                { backgroundColor: 'white' },
+                { backgroundColor: color1 },
                 styles.divider,
                 styles.positionBottom,
               ]}

@@ -5,7 +5,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 
 const Upload = ({ img, setImg }) => {
   const { backgroundColor, borderColor, textColor, cloudColor } =
-    useTheme().colors.uploadColors;
+    useTheme().colors.myColors.uploadColors;
 
   const emptyStyles = !img
     ? { ...styles.border, borderColor: borderColor }

@@ -17,7 +17,7 @@ import { useEffect, useState } from 'react';
 import Spinner from '../../ui/spinner/spinner';
 
 const ProfilePage = () => {
-  const { color1 } = useTheme().colors.defaultColors;
+  const { color1 } = useTheme().colors.myColors.defaultColors;
 
   const [messagesForModalStatus, setMessagesForModalStatus] = useState<
     string[] | null

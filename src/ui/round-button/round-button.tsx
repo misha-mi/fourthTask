@@ -11,7 +11,7 @@ const RoundButton = ({
   onClick,
 }: IRoundButton) => {
   const { closeRoundButtonColors, defaultRoundButtonColors } =
-    useTheme().colors;
+    useTheme().colors.myColors;
 
   const {
     defaultColor,

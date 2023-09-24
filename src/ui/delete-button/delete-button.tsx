@@ -3,7 +3,8 @@ import TrashSVG from '../../assets/svg/trash-svg';
 import { useTheme } from '@react-navigation/native';
 
 const DeleteButton = ({ onDelete }: { onDelete: () => void }) => {
-  const { backgroundColor, textColor } = useTheme().colors.deleteButtonColors;
+  const { backgroundColor, textColor } =
+    useTheme().colors.myColors.deleteButtonColors;
 
   return (
     <Pressable

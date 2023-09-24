@@ -13,7 +13,7 @@ const CopyInput = ({ textCopy, status }: ICopyInput) => {
     defaultTextColor,
     pressedTextColor,
     disabledTextColor,
-  } = useTheme().colors.copyInputColors;
+  } = useTheme().colors.myColors.copyInputColors;
 
   const handlerPressButton = ({ pressed }: TPressed) => {
     const disabledColor =

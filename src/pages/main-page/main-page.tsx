@@ -10,12 +10,14 @@ import { GET_POSTS } from '../../apollo/service/get-posts';
 import { GET_FAVORITES_POSTS } from '../../apollo/service/get-favorites-posts';
 import { GET_MY_POSTS } from '../../apollo/service/get-my-posts';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 import { GET_USER } from '../../apollo/service/get-user';
 import { useQuery } from '@apollo/client';
 const Tab = createBottomTabNavigator();
 
 const MainPage = () => {
+  const { color1 } = useTheme().colors.myColors.defaultColors;
+
   const {
     data: {
       userMe: { firstName, avatarUrl },
@@ -53,7 +55,7 @@ const MainPage = () => {
     <View style={styles.container}>
       <View style={styles.p16}>
         <View style={styles.header}>
-          <Text style={styles.name}>{textTitle}</Text>
+          <Text style={{ ...styles.name, color: color1 }}>{textTitle}</Text>
           <Pressable onTouchEnd={navigation.toggleDrawer}>
             <ProfileImg userImg={avatarUrl} size="small" />
           </Pressable>
@@ -88,7 +90,6 @@ const styles = StyleSheet.create({
   name: {
     fontFamily: 'Outfit-Medium',
     fontSize: 32,
-    color: 'white',
   },
   positions: {
     position: 'absolute',

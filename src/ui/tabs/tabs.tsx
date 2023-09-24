@@ -8,7 +8,7 @@ const tabs: TSort[] = ['new', 'top'];
 
 const Tabs = ({ sort, setSort }: ITabs) => {
   const { defaultTabColor, activeTabColor, defaultTextColor, activeTextColor } =
-    useTheme().colors.tabsColors;
+    useTheme().colors.myColors.tabsColors;
 
   return (
     <View style={styles.wrapper}>

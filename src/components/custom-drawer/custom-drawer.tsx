@@ -28,7 +28,7 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
 
   const colorScheme = useColorScheme();
 
-  const { color1 } = useTheme().colors.defaultColors;
+  const { color1 } = useTheme().colors.myColors.defaultColors;
 
   const name = firstName + ' ' + lastName || 'Anonym';
 

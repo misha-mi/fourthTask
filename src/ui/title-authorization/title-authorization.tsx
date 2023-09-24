@@ -11,7 +11,7 @@ const TitleAuthorization = ({
   subtitleText,
 }: ITitleAuthorization) => {
   const { titleColor, subtitleColor } =
-    useTheme().colors.titleAuthorizationColors;
+    useTheme().colors.myColors.titleAuthorizationColors;
 
   return (
     <View>

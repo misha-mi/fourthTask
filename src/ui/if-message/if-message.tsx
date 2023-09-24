@@ -4,7 +4,7 @@ import { useTheme } from '@react-navigation/native';
 import { IIfMessage } from './type';
 
 const IfMessage = ({ ifMessage, thenMessage, onClick }: IIfMessage) => {
-  const textColor = useTheme().colors.defaultColors.color1;
+  const textColor = useTheme().colors.myColors.defaultColors.color1;
 
   return (
     <View style={styles.wrapper}>

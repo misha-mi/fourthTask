@@ -24,7 +24,7 @@ const Input = ({
     successColor,
     errorColor,
     caretColor,
-  } = useTheme().colors.inputColors;
+  } = useTheme().colors.myColors.inputColors;
 
   const [isFocus, setIsFocus] = useState(false);
   const [isShow, setIsShow] = useState(false);

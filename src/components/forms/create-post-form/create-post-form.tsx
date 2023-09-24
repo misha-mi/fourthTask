@@ -21,7 +21,7 @@ type TInputs = {
 
 const CreatePostForm = () => {
   const navigation = useNavigation();
-  const { errorColor } = useTheme().colors.defaultColors;
+  const { errorColor } = useTheme().colors.myColors.defaultColors;
 
   const [isAfterFirstSubmit, setIsAfterFirstSubmit] = useState(true);
   const [isLoading, setIsLoading] = useState(false);

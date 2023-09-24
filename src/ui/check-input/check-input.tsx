@@ -9,9 +9,8 @@ const CheckInput = ({
   isChecked,
   setIsChecked,
 }: ICheckInput) => {
-  const theme = useTheme();
   const { backgroundColor, checkedColor, borderColor } =
-    theme.colors.checkInputColors;
+    useTheme().colors.myColors.checkInputColors;
 
   let iconChecked: ReactElement;
 

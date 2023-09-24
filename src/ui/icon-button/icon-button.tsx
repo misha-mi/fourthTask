@@ -10,7 +10,7 @@ const IconButton = ({
   onClick,
 }: IIconButton) => {
   const { defaultColor, pressedColor, disabledColor } =
-    useTheme().colors.iconButtonColors;
+    useTheme().colors.myColors.iconButtonColors;
 
   const handlerPressButton = ({ pressed }: TPressed) => {
     const disabledButtonColor =

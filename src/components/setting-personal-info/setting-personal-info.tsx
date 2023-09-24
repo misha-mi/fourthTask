@@ -8,7 +8,7 @@ import AccountInfoForm from '../forms/account-info-form/account-info-form';
 import DatePicker from '../date-packer/date-picker';
 
 const SettingPersonalInfo = ({ control }: TControl) => {
-  const { color1 } = useTheme().colors.defaultColors;
+  const { color1 } = useTheme().colors.myColors.defaultColors;
 
   return (
     <View style={styles.gap16}>

@@ -4,8 +4,8 @@ import { IProfileImg } from './type';
 import { useTheme } from '@react-navigation/native';
 
 const ProfileImg = ({ userImg, size = 'large' }: IProfileImg) => {
-  const theme = useTheme();
-  const { backgroundColor, SVGColor } = theme.colors.profileImgColors;
+  const { backgroundColor, SVGColor } =
+    useTheme().colors.myColors.profileImgColors;
 
   return (
     <View

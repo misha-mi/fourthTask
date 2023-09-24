@@ -7,7 +7,7 @@ import { GET_USER } from '../../apollo/service/get-user';
 
 const SuccessJoinUsPage = () => {
   const { titleColor, textColor, backgroundColor } =
-    useTheme().colors.successJoinUsColors;
+    useTheme().colors.myColors.successJoinUsColors;
 
   const [getUser] = useLazyQuery(GET_USER);
 

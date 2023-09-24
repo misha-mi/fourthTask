@@ -45,7 +45,7 @@ const PostCard = ({ isOpen, postData }: IPostCard) => {
   } = postData;
 
   const { backgroundColor, titleColor, textColor } =
-    useTheme().colors.postCardColors;
+    useTheme().colors.myColors.postCardColors;
 
   const WIDTH = Dimensions.get('window').width;
 

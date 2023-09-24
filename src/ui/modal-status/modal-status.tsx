@@ -11,7 +11,7 @@ const ModalStatus = ({
   setMessages: () => void;
 }) => {
   const { color7, primaryPressed, errorColor } =
-    useTheme().colors.defaultColors;
+    useTheme().colors.myColors.defaultColors;
 
   const colorMessage = messages?.includes('Success')
     ? primaryPressed

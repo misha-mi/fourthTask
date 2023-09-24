@@ -22,7 +22,7 @@ const BUTTONS: TButtons = [
 
 const Tapbar = ({ state, navigation, setFilter }: ITapbar) => {
   const { backgroundColor, defaultColor, activeColor } =
-    useTheme().colors.tapbarColors;
+    useTheme().colors.myColors.tapbarColors;
 
   return (
     <View

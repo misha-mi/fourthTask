@@ -11,7 +11,7 @@ const CustomButton = ({
   status = 'waiting',
   isRedText = false,
 }: ICustomButton) => {
-  const theme = useTheme().colors;
+  const theme = useTheme().colors.myColors;
 
   const {
     buttonColor,

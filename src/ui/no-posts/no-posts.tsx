@@ -1,5 +1,5 @@
 import { useTheme } from '@react-navigation/native';
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 interface INoPosts {
   message: string;
@@ -7,7 +7,7 @@ interface INoPosts {
 
 const NoPosts = ({ message }: INoPosts) => {
   const { titleColor, textColor, backgroundColor } =
-    useTheme().colors.noPostsColors;
+    useTheme().colors.myColors.noPostsColors;
 
   return (
     <View style={styles.wrapper}>

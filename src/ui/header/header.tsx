@@ -4,7 +4,7 @@ import ArrowSVG from '../../assets/svg/arrow-svg';
 import { useTheme } from '@react-navigation/native';
 
 const Header = ({ title, onBack }: { title: string; onBack: () => void }) => {
-  const { color1 } = useTheme().colors.defaultColors;
+  const { color1 } = useTheme().colors.myColors.defaultColors;
 
   return (
     <View style={styles.header}>

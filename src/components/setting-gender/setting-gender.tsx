@@ -10,7 +10,7 @@ const SettingGender = ({
   gender: 'MALE' | 'FEMALE';
   setGender: (value: 'MALE' | 'FEMALE') => void;
 }) => {
-  const { color1 } = useTheme().colors.defaultColors;
+  const { color1 } = useTheme().colors.myColors.defaultColors;
 
   return (
     <View style={styles.gap16}>
