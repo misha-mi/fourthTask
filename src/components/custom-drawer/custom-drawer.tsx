@@ -30,7 +30,12 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
 
   const { color1 } = useTheme().colors.myColors.defaultColors;
 
-  const name = firstName + ' ' + lastName || 'Anonym';
+  let name: string;
+  if (firstName && lastName) {
+    name = firstName + ' ' + lastName;
+  } else {
+    name = 'Anonym';
+  }
 
   let textChangeColorTheme: string;
 

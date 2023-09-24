@@ -45,15 +45,18 @@ const ProfilePage = () => {
 
   const onSubmit = async (dataForm: TUser) => {
     setIsLoading(true);
-    const path = dataForm.avatarUrl;
-    const fileName = path.slice(path.lastIndexOf('/') + 1);
+    let uriPush = null;
+    if (dataForm.avatarUrl) {
+      const path = dataForm.avatarUrl;
+      const fileName = path.slice(path.lastIndexOf('/') + 1);
 
-    const uriPut = await getLinkForPhoto(fileName, 'AVATARS');
+      const uriPut = await getLinkForPhoto(fileName, 'AVATARS');
 
-    const res = await fetch(path);
-    const blobData = await res.blob();
+      const res = await fetch(path);
+      const blobData = await res.blob();
 
-    const uriPush = await putPhoto(uriPut, blobData);
+      uriPush = await putPhoto(uriPut, blobData);
+    }
 
     editProfile({
       variables: {

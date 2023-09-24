@@ -20,7 +20,6 @@ const Input = ({
     labelColor,
     initialColor,
     typingColor,
-    disabledColor,
     successColor,
     errorColor,
     caretColor,

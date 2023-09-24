@@ -21,13 +21,16 @@ const LogInForm = ({ onNavigate }: ILogIntForm) => {
   const [isAfterFirstSubmit, setIsAfterFirstSubmit] = useState(true);
 
   const [getUser] = useLazyQuery(GET_USER);
-  const [logIn, { data: logInData, error: logInError }] = useMutation(LOG_IN, {
-    errorPolicy: 'all',
-    onCompleted: data => {
-      setToken(data.userSignIn.token);
-      getUser();
+  const [logIn, { data: logInData, error: logInError, loading }] = useMutation(
+    LOG_IN,
+    {
+      errorPolicy: 'all',
+      onCompleted: data => {
+        setToken(data.userSignIn.token);
+        getUser();
+      },
     },
-  });
+  );
 
   const incorrectErrorOrPassword = logInData?.userSignIn?.problem?.message;
   const arrErrorRequest = {
@@ -135,7 +138,11 @@ const LogInForm = ({ onNavigate }: ILogIntForm) => {
       </View>
 
       <View style={styles.mt20}>
-        <CustomButton onClick={handlerClickButtonSubmit} title="Continue" />
+        <CustomButton
+          onClick={handlerClickButtonSubmit}
+          title="Continue"
+          status={loading ? 'loading' : 'waiting'}
+        />
       </View>
     </View>
   );

@@ -16,16 +16,14 @@ import { setToken } from '../../../storage/storage';
 
 const JoinUsForm = ({ onNavigate }: IJoinUsForm) => {
   const [isAfterFirstSubmit, setIsAfterFirstSubmit] = useState(true);
-  const [joinUs, { data: joinUsData, error: joinUsError }] = useMutation(
-    JOIN_US,
-    {
+  const [joinUs, { data: joinUsData, error: joinUsError, loading }] =
+    useMutation(JOIN_US, {
       errorPolicy: 'all',
       onCompleted: data => {
         setToken(data.userSignUp.token);
         onNavigate('SuccessJoinUsPage');
       },
-    },
-  );
+    });
 
   const emailErrorRequest = joinUsData?.userSignUp?.problem?.message;
   const arrErrorRequest = {
@@ -169,7 +167,11 @@ const JoinUsForm = ({ onNavigate }: IJoinUsForm) => {
       </View>
 
       <View style={styles.mt20}>
-        <CustomButton onClick={handlerClickButtonSubmit} title="Continue" />
+        <CustomButton
+          onClick={handlerClickButtonSubmit}
+          title="Continue"
+          status={loading ? 'loading' : 'waiting'}
+        />
       </View>
     </View>
   );
