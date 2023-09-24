@@ -2,9 +2,10 @@ import { StyleSheet, View } from 'react-native';
 import Header from '../../ui/header/header';
 import CreatePostForm from '../../components/forms/create-post-form/create-post-form';
 import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, ParamListBase } from '@react-navigation/native';
 
 const CreatePostPage = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<ParamListBase>>();
   return (
     <View>
       <Header title="Create post" onBack={() => navigation.goBack()} />

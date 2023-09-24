@@ -72,7 +72,7 @@ const GetPostsComponent = ({ query, isTabs, noPostsMessage }: IGetPostsHOC) => {
   return (
     <ScrollView
       contentContainerStyle={
-        !data?.posts.data.length && !loading
+        !data?.posts?.data.length && !loading
           ? { flexGrow: 1, justifyContent: 'center' }
           : {}
       }

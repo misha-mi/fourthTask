@@ -25,13 +25,14 @@ import { GET_FAVORITES_POSTS } from '../../apollo/service/get-favorites-posts';
 import { DELETE_POST } from '../../apollo/service/delete-post';
 import { GET_POSTS } from '../../apollo/service/get-posts';
 import { GET_MY_POSTS } from '../../apollo/service/get-my-posts';
+import { NavigationProp, ParamListBase } from '@react-navigation/native';
 
 const PostCard = ({ isOpen, postData }: IPostCard) => {
   const [likePost] = useMutation(LIKE_POST);
   const [unlikePost] = useMutation(UNLIKE_POST);
   const [deletePost] = useMutation(DELETE_POST);
   const route = useRoute();
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<ParamListBase>>();
 
   const {
     title,

@@ -2,8 +2,9 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import ProfilePage from '../../pages/profile-page/profile-page';
 import MainPage from '../../pages/main-page/main-page';
 import CustomDrawer from '../custom-drawer/custom-drawer';
+import { TDrawerNavigator } from '../../HOC/navigation/type';
 
-const Drawer = createDrawerNavigator();
+const Drawer = createDrawerNavigator<TDrawerNavigator>();
 
 const DrawerNavigator = () => {
   return (

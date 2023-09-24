@@ -13,7 +13,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useNavigation, useTheme } from '@react-navigation/native';
 import { GET_USER } from '../../apollo/service/get-user';
 import { useQuery } from '@apollo/client';
-const Tab = createBottomTabNavigator();
+import { ParamListBase } from '@react-navigation/native';
+import { DrawerNavigationProp } from '@react-navigation/drawer';
+import { TTabsNavigator } from '../../HOC/navigation/type';
+
+const Tab = createBottomTabNavigator<TTabsNavigator>();
 
 const MainPage = () => {
   const { color1 } = useTheme().colors.myColors.defaultColors;
@@ -24,7 +28,7 @@ const MainPage = () => {
     },
   } = useQuery(GET_USER);
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<DrawerNavigationProp<ParamListBase>>();
 
   const [filter, setFilter] = useState<TFilter>('main');
 

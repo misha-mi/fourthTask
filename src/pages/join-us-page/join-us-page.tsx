@@ -2,9 +2,10 @@ import { Dimensions, ScrollView, StyleSheet, View } from 'react-native';
 import TitleAuthorization from '../../ui/title-authorization/title-authorization';
 import JoinUsForm from '../../components/forms/join-us-form/join-us-form';
 import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, ParamListBase } from '@react-navigation/native';
 
 const JoinUsPage = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<ParamListBase>>();
   const windowHeight = Dimensions.get('window').height;
 
   const handlerNavigate = (path: 'LogIn' | 'SuccessJoinUsPage') => {

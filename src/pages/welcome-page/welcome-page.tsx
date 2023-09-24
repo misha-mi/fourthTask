@@ -2,9 +2,10 @@ import { ImageBackground, View, StyleSheet, Text } from 'react-native';
 import CustomButton from '../../ui/custom-button/custom-button';
 import IfMessage from '../../ui/if-message/if-message';
 import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, ParamListBase } from '@react-navigation/native';
 
 const WelcomePage = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<ParamListBase>>();
   return (
     <ImageBackground
       source={require('../../assets/img/welcome-bg.jpg')}

@@ -3,14 +3,15 @@ import TitleAuthorization from '../../ui/title-authorization/title-authorization
 import LogInForm from '../../components/forms/log-in-form/log-in-form';
 import { useNavigation } from '@react-navigation/native';
 import { ScrollView } from 'react-native';
+import { NavigationProp, ParamListBase } from '@react-navigation/native';
 
 const LogInPage = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<ParamListBase>>();
 
   const windowHeight = Dimensions.get('window').height;
 
-  const handlerNavigate = (path: 'JoinUs') => {
-    navigation.navigate(path);
+  const handlerNavigate = () => {
+    navigation.navigate('JoinUs');
   };
 
   return (

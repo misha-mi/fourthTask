@@ -11,7 +11,9 @@ import { useEffect } from 'react';
 import PostPage from './pages/post-page/post-page';
 import CreatePostPage from './pages/create-post-page/create-post-page';
 import DrawerNavigator from './components/drawer-navigator/drawer-navigator';
-const Stack = createNativeStackNavigator();
+import { RootStackParamList } from './HOC/navigation/type';
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const Index = () => {
   const { data, loading } = useQuery(GET_USER, {
