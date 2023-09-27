@@ -34,11 +34,7 @@ const Index = () => {
         {data?.userMe ? (
           <>
             <Stack.Screen name="Drawer" component={DrawerNavigator} />
-            <Stack.Screen
-              name="PostPage"
-              component={PostPage}
-              initialParams={{ id: '9a4cde44-c971-43dc-b419-543e250269ca' }}
-            />
+            <Stack.Screen name="PostPage" component={PostPage} />
             <Stack.Screen name="CreatePost" component={CreatePostPage} />
           </>
         ) : (
