@@ -5,14 +5,15 @@ import CustomButton from '../../ui/custom-button/custom-button';
 import VerticalSlider from '../../ui/vertical-slider/vertical-slider';
 import Input from '../../ui/input/input';
 import { useTheme } from '@react-navigation/native';
+import {
+  IDatePicker,
+  TGetDaysArr,
+  TGetIndexMonth,
+  TGetYearsArr,
+  THandlerAddZero,
+} from './type';
 
-const DatePicker = ({
-  setDate,
-  date,
-}: {
-  setDate: (date: string) => void;
-  date: string;
-}) => {
+const DatePicker = ({ setDate, date }: IDatePicker) => {
   const { color1, color7 } = useTheme().colors.myColors.defaultColors;
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -29,14 +30,14 @@ const DatePicker = ({
     return arr;
   };
 
-  const handlerAddZero: (num: number | string) => string = num => {
+  const handlerAddZero: THandlerAddZero = num => {
     if (+num < 10) {
       return '0' + num;
     }
     return num.toString();
   };
 
-  const getDaysArr = (year: string, month: number) => {
+  const getDaysArr: TGetDaysArr = (year, month) => {
     const endDay = new Date(+year, month - 1, 0).getDate();
     const arr: string[] = [];
     for (let i = 1; i <= endDay; i++) {
@@ -45,7 +46,7 @@ const DatePicker = ({
     return arr;
   };
 
-  const getYearsArr = (yearStart: number) => {
+  const getYearsArr: TGetYearsArr = yearStart => {
     const yearEnd = new Date().getFullYear();
     const arr = [];
     for (let i = yearStart; i <= yearEnd; i++) {
@@ -54,7 +55,7 @@ const DatePicker = ({
     return arr;
   };
 
-  const getIndexMonth = (month: string) => {
+  const getIndexMonth: TGetIndexMonth = month => {
     for (let i = 0; i < 12; i++) {
       const monthCompare = new Date(0, i).toLocaleString('en-US', {
         month: 'long',
