@@ -15,7 +15,7 @@ import Spinner from '../../ui/spinner/spinner';
 import { useTheme } from '@react-navigation/native';
 
 const GetPostsComponent = ({ query, isTabs, noPostsMessage }: IGetPostsHOC) => {
-  const { color1 } = useTheme().colors.myColors.defaultColors;
+  const { pressedButtonColor } = useTheme().colors.myColors.largeButtonColors;
   const [sort, setSort] = useState<TSort>('new');
   const [paginationLoading, setPaginationLoading] = useState(false);
 
@@ -66,7 +66,7 @@ const GetPostsComponent = ({ query, isTabs, noPostsMessage }: IGetPostsHOC) => {
       showContent = <NoPosts message={noPostsMessage || ''} />;
     }
   } else {
-    showContent = <Spinner color={color1} />;
+    showContent = <Spinner color={pressedButtonColor} />;
   }
 
   return (
