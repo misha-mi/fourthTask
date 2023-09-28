@@ -26,8 +26,11 @@ const ProfilePage = () => {
 
   const navigation = useNavigation();
 
-  const [getUserData] = useLazyQuery<{ userMe: TUser }>(GET_USER);
-  const [editProfile, { data }] = useMutation(EDIT_PROFILE, {
+  const [getUserData] = useLazyQuery<{
+    userMe: TUser;
+  }>(GET_USER);
+
+  const [editProfile, { data: editProfileData }] = useMutation(EDIT_PROFILE, {
     onCompleted: () => {
       setMessagesForModalStatus(['Success']);
     },
@@ -38,6 +41,7 @@ const ProfilePage = () => {
     control,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<TUser>({
     defaultValues: async () =>
       await getUserData().then(res => res?.data?.userMe),
@@ -46,9 +50,11 @@ const ProfilePage = () => {
   const onSubmit = async (dataForm: TUser) => {
     setIsLoading(true);
 
-    let uriPush = null;
-    if (dataForm.avatarUrl) {
+    let uriPush = dataForm.avatarUrl;
+
+    if (uriPush && uriPush.includes('file:///')) {
       uriPush = await postPhoto(dataForm.avatarUrl, 'AVATARS');
+      setValue('avatarUrl', uriPush);
     }
 
     editProfile({
@@ -71,11 +77,13 @@ const ProfilePage = () => {
   };
 
   useEffect(() => {
-    if (data?.userEditProfile.problem) {
-      setMessagesForModalStatus([data.userEditProfile.problem.message]);
-    } else if (data?.userEditProfile.user)
+    if (editProfileData?.userEditProfile.problem) {
+      setMessagesForModalStatus([
+        editProfileData.userEditProfile.problem.message,
+      ]);
+    } else if (editProfileData?.userEditProfile.user)
       [setMessagesForModalStatus(['Success'])];
-  }, [data]);
+  }, [editProfileData]);
 
   return (
     <ScrollView>
