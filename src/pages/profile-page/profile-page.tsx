@@ -10,12 +10,11 @@ import { useLazyQuery, useMutation } from '@apollo/client';
 import { GET_USER } from '../../apollo/service/get-user';
 import { EDIT_PROFILE } from '../../apollo/service/edit-profile';
 import SetProfileImgComponent from '../../components/set-profile-img-component/set-profile-img-component';
-import { getLinkForPhoto } from '../../service/get-link-for-photo';
-import { putPhoto } from '../../service/put-photo';
 import ModalStatus from '../../ui/modal-status/modal-status';
 import { useEffect, useState } from 'react';
 import Spinner from '../../ui/spinner/spinner';
 import { stylesText } from '../../global-styles';
+import { postPhoto } from '../../functions/post-photo';
 
 const ProfilePage = () => {
   const { color1 } = useTheme().colors.myColors.defaultColors;
@@ -46,17 +45,10 @@ const ProfilePage = () => {
 
   const onSubmit = async (dataForm: TUser) => {
     setIsLoading(true);
+
     let uriPush = null;
     if (dataForm.avatarUrl) {
-      const path = dataForm.avatarUrl;
-      const fileName = path.slice(path.lastIndexOf('/') + 1);
-
-      const uriPut = await getLinkForPhoto(fileName, 'AVATARS');
-
-      const res = await fetch(path);
-      const blobData = await res.blob();
-
-      uriPush = await putPhoto(uriPut, blobData);
+      uriPush = await postPhoto(dataForm.avatarUrl, 'AVATARS');
     }
 
     editProfile({

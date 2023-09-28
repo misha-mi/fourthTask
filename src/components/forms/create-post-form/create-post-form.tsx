@@ -8,11 +8,10 @@ import { useState } from 'react';
 import { useNavigation, useTheme } from '@react-navigation/native';
 import { useMutation } from '@apollo/client';
 import { POST_CREATE } from '../../../apollo/service/post-create';
-import { getLinkForPhoto } from '../../../service/get-link-for-photo';
-import { putPhoto } from '../../../service/put-photo';
 import { GET_MY_POSTS } from '../../../apollo/service/get-my-posts';
 import { GET_POSTS } from '../../../apollo/service/get-posts';
 import { THandlerGenerateButtonStatus, TInputs } from './type';
+import { postPhoto } from '../../../functions/post-photo';
 
 const CreatePostForm = () => {
   const navigation = useNavigation();
@@ -34,15 +33,8 @@ const CreatePostForm = () => {
 
   const onSubmit = async (dataForm: TInputs) => {
     setIsLoading(true);
-    const { path } = dataForm.media;
-    const fileName = path.slice(path.lastIndexOf('/') + 1);
 
-    const uriPut = await getLinkForPhoto(fileName, 'POSTS');
-
-    const res = await fetch(path);
-    const blobData = await res.blob();
-
-    const uriPush = await putPhoto(uriPut, blobData);
+    const uriPush = await postPhoto(dataForm.media, 'POSTS');
 
     createPost({
       variables: {

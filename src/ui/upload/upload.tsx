@@ -14,7 +14,7 @@ const Upload = ({ img, setImg }: IUpload) => {
     : null;
 
   const changePhoto = async () => {
-    ImagePicker.openPicker({}).then(setImg);
+    ImagePicker.openPicker({}).then(res => setImg(res.path));
   };
 
   return (
@@ -32,7 +32,7 @@ const Upload = ({ img, setImg }: IUpload) => {
           </Text>
         </Pressable>
       ) : (
-        <Image source={{ uri: img?.path }} style={{ height: 166 }} />
+        <Image source={{ uri: img }} style={{ height: 166 }} />
       )}
     </View>
   );

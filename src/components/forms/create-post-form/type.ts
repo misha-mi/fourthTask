@@ -1,4 +1,3 @@
-import { ImageOrVideo } from 'react-native-image-crop-picker';
 import { TStatus } from '../../../types';
 
 export type THandlerGenerateButtonStatus = (
@@ -9,6 +8,6 @@ export type THandlerGenerateButtonStatus = (
 
 export type TInputs = {
   description: string;
-  media: ImageOrVideo;
+  media: string;
   title: string;
 };
