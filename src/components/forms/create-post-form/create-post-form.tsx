@@ -138,6 +138,7 @@ const CreatePostForm = () => {
             onChange={onChange}
             value={value}
             errorMessage={errors.description?.message}
+            isTextArea
           />
         )}
       />

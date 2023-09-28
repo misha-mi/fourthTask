@@ -7,4 +7,5 @@ export interface IInput {
   errorMessage?: string;
   isPasswordInput?: boolean;
   isPhonePad?: boolean;
+  isTextArea?: boolean;
 }

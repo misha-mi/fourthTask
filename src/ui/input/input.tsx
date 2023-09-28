@@ -15,6 +15,7 @@ const Input = ({
   value,
   errorMessage,
   isPhonePad,
+  isTextArea,
 }: IInput) => {
   const {
     labelColor,
@@ -27,6 +28,7 @@ const Input = ({
 
   const [isFocus, setIsFocus] = useState(false);
   const [isShow, setIsShow] = useState(false);
+  const [height, setHeight] = useState(0);
 
   let statusColor: string;
 
@@ -48,6 +50,7 @@ const Input = ({
   const underlineInput = { borderBottomWidth: 2, borderColor: statusColor };
   const textColor = { color: statusColor };
   const labelStatusColor = status === 'waiting' ? labelColor : statusColor;
+  const heightInput = { height: height };
 
   const showSVG = !isShow ? (
     <NoShowSVG color={statusColor} />
@@ -66,6 +69,7 @@ const Input = ({
       </Text>
       <View style={styles.wrapper}>
         <TextInput
+          style={[styles.input, underlineInput, textColor, heightInput]}
           secureTextEntry={isPasswordInput && !isShow}
           editable={status !== 'disabled'}
           placeholder={placeholder}
@@ -75,8 +79,9 @@ const Input = ({
           onBlur={() => setIsFocus(false)}
           value={value}
           onChangeText={onChange}
-          style={[styles.input, underlineInput, textColor]}
           keyboardType={isPhonePad ? 'phone-pad' : 'default'}
+          multiline={isTextArea}
+          onContentSizeChange={e => setHeight(e.nativeEvent.contentSize.height)}
         />
 
         <Text style={{ color: statusColor, marginTop: 6 }}>{errorMessage}</Text>
@@ -108,8 +113,9 @@ const styles = StyleSheet.create({
   },
   input: {
     width: 'auto',
-    height: 49,
     padding: 0,
+    paddingTop: 14,
+    paddingBottom: 14,
     fontSize: 16,
     fontFamily: 'Outfit-Regular',
   },
