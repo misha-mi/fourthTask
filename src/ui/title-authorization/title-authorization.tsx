@@ -1,5 +1,6 @@
 import { useTheme } from '@react-navigation/native';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, Text } from 'react-native';
+import { stylesText } from '../../global-styles';
 
 interface ITitleAuthorization {
   titleText: string;
@@ -15,26 +16,14 @@ const TitleAuthorization = ({
 
   return (
     <View>
-      <Text style={[styles.text, styles.fs32, { color: titleColor }]}>
+      <Text style={[stylesText.outfitRegular32, { color: titleColor }]}>
         {titleText}
       </Text>
-      <Text style={[styles.text, styles.fs16, { color: subtitleColor }]}>
+      <Text style={[stylesText.outfitRegular16, { color: subtitleColor }]}>
         {subtitleText}
       </Text>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  text: {
-    fontFamily: 'Outfit-Regular',
-  },
-  fs32: {
-    fontSize: 32,
-  },
-  fs16: {
-    fontSize: 16,
-  },
-});
 
 export default TitleAuthorization;

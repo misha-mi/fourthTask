@@ -2,6 +2,7 @@ import { Pressable, StyleSheet, Text } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { ITextWithIconButton } from './types';
 import { TPressed } from '../../types';
+import { stylesText } from '../../global-styles';
 
 const TextWithIconButton = ({
   onRenderSVG,
@@ -21,7 +22,7 @@ const TextWithIconButton = ({
         {onRenderSVG(color)}
         <Text
           style={{
-            ...styles.text,
+            ...stylesText.outfitRegular18,
             color: color,
           }}>
           {text}
@@ -45,10 +46,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-  },
-  text: {
-    fontSize: 18,
-    fontFamily: 'Outfit-Regular',
   },
 });
 

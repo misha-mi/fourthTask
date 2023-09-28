@@ -4,6 +4,7 @@ import BookmarkSVG from '../../assets/svg/bookmark-svg';
 import PhotoSVG from '../../assets/svg/photo-svg';
 import { useTheme } from '@react-navigation/native';
 import { ITapbar, TButtons } from './type';
+import { stylesText } from '../../global-styles';
 
 const BUTTONS: TButtons = [
   {
@@ -55,7 +56,7 @@ const Tapbar = ({ state, navigation, setFilter }: ITapbar) => {
               {onRenderSVG(color)}
               <Text
                 style={{
-                  ...styles.text,
+                  ...stylesText.outfitMedium12,
                   color: color,
                 }}>
                 {text.slice(0, 1).toUpperCase() + text.slice(1)}
@@ -80,10 +81,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 4,
     flex: 1,
-  },
-  text: {
-    fontFamily: 'Outfit-Medium',
-    fontSize: 12,
   },
 });
 

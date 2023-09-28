@@ -4,6 +4,7 @@ import { useTheme } from '@react-navigation/native';
 import { ICopyInput } from './type';
 import Spinner from '../spinner/spinner';
 import { TPressed } from '../../types';
+import { stylesText } from '../../global-styles';
 
 const CopyInput = ({ textCopy, status }: ICopyInput) => {
   const {
@@ -34,10 +35,12 @@ const CopyInput = ({ textCopy, status }: ICopyInput) => {
     return (
       <>
         <Text
-          style={{
-            ...styles.text,
-            color: contentColor,
-          }}>
+          style={[
+            stylesText.outfitSemiBold18,
+            {
+              color: contentColor,
+            },
+          ]}>
           {textCopy}
         </Text>
 
@@ -70,10 +73,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center',
     position: 'relative',
-  },
-  text: {
-    fontSize: 23,
-    fontFamily: 'Outfit-Regular',
   },
   copySVG: {
     position: 'absolute',

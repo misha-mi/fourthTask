@@ -12,6 +12,7 @@ import {
   TGetYearsArr,
   THandlerAddZero,
 } from './type';
+import { stylesText } from '../../global-styles';
 
 const DatePicker = ({ setDate, date }: IDatePicker) => {
   const { color1, color7 } = useTheme().colors.myColors.defaultColors;
@@ -91,10 +92,13 @@ const DatePicker = ({ setDate, date }: IDatePicker) => {
             padding: 16,
           }}>
           <Text
-            style={{
-              color: color1,
-              ...styles.title,
-            }}>
+            style={[
+              stylesText.outfitSemiBold16,
+              {
+                color: color1,
+                textAlign: 'center',
+              },
+            ]}>
             Pick the date of your birth
           </Text>
 
@@ -176,11 +180,6 @@ const styles = StyleSheet.create({
     gap: 1,
     backgroundColor: '#696969',
     overflow: 'hidden',
-  },
-  title: {
-    fontFamily: 'Outfit-SemiBold',
-    textAlign: 'center',
-    fontSize: 16,
   },
   wrapper: {
     position: 'relative',

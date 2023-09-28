@@ -16,6 +16,7 @@ import { useQuery } from '@apollo/client';
 import { ParamListBase } from '@react-navigation/native';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { TTabsNavigator } from '../../HOC/navigation/type';
+import { stylesText } from '../../global-styles';
 
 const Tab = createBottomTabNavigator<TTabsNavigator>();
 
@@ -70,7 +71,9 @@ const MainPage = () => {
     <View style={styles.container}>
       <View style={styles.p16}>
         <View style={styles.header}>
-          <Text style={{ ...styles.name, color: color1 }}>{textTitle}</Text>
+          <Text style={{ ...stylesText.outfitMedium32, color: color1 }}>
+            {textTitle}
+          </Text>
           <Pressable onTouchEnd={navigation.toggleDrawer}>
             <ProfileImg userImg={avatarUrl} size="small" />
           </Pressable>
@@ -101,10 +104,6 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-  },
-  name: {
-    fontFamily: 'Outfit-Medium',
-    fontSize: 32,
   },
   positions: {
     position: 'absolute',

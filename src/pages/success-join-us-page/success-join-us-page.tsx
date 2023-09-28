@@ -4,6 +4,7 @@ import CustomButton from '../../ui/custom-button/custom-button';
 import { View, Text, StyleSheet } from 'react-native';
 import { useLazyQuery } from '@apollo/client';
 import { GET_USER } from '../../apollo/service/get-user';
+import { stylesText } from '../../global-styles';
 
 const SuccessJoinUsPage = () => {
   const { titleColor, textColor, backgroundColor } =
@@ -15,14 +16,18 @@ const SuccessJoinUsPage = () => {
     <View style={styles.wrapper}>
       <Text
         style={[
-          styles.title,
-          { color: titleColor, backgroundColor: backgroundColor },
+          stylesText.nokwy55,
+          {
+            color: titleColor,
+            backgroundColor: backgroundColor,
+            alignSelf: 'center',
+          },
         ]}>
         CONGRATS
       </Text>
       <View style={styles.wrapperMessage}>
         <CheckCircleSVG color={backgroundColor} />
-        <Text style={{ ...styles.message, color: textColor }}>
+        <Text style={{ ...stylesText.outfitRegular16, color: textColor }}>
           You have been registered
         </Text>
       </View>
@@ -39,25 +44,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 16,
   },
-  title: {
-    padding: 20,
-    paddingBottom: 12,
-    paddingTop: 12,
-    alignSelf: 'center',
-    fontFamily: 'Nokwy',
-    fontSize: 55,
-    transform: [{ rotate: '-3deg' }],
-  },
   wrapperMessage: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 20,
     gap: 6,
-  },
-  message: {
-    fontFamily: 'Outfit-Regular',
-    fontSize: 16,
   },
   mt52: {
     marginTop: 52,

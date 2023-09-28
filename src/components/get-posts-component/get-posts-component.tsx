@@ -60,7 +60,7 @@ const GetPostsComponent = ({ query, isTabs, noPostsMessage }: IGetPostsHOC) => {
   let showContent: ReactElement;
 
   if (!loading) {
-    if (data.posts.data.length) {
+    if (data?.posts.data.length) {
       showContent = <PostsList postsData={data.posts.data} />;
     } else {
       showContent = <NoPosts message={noPostsMessage || ''} />;

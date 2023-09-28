@@ -3,6 +3,7 @@ import IconButton from '../icon-button/icon-button';
 import ArrowSVG from '../../assets/svg/arrow-svg';
 import { useTheme } from '@react-navigation/native';
 import { IHeader } from './type';
+import { stylesText } from '../../global-styles';
 
 const Header = ({ title, onBack }: IHeader) => {
   const { color1 } = useTheme().colors.myColors.defaultColors;
@@ -15,7 +16,9 @@ const Header = ({ title, onBack }: IHeader) => {
           onClick={onBack}
         />
       </View>
-      <Text style={{ color: color1, ...styles.title }}>{title}</Text>
+      <Text style={{ ...stylesText.outfitSemiBold18, color: color1 }}>
+        {title}
+      </Text>
     </View>
   );
 };
@@ -34,10 +37,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 16,
     top: 20,
-  },
-  title: {
-    fontSize: 18,
-    fontFamily: 'Outfit-SemiBold',
   },
 });
 

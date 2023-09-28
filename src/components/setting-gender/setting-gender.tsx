@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import CheckInput from '../../ui/check-input/check-input';
 import { useTheme } from '@react-navigation/native';
 import { ISettingGender } from './type';
+import { stylesText } from '../../global-styles';
 
 const SettingGender = ({ gender, setGender }: ISettingGender) => {
   const { color1 } = useTheme().colors.myColors.defaultColors;
@@ -14,7 +15,9 @@ const SettingGender = ({ gender, setGender }: ISettingGender) => {
           isChecked={gender === 'MALE'}
           setIsChecked={() => setGender('MALE')}
         />
-        <Text style={{ ...styles.text, color: color1 }}>Male</Text>
+        <Text style={{ ...stylesText.outfitRegular16, color: color1 }}>
+          Male
+        </Text>
       </View>
       <View style={styles.wrapper}>
         <CheckInput
@@ -22,7 +25,9 @@ const SettingGender = ({ gender, setGender }: ISettingGender) => {
           isChecked={gender === 'FEMALE'}
           setIsChecked={() => setGender('FEMALE')}
         />
-        <Text style={{ ...styles.text, color: color1 }}>Female</Text>
+        <Text style={{ ...stylesText.outfitRegular16, color: color1 }}>
+          Female
+        </Text>
       </View>
     </View>
   );
@@ -35,10 +40,6 @@ const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
     gap: 8,
-  },
-  text: {
-    fontFamily: 'Outfit-Regular',
-    fontSize: 16,
   },
 });
 

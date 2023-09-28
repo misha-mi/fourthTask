@@ -1,6 +1,7 @@
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { Pressable, Text } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { TPressed } from '../../types';
+import { stylesText } from '../../global-styles';
 
 const TextButton = ({ text, onClick, isDisabled }: ITextButton) => {
   const { defaultColor, pressedColor, disabledColor } =
@@ -14,7 +15,8 @@ const TextButton = ({ text, onClick, isDisabled }: ITextButton) => {
     return (
       <Text
         style={{
-          ...styles.text,
+          ...stylesText.outfitMedium16,
+          borderBottomWidth: 2,
           color: color,
           borderColor: color,
         }}>
@@ -25,7 +27,7 @@ const TextButton = ({ text, onClick, isDisabled }: ITextButton) => {
 
   return (
     <Pressable
-      style={styles.pressable}
+      style={{ alignSelf: 'flex-start' }}
       disabled={isDisabled}
       onPressOut={onClick}>
       {handlerPressButton}
@@ -34,14 +36,3 @@ const TextButton = ({ text, onClick, isDisabled }: ITextButton) => {
 };
 
 export default TextButton;
-
-const styles = StyleSheet.create({
-  text: {
-    borderBottomWidth: 2,
-    fontFamily: 'Outfit-Medium',
-    fontSize: 16,
-  },
-  pressable: {
-    alignSelf: 'flex-start',
-  },
-});

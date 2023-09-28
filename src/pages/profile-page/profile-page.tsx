@@ -15,6 +15,7 @@ import { putPhoto } from '../../service/put-photo';
 import ModalStatus from '../../ui/modal-status/modal-status';
 import { useEffect, useState } from 'react';
 import Spinner from '../../ui/spinner/spinner';
+import { stylesText } from '../../global-styles';
 
 const ProfilePage = () => {
   const { color1 } = useTheme().colors.myColors.defaultColors;
@@ -92,7 +93,9 @@ const ProfilePage = () => {
             onRenderSVG={color => <ArrowSVG color={color} />}
             onClick={navigation.goBack}
           />
-          <Text style={{ ...styles.title, color: color1 }}>Profile</Text>
+          <Text style={{ ...stylesText.outfitSemiBold18, color: color1 }}>
+            Profile
+          </Text>
           {isLoading ? (
             <Spinner color={color1} />
           ) : (
@@ -132,10 +135,6 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
-  },
-  title: {
-    fontSize: 18,
-    fontFamily: 'Outfit-SemiBold',
   },
   jcCenter: {
     marginTop: 12,

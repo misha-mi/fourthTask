@@ -26,6 +26,7 @@ import { DELETE_POST } from '../../apollo/service/delete-post';
 import { GET_POSTS } from '../../apollo/service/get-posts';
 import { GET_MY_POSTS } from '../../apollo/service/get-my-posts';
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
+import { stylesText } from '../../global-styles';
 
 const PostCard = ({ isOpen, postData }: IPostCard) => {
   const [likePost] = useMutation(LIKE_POST);
@@ -59,7 +60,9 @@ const PostCard = ({ isOpen, postData }: IPostCard) => {
     : styles.justifyContentSB;
 
   const showTitle = !isOpen ? (
-    <Text style={{ ...styles.title, color: titleColor }}>{title}</Text>
+    <Text style={{ ...stylesText.outfitMedium16, color: titleColor }}>
+      {title}
+    </Text>
   ) : null;
 
   const handlerTouchEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -107,7 +110,7 @@ const PostCard = ({ isOpen, postData }: IPostCard) => {
         <Pressable onTouchEnd={() => navigation.navigate('PostPage', { id })}>
           <View style={[headerJustifyContent, styles.flexRow]}>
             {showTitle}
-            <Text style={{ ...styles.text, color: textColor }}>
+            <Text style={{ ...stylesText.outfitRegular14, color: textColor }}>
               {createdAt}
             </Text>
           </View>
@@ -116,7 +119,11 @@ const PostCard = ({ isOpen, postData }: IPostCard) => {
         </Pressable>
 
         {isOpen ? (
-          <Text style={[{ ...styles.text, color: textColor }, styles.mt20]}>
+          <Text
+            style={[
+              { ...stylesText.outfitRegular14, color: textColor },
+              styles.mt20,
+            ]}>
             {description}
           </Text>
         ) : null}
@@ -124,7 +131,7 @@ const PostCard = ({ isOpen, postData }: IPostCard) => {
         <View style={[styles.justifyContentSB, styles.flexRow, styles.mt20]}>
           <View style={[styles.gap8, styles.flexRow]}>
             <ProfileImg userImg={author.avatarUrl} size="verySmall" />
-            <Text style={{ ...styles.text, color: textColor }}>
+            <Text style={{ ...stylesText.outfitRegular14, color: textColor }}>
               {author.firstName}
             </Text>
           </View>
@@ -136,7 +143,8 @@ const PostCard = ({ isOpen, postData }: IPostCard) => {
                 isActive={isLiked}
                 onClick={handlerLike}
               />
-              <Text style={{ ...styles.text, color: titleColor }}>
+              <Text
+                style={{ ...stylesText.outfitRegular14, color: titleColor }}>
                 {likesCount}
               </Text>
             </View>
@@ -164,14 +172,6 @@ const styles = StyleSheet.create({
   },
   justifyContentC: {
     justifyContent: 'center',
-  },
-  title: {
-    fontFamily: 'Outfit-Medium',
-    fontSize: 16,
-  },
-  text: {
-    fontFamily: 'Outfit-Regular',
-    fontSize: 14,
   },
   image: {
     width: 'auto',

@@ -5,6 +5,7 @@ import CheckSVG from '../../assets/svg/check-svg';
 import ShowSVG from '../../assets/svg/show-svg';
 import NoShowSVG from '../../assets/svg/no-show-svg';
 import { useTheme } from '@react-navigation/native';
+import { stylesText } from '../../global-styles';
 
 const Input = ({
   placeholder,
@@ -62,14 +63,20 @@ const Input = ({
     <View>
       <Text
         style={{
-          ...styles.label,
+          ...stylesText.outfitSemiBold14,
           color: labelStatusColor,
         }}>
         {label}
       </Text>
       <View style={styles.wrapper}>
         <TextInput
-          style={[styles.input, underlineInput, textColor, heightInput]}
+          style={[
+            styles.input,
+            stylesText.outfitRegular16,
+            underlineInput,
+            textColor,
+            heightInput,
+          ]}
           secureTextEntry={isPasswordInput && !isShow}
           editable={status !== 'disabled'}
           placeholder={placeholder}
@@ -107,17 +114,11 @@ const styles = StyleSheet.create({
   wrapper: {
     position: 'relative',
   },
-  label: {
-    fontSize: 14,
-    fontFamily: 'Outfit-SemiBold',
-  },
   input: {
     width: 'auto',
     padding: 0,
     paddingTop: 14,
     paddingBottom: 14,
-    fontSize: 16,
-    fontFamily: 'Outfit-Regular',
   },
   positionSVG: {
     position: 'absolute',

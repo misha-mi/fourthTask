@@ -1,6 +1,7 @@
 import { useTheme } from '@react-navigation/native';
 import { StyleSheet, Text, View } from 'react-native';
 import { INoPosts } from './type';
+import { stylesText } from '../../global-styles';
 
 const NoPosts = ({ message }: INoPosts) => {
   const { titleColor, textColor, backgroundColor } =
@@ -10,12 +11,19 @@ const NoPosts = ({ message }: INoPosts) => {
     <View style={styles.wrapper}>
       <Text
         style={[
-          styles.title,
+          stylesText.nokwy55,
           { color: titleColor, backgroundColor: backgroundColor },
         ]}>
         UPS
       </Text>
-      <Text style={{ ...styles.text, color: textColor }}>{message}</Text>
+      <Text
+        style={[
+          styles.textWrapper,
+          stylesText.outfitRegular16,
+          { color: textColor },
+        ]}>
+        {message}
+      </Text>
     </View>
   );
 };
@@ -27,19 +35,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 24,
   },
-  title: {
-    padding: 20,
-    paddingBottom: 12,
-    paddingTop: 12,
-    fontFamily: 'Nokwy',
-    fontSize: 55,
-    transform: [{ rotate: '-3deg' }],
-  },
-  text: {
+  textWrapper: {
     width: 240,
     textAlign: 'center',
-    fontFamily: 'Outfit-Regular',
-    fontSize: 16,
   },
 });
 

@@ -2,6 +2,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { ITabs } from './type';
 import { TSort } from '../../types';
+import { stylesText } from '../../global-styles';
 
 const tabs: TSort[] = ['new', 'top'];
 
@@ -19,7 +20,11 @@ const Tabs = ({ sort, setSort }: ITabs) => {
             key={id}
             style={{ ...styles.item, backgroundColor: tabColor }}
             onTouchEnd={() => setSort(item)}>
-            <Text style={{ ...styles.text, color: textColor }}>
+            <Text
+              style={[
+                stylesText.outfitRegular18,
+                { color: textColor, textAlign: 'center' },
+              ]}>
               {item.slice(0, 1).toUpperCase() + item.slice(1)}
             </Text>
           </Pressable>
@@ -41,11 +46,6 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 47,
     justifyContent: 'center',
-  },
-  text: {
-    textAlign: 'center',
-    fontSize: 18,
-    fontFamily: 'Outfit-Regular',
   },
 });
 export default Tabs;

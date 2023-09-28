@@ -3,6 +3,7 @@ import CloudSVG from '../../assets/svg/cloud-svg';
 import { useTheme } from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
 import { IUpload } from './type';
+import { stylesText } from '../../global-styles';
 
 const Upload = ({ img, setImg }: IUpload) => {
   const { backgroundColor, borderColor, textColor, cloudColor } =
@@ -26,7 +27,7 @@ const Upload = ({ img, setImg }: IUpload) => {
       {!img ? (
         <Pressable style={styles.pressable} onTouchEnd={changePhoto}>
           <CloudSVG color={cloudColor} />
-          <Text style={{ ...styles.text, color: textColor }}>
+          <Text style={{ ...stylesText.outfitMedium14, color: textColor }}>
             Upload your photo here
           </Text>
         </Pressable>
@@ -57,10 +58,6 @@ const styles = StyleSheet.create({
     gap: 8,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  text: {
-    fontSize: 14,
-    fontFamily: 'Outfit-Medium',
   },
 });
 

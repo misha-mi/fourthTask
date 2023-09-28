@@ -3,6 +3,7 @@ import { ICustomButton } from './type';
 import { useTheme } from '@react-navigation/native';
 import Spinner from '../spinner/spinner';
 import { TPressed } from '../../types';
+import { stylesText } from '../../global-styles';
 
 const CustomButton = ({
   title,
@@ -43,7 +44,13 @@ const CustomButton = ({
     const colorRed = isRedText ? { color: cancelColor } : null;
 
     return (
-      <Text style={[pressColor, styles.text, disabledContentColor, colorRed]}>
+      <Text
+        style={[
+          pressColor,
+          stylesText.outfitSemiBold16,
+          disabledContentColor,
+          colorRed,
+        ]}>
         {title}
       </Text>
     );
@@ -75,10 +82,6 @@ const styles = StyleSheet.create({
   },
   medium: {
     height: 44,
-  },
-  text: {
-    fontSize: 16,
-    fontFamily: 'Outfit-SemiBold',
   },
 });
 

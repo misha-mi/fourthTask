@@ -3,16 +3,38 @@ import CustomButton from '../../ui/custom-button/custom-button';
 import IfMessage from '../../ui/if-message/if-message';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
+import { stylesText } from '../../global-styles';
+import { useTheme } from '@react-navigation/native';
 
 const WelcomePage = () => {
+  const { titleColor, backgroundColor } =
+    useTheme().colors.myColors.noPostsColors;
   const navigation = useNavigation<NavigationProp<ParamListBase>>();
   return (
     <ImageBackground
       source={require('../../assets/img/welcome-bg.jpg')}
       style={styles.background}>
       <View style={styles.position}>
-        <Text style={[styles.text, styles.rotate3deg]}>SHARE</Text>
-        <Text style={[styles.text, styles.rotate9deg]}>YOUR TALE</Text>
+        <Text
+          style={[
+            stylesText.nokwy55,
+            styles.ml25,
+            {
+              color: titleColor,
+              backgroundColor: backgroundColor,
+              alignSelf: 'flex-start',
+            },
+          ]}>
+          SHARE
+        </Text>
+        <Text
+          style={[
+            stylesText.nokwy55,
+            styles.rotate9deg,
+            { color: titleColor, backgroundColor: backgroundColor },
+          ]}>
+          YOUR TALE
+        </Text>
       </View>
       <IfMessage
         ifMessage="Already have an account?"
@@ -36,25 +58,13 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     gap: 20,
   },
-  text: {
-    padding: 20,
-    paddingBottom: 12,
-    paddingTop: 12,
-    fontSize: 55,
-    textAlign: 'center',
-    color: '#131313',
-    fontFamily: 'Nokwy',
-    backgroundColor: '#B8DE64',
-    alignSelf: 'flex-start',
-  },
   position: {
     position: 'absolute',
     alignSelf: 'center',
     top: '13.3%',
   },
-  rotate3deg: {
+  ml25: {
     marginLeft: 25,
-    transform: [{ rotate: '-3deg' }],
   },
   rotate9deg: {
     transform: [{ rotate: '-9deg' }],

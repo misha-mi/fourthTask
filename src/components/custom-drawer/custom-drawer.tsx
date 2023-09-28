@@ -18,6 +18,7 @@ import { setTheme, setToken } from '../../storage/storage';
 import { useQuery } from '@apollo/client';
 import { GET_USER } from '../../apollo/service/get-user';
 import client from '../../apollo/client';
+import { stylesText } from '../../global-styles';
 
 const CustomDrawer = (props: DrawerContentComponentProps) => {
   const {
@@ -70,7 +71,10 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
   return (
     <View style={styles.wrapper}>
       <ProfileImg size="medium" userImg={avatarUrl} />
-      <Text style={{ ...styles.name, color: color1 }}>{name}</Text>
+      <Text
+        style={[stylesText.outfitSemiBold20, styles.mt12, { color: color1 }]}>
+        {name}
+      </Text>
 
       <View style={styles.mt60}>
         <TextWithIconButton
@@ -106,9 +110,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     position: 'relative',
   },
-  name: {
-    fontSize: 20,
-    fontFamily: 'Outfit-SemiBold',
+  mt12: {
     marginTop: 12,
   },
   mt60: {

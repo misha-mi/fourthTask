@@ -2,6 +2,7 @@ import { Text, Pressable, StyleSheet } from 'react-native';
 import TrashSVG from '../../assets/svg/trash-svg';
 import { useTheme } from '@react-navigation/native';
 import { IDeleteButton } from './type';
+import { stylesText } from '../../global-styles';
 
 const DeleteButton = ({ onDelete }: IDeleteButton) => {
   const { backgroundColor, textColor } =
@@ -12,7 +13,9 @@ const DeleteButton = ({ onDelete }: IDeleteButton) => {
       style={{ ...styles.wrapper, backgroundColor: backgroundColor }}
       onTouchEnd={onDelete}>
       <TrashSVG color={textColor} />
-      <Text style={{ ...styles.text, color: textColor }}>Delete</Text>
+      <Text style={{ ...stylesText.outfitRegular14, color: textColor }}>
+        Delete
+      </Text>
     </Pressable>
   );
 };
@@ -24,10 +27,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     gap: 8,
-  },
-  text: {
-    fontFamily: 'Outfit-Regular',
-    fontSize: 14,
   },
 });
 
