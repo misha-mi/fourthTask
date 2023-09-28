@@ -33,6 +33,8 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
   let name: string;
   if (firstName && lastName) {
     name = firstName + ' ' + lastName;
+  } else if (firstName) {
+    name = firstName;
   } else {
     name = 'Anonym';
   }

@@ -63,7 +63,7 @@ const ProfilePage = () => {
         ...dataForm,
         avatarUrl: uriPush,
       },
-    }).then(() => setIsLoading(false));
+    }).finally(() => setIsLoading(false));
   };
 
   const handlerClickDone = () => {
