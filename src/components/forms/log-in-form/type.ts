@@ -1,4 +1,4 @@
-export interface ILogIntForm {
+export interface ILogIntFormProps {
   onNavigate: (path: 'JoinUs') => void;
 }
 

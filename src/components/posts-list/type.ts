@@ -1,6 +1,6 @@
-import { TFilter, TPost, TSort } from '../../types';
+import { TPost } from '../../types';
 
-export interface IPostsList {
+export interface IPostsListProps {
   postsData: TPost[];
 }
 

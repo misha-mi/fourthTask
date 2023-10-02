@@ -1,6 +1,6 @@
 import { TStatus } from '../../types';
 
-export interface ICopyInput {
+export interface ICopyInputProps {
   textCopy: string;
   status?: TStatus;
 }

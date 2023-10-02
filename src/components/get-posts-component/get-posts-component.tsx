@@ -1,6 +1,6 @@
 import { useState, ReactElement } from 'react';
 import { TSort } from '../../types';
-import { IGetPostsHOC } from './type';
+import { IGetPostsHOCProps } from './type';
 import {
   View,
   ScrollView,
@@ -14,7 +14,11 @@ import NoPosts from '../../ui/no-posts/no-posts';
 import Spinner from '../../ui/spinner/spinner';
 import { useTheme } from '@react-navigation/native';
 
-const GetPostsComponent = ({ query, isTabs, noPostsMessage }: IGetPostsHOC) => {
+const GetPostsComponent = ({
+  query,
+  isTabs,
+  noPostsMessage,
+}: IGetPostsHOCProps) => {
   const { pressedButtonColor } = useTheme().colors.myColors.largeButtonColors;
   const [sort, setSort] = useState<TSort>('new');
   const [paginationLoading, setPaginationLoading] = useState(false);

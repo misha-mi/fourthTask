@@ -1,6 +1,6 @@
 import { TPost } from '../../types';
 
-export interface IPostCard {
+export interface IPostCardProps {
   isOpen?: boolean;
   postData: TPost;
 }

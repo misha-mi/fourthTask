@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native';
 import TextButton from '../text-button/text-button';
 import { useTheme } from '@react-navigation/native';
-import { IIfMessage } from './type';
+import { IIfMessageProps } from './type';
 import { stylesText } from '../../global-styles';
 
-const IfMessage = ({ ifMessage, thenMessage, onClick }: IIfMessage) => {
+const IfMessage = ({ ifMessage, thenMessage, onClick }: IIfMessageProps) => {
   const textColor = useTheme().colors.myColors.defaultColors.color1;
 
   return (

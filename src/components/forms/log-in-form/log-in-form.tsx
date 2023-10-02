@@ -4,14 +4,14 @@ import { useForm, Controller } from 'react-hook-form';
 import Input from '../../../ui/input/input';
 import CustomButton from '../../../ui/custom-button/custom-button';
 import IfMessage from '../../../ui/if-message/if-message';
-import { ILogIntForm, TErrorArr, TInputs } from './type';
+import { ILogIntFormProps, TErrorArr, TInputs } from './type';
 import { THandlerGenerateStatus } from '../join-us-form/type';
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { LOG_IN } from '../../../apollo/service/log-in';
 import { setToken } from '../../../storage/storage';
 import { GET_USER } from '../../../apollo/service/get-user';
 
-const LogInForm = ({ onNavigate }: ILogIntForm) => {
+const LogInForm = ({ onNavigate }: ILogIntFormProps) => {
   const {
     control,
     handleSubmit,

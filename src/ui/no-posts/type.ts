@@ -1,3 +1,3 @@
-export interface INoPosts {
+export interface INoPostsProps {
   message: string;
 }

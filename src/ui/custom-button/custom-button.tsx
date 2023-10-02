@@ -1,5 +1,5 @@
 import { Pressable, Text, StyleSheet } from 'react-native';
-import { ICustomButton } from './type';
+import { ICustomButtonProps } from './type';
 import { useTheme } from '@react-navigation/native';
 import Spinner from '../spinner/spinner';
 import { TPressed } from '../../types';
@@ -11,7 +11,7 @@ const CustomButton = ({
   size = 'large',
   status = 'waiting',
   isRedText = false,
-}: ICustomButton) => {
+}: ICustomButtonProps) => {
   const theme = useTheme().colors.myColors;
 
   const {

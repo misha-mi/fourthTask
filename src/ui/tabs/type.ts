@@ -1,6 +1,6 @@
 import { TSort } from '../../types';
 
-export interface ITabs {
+export interface ITabsProps {
   sort: TSort;
   setSort: (sort: TSort) => void;
 }

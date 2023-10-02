@@ -82,7 +82,7 @@ export const CustomDarkTheme = {
         defaultTextColor: DARK_THEME.color1,
         activeTextColor: DARK_THEME.color7,
       },
-      tapbarColors: {
+      tapBarColors: {
         backgroundColor: DARK_THEME.color7,
         defaultColor: DARK_THEME.color4,
         activeColor: DARK_THEME.primaryPressed,
@@ -208,7 +208,7 @@ export const CustomLightTheme = {
         defaultTextColor: LIGHT_THEME.color1,
         activeTextColor: LIGHT_THEME.color7,
       },
-      tapbarColors: {
+      tapBarColors: {
         backgroundColor: LIGHT_THEME.color6,
         defaultColor: LIGHT_THEME.color4,
         activeColor: LIGHT_THEME.primaryDefault,

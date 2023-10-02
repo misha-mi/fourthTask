@@ -1,9 +1,9 @@
 import { useTheme } from '@react-navigation/native';
 import { StyleSheet, Text, View } from 'react-native';
-import { INoPosts } from './type';
+import { INoPostsProps } from './type';
 import { stylesText } from '../../global-styles';
 
-const NoPosts = ({ message }: INoPosts) => {
+const NoPosts = ({ message }: INoPostsProps) => {
   const { titleColor, textColor, backgroundColor } =
     useTheme().colors.myColors.noPostsColors;
 

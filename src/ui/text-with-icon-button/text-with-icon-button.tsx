@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-import { ITextWithIconButton } from './types';
+import { ITextWithIconButtonProps } from './types';
 import { TPressed } from '../../types';
 import { stylesText } from '../../global-styles';
 
@@ -9,7 +9,7 @@ const TextWithIconButton = ({
   text,
   isDisabled,
   onClick,
-}: ITextWithIconButton) => {
+}: ITextWithIconButtonProps) => {
   const { defaultColor, pressedColor, disabledColor } =
     useTheme().colors.myColors.textWithIconButtonColors;
 

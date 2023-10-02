@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native';
 import CheckInput from '../../ui/check-input/check-input';
 import { useTheme } from '@react-navigation/native';
-import { ISettingGender } from './type';
+import { ISettingGenderProps } from './type';
 import { stylesText } from '../../global-styles';
 
-const SettingGender = ({ gender, setGender }: ISettingGender) => {
+const SettingGender = ({ gender, setGender }: ISettingGenderProps) => {
   const { color1 } = useTheme().colors.myColors.defaultColors;
 
   return (

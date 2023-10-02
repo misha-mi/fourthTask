@@ -7,14 +7,14 @@ import IfMessage from '../../../ui/if-message/if-message';
 import { useMutation } from '@apollo/client';
 import { JOIN_US } from '../../../apollo/service/join-us';
 import {
-  IJoinUsForm,
+  IJoinUsFormProps,
   TErrorArr,
   THandlerGenerateStatus,
   TInputs,
 } from './type';
 import { setToken } from '../../../storage/storage';
 
-const JoinUsForm = ({ onNavigate }: IJoinUsForm) => {
+const JoinUsForm = ({ onNavigate }: IJoinUsFormProps) => {
   const [isAfterFirstSubmit, setIsAfterFirstSubmit] = useState(true);
   const [joinUs, { data: joinUsData, error: joinUsError, loading }] =
     useMutation(JOIN_US, {

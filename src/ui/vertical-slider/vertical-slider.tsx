@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { IVerticalSlider, THandlerRenderItem } from './type';
+import { IVerticalSliderProps, THandlerRenderItem } from './type';
 import { useTheme } from '@react-navigation/native';
 
 const FONT_SIZE = 20;
@@ -27,7 +27,7 @@ const VerticalSlider = ({
   value,
   setValue,
   alignItemValue,
-}: IVerticalSlider) => {
+}: IVerticalSliderProps) => {
   const { color1 } = useTheme().colors.myColors.defaultColors;
 
   const refSlider = useRef<ScrollView>(null);

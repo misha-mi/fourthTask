@@ -1,7 +1,7 @@
 import Input from '../input/input';
-import { IPhoneInput } from './type';
+import { IPhoneInputProps } from './type';
 
-function PhoneInput({ phone, setPhone, errorMessage }: IPhoneInput) {
+function PhoneInput({ phone, setPhone, errorMessage }: IPhoneInputProps) {
   const mask = '+7 xxx xxx xx xx';
   const getValue = () => {
     const arrNumber = phone.replace('+7', '').replace('+', '').split('');

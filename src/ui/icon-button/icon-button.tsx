@@ -1,5 +1,5 @@
 import { Pressable } from 'react-native';
-import { IIconButton } from './type';
+import { IIconButtonProps } from './type';
 import { useTheme } from '@react-navigation/native';
 import { TPressed } from '../../types';
 
@@ -8,7 +8,7 @@ const IconButton = ({
   onRenderSVG,
   isActive,
   onClick,
-}: IIconButton) => {
+}: IIconButtonProps) => {
   const { defaultColor, pressedColor, disabledColor } =
     useTheme().colors.myColors.iconButtonColors;
 

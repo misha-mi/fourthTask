@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { TSize } from '../../types';
 
-export interface IRoundButton {
+export interface IRoundButtonProps {
   onRenderSVG: (color: string) => ReactElement;
   isCloseButton?: boolean;
   isDisabled?: boolean;

@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
-import { IInput } from './type';
+import { IInputProps } from './type';
 import { useState } from 'react';
 import CheckSVG from '../../assets/svg/check-svg';
 import ShowSVG from '../../assets/svg/show-svg';
@@ -17,7 +17,7 @@ const Input = ({
   errorMessage,
   isPhonePad,
   isTextArea,
-}: IInput) => {
+}: IInputProps) => {
   const {
     labelColor,
     initialColor,

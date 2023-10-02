@@ -2,10 +2,10 @@ import { StyleSheet, View, Text } from 'react-native';
 import IconButton from '../icon-button/icon-button';
 import ArrowSVG from '../../assets/svg/arrow-svg';
 import { useTheme } from '@react-navigation/native';
-import { IHeader } from './type';
+import { IHeaderProps } from './type';
 import { stylesText } from '../../global-styles';
 
-const Header = ({ title, onBack }: IHeader) => {
+const Header = ({ title, onBack }: IHeaderProps) => {
   const { color1 } = useTheme().colors.myColors.defaultColors;
 
   return (

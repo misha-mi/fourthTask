@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import ProfileImg from '../../ui/profile-img/profile-img';
-import Tapbar from '../../ui/tapbar/tapbar';
+import TapBar from '../../ui/tap-bar/tap-bar';
 import { useState } from 'react';
 import { TFilter } from '../../types';
 import RoundButton from '../../ui/round-button/round-button';
@@ -84,7 +84,7 @@ const MainPage = () => {
         screenOptions={{
           headerShown: false,
         }}
-        tabBar={props => <Tapbar {...props} setFilter={setFilter} />}>
+        tabBar={props => <TapBar {...props} setFilter={setFilter} />}>
         <Tab.Screen name="MainPosts" component={AllPosts} />
         <Tab.Screen name="FavouritePosts" component={FavoritePosts} />
         <Tab.Screen name="MyPosts" component={MyPosts} />

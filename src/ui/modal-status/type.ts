@@ -1,4 +1,4 @@
-export interface IModalStatus {
+export interface IModalStatusProps {
   messages: string[] | null;
   setMessages: () => void;
 }

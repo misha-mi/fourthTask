@@ -1,7 +1,6 @@
 import { DocumentNode } from '@apollo/client';
-import { TFilter } from '../../types';
 
-export interface IGetPostsHOC {
+export interface IGetPostsHOCProps {
   query: DocumentNode;
   isTabs?: boolean;
   noPostsMessage?: string;

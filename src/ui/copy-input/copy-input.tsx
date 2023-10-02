@@ -1,12 +1,12 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import CopySVG from '../../assets/svg/copy-svg';
 import { useTheme } from '@react-navigation/native';
-import { ICopyInput } from './type';
+import { ICopyInputProps } from './type';
 import Spinner from '../spinner/spinner';
 import { TPressed } from '../../types';
 import { stylesText } from '../../global-styles';
 
-const CopyInput = ({ textCopy, status }: ICopyInput) => {
+const CopyInput = ({ textCopy, status }: ICopyInputProps) => {
   const {
     defaultBackgroundColor,
     pressedBackgroundColor,

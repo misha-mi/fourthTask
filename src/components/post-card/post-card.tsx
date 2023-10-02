@@ -10,7 +10,7 @@ import {
   Pressable,
   Share,
 } from 'react-native';
-import { IPostCard } from './type';
+import { IPostCardProps } from './type';
 import ProfileImg from '../../ui/profile-img/profile-img';
 import IconButton from '../../ui/icon-button/icon-button';
 import HeartSVG from '../../assets/svg/heart-svg';
@@ -28,7 +28,7 @@ import { GET_MY_POSTS } from '../../apollo/service/get-my-posts';
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import { stylesText } from '../../global-styles';
 
-const PostCard = ({ isOpen, postData }: IPostCard) => {
+const PostCard = ({ isOpen, postData }: IPostCardProps) => {
   const [likePost] = useMutation(LIKE_POST);
   const [unlikePost] = useMutation(UNLIKE_POST);
   const [deletePost] = useMutation(DELETE_POST);

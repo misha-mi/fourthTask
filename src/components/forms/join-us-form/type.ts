@@ -1,4 +1,4 @@
-export interface IJoinUsForm {
+export interface IJoinUsFormProps {
   onNavigate: (path: 'LogIn' | 'SuccessJoinUsPage') => void;
 }
 

@@ -6,10 +6,13 @@ import { useState } from 'react';
 import CustomButton from '../../ui/custom-button/custom-button';
 import Modal from 'react-native-modal';
 import ImagePicker from 'react-native-image-crop-picker';
-import { ISetProfileImgComponent } from './type';
+import { ISetProfileImgComponentProps } from './type';
 import { useTheme } from '@react-navigation/native';
 
-const SetProfileImgComponent = ({ img, setImg }: ISetProfileImgComponent) => {
+const SetProfileImgComponent = ({
+  img,
+  setImg,
+}: ISetProfileImgComponentProps) => {
   const { color4 } = useTheme().colors.myColors.defaultColors;
 
   const [modalVisible, setModalVisible] = useState(false);

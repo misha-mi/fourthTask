@@ -1,6 +1,6 @@
 import { TSize } from '../../types';
 
-export interface IProfileImg {
+export interface IProfileImgProps {
   size?: TSize | 'verySmall';
   userImg: string;
 }

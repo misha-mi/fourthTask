@@ -1,16 +1,12 @@
 import { useTheme } from '@react-navigation/native';
 import { View, Text } from 'react-native';
 import { stylesText } from '../../global-styles';
-
-interface ITitleAuthorization {
-  titleText: string;
-  subtitleText: string;
-}
+import { ITitleAuthorizationProps } from './type';
 
 const TitleAuthorization = ({
   titleText,
   subtitleText,
-}: ITitleAuthorization) => {
+}: ITitleAuthorizationProps) => {
   const { titleColor, subtitleColor } =
     useTheme().colors.myColors.titleAuthorizationColors;
 

@@ -1,3 +1,3 @@
-export interface IDeleteButton {
+export interface IDeleteButtonProps {
   onDelete: () => void;
 }

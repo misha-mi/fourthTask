@@ -2,13 +2,13 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { ReactElement } from 'react';
 import CheckSVG from '../../assets/svg/check-svg';
 import { useTheme } from '@react-navigation/native';
-import { ICheckInput } from './type';
+import { ICheckInputProps } from './type';
 
 const CheckInput = ({
   type = 'square',
   isChecked,
   setIsChecked,
-}: ICheckInput) => {
+}: ICheckInputProps) => {
   const { backgroundColor, checkedColor, borderColor } =
     useTheme().colors.myColors.checkInputColors;
 

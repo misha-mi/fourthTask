@@ -1,9 +1,9 @@
 import { Image, View, StyleSheet } from 'react-native';
 import UserSVG from '../../assets/svg/user-svg';
-import { IProfileImg } from './type';
+import { IProfileImgProps } from './type';
 import { useTheme } from '@react-navigation/native';
 
-const ProfileImg = ({ userImg, size = 'large' }: IProfileImg) => {
+const ProfileImg = ({ userImg, size = 'large' }: IProfileImgProps) => {
   const { backgroundColor, SVGColor } =
     useTheme().colors.myColors.profileImgColors;
 

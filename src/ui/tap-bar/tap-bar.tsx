@@ -3,7 +3,7 @@ import HomeSVG from '../../assets/svg/home-svg';
 import BookmarkSVG from '../../assets/svg/bookmark-svg';
 import PhotoSVG from '../../assets/svg/photo-svg';
 import { useTheme } from '@react-navigation/native';
-import { ITapbar, TButtons } from './type';
+import { ITapBarProps, TButtons } from './type';
 import { stylesText } from '../../global-styles';
 
 const BUTTONS: TButtons = [
@@ -21,9 +21,9 @@ const BUTTONS: TButtons = [
   },
 ];
 
-const Tapbar = ({ state, navigation, setFilter }: ITapbar) => {
+const TapBar = ({ state, navigation, setFilter }: ITapBarProps) => {
   const { backgroundColor, defaultColor, activeColor } =
-    useTheme().colors.myColors.tapbarColors;
+    useTheme().colors.myColors.tapBarColors;
 
   return (
     <View
@@ -84,4 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Tapbar;
+export default TapBar;

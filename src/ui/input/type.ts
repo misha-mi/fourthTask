@@ -1,4 +1,4 @@
-export interface IInput {
+export interface IInputProps {
   placeholder: string;
   label: string;
   status: 'waiting' | 'disabled' | 'success' | 'error';

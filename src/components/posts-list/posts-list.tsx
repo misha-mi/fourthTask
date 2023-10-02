@@ -1,8 +1,8 @@
 import { StyleSheet, View } from 'react-native';
 import PostCard from '../post-card/post-card';
-import { IPostsList } from './type';
+import { IPostsListProps } from './type';
 
-const PostsList = ({ postsData }: IPostsList) => {
+const PostsList = ({ postsData }: IPostsListProps) => {
   return (
     <View style={[styles.mt24, styles.gap4]}>
       {postsData.map(item => (

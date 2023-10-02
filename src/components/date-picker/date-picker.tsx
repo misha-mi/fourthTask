@@ -6,7 +6,7 @@ import VerticalSlider from '../../ui/vertical-slider/vertical-slider';
 import Input from '../../ui/input/input';
 import { useTheme } from '@react-navigation/native';
 import {
-  IDatePicker,
+  IDatePickerProps,
   TGetDaysArr,
   TGetIndexMonth,
   TGetYearsArr,
@@ -14,7 +14,7 @@ import {
 } from './type';
 import { stylesText } from '../../global-styles';
 
-const DatePicker = ({ setDate, date }: IDatePicker) => {
+const DatePicker = ({ setDate, date }: IDatePickerProps) => {
   const { color1, color7 } = useTheme().colors.myColors.defaultColors;
 
   const [modalVisible, setModalVisible] = useState(false);

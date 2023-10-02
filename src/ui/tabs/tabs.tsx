@@ -1,12 +1,12 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-import { ITabs } from './type';
+import { ITabsProps } from './type';
 import { TSort } from '../../types';
 import { stylesText } from '../../global-styles';
 
 const tabs: TSort[] = ['new', 'top'];
 
-const Tabs = ({ sort, setSort }: ITabs) => {
+const Tabs = ({ sort, setSort }: ITabsProps) => {
   const { defaultTabColor, activeTabColor, defaultTextColor, activeTextColor } =
     useTheme().colors.myColors.tabsColors;
 

@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet } from 'react-native';
-import { IRoundButton } from './type';
+import { IRoundButtonProps } from './type';
 import { useTheme } from '@react-navigation/native';
 import { TPressed } from '../../types';
 
@@ -9,7 +9,7 @@ const RoundButton = ({
   isDisabled,
   size,
   onClick,
-}: IRoundButton) => {
+}: IRoundButtonProps) => {
   const { closeRoundButtonColors, defaultRoundButtonColors } =
     useTheme().colors.myColors;
 
