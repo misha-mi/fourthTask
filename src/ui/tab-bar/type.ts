@@ -1,7 +1,7 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { TFilter } from '../../types';
 
-export type ITapBarProps = BottomTabBarProps & {
+export type ITabBarProps = BottomTabBarProps & {
   setFilter: (string: TFilter) => void;
 };
 
