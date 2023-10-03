@@ -5,13 +5,7 @@ import CustomButton from '../../ui/custom-button/custom-button';
 import VerticalSlider from '../../ui/vertical-slider/vertical-slider';
 import Input from '../../ui/input/input';
 import { useTheme } from '@react-navigation/native';
-import {
-  IDatePickerProps,
-  TGetDaysArr,
-  TGetIndexMonth,
-  TGetYearsArr,
-  THandlerAddZero,
-} from './type';
+import { IDatePickerProps } from './type';
 import { stylesText } from '../../global-styles';
 
 const DatePicker = ({ setDate, date }: IDatePickerProps) => {
@@ -31,14 +25,14 @@ const DatePicker = ({ setDate, date }: IDatePickerProps) => {
     return arr;
   };
 
-  const handlerAddZero: THandlerAddZero = num => {
+  const handlerAddZero = (num: string | number) => {
     if (+num < 10) {
       return '0' + num;
     }
     return num.toString();
   };
 
-  const getDaysArr: TGetDaysArr = (year, month) => {
+  const getDaysArr = (year: string, month: number) => {
     const endDay = new Date(+year, month - 1, 0).getDate();
     const arr: string[] = [];
     for (let i = 1; i <= endDay; i++) {
@@ -47,7 +41,7 @@ const DatePicker = ({ setDate, date }: IDatePickerProps) => {
     return arr;
   };
 
-  const getYearsArr: TGetYearsArr = yearStart => {
+  const getYearsArr = (yearStart: number) => {
     const yearEnd = new Date().getFullYear();
     const arr = [];
     for (let i = yearStart; i <= yearEnd; i++) {
@@ -56,7 +50,7 @@ const DatePicker = ({ setDate, date }: IDatePickerProps) => {
     return arr;
   };
 
-  const getIndexMonth: TGetIndexMonth = month => {
+  const getIndexMonth = (month: string) => {
     for (let i = 0; i < 12; i++) {
       const monthCompare = new Date(0, i).toLocaleString('en-US', {
         month: 'long',

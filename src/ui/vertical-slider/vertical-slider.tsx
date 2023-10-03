@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { IVerticalSliderProps, THandlerRenderItem } from './type';
+import { IVerticalSliderProps } from './type';
 import { useTheme } from '@react-navigation/native';
 
 const FONT_SIZE = 20;
@@ -79,7 +79,7 @@ const VerticalSlider = ({
     return Math.round(offset / HEIGHT_EXTREME_ELEMENT) + 4;
   };
 
-  const handlerRenderItem: THandlerRenderItem = (item, index) => {
+  const handlerRenderItem = (item: string, index: number) => {
     let fontSize = HEIGHT_EXTREME_ELEMENT - 4;
 
     const indexActiveItem = handlerGetIndex();
